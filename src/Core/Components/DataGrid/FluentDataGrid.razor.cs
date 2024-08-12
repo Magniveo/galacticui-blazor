@@ -190,6 +190,8 @@ public partial class FluentDataGrid<TGridItem> : FluentComponentBase, IHandleEve
     [Parameter]
     public Func<TGridItem, string>? RowStyle { get; set; }
 
+    [Parameter] public override string? Class { get; set; } = "g-table g-table__table";
+
     /// <summary>
     /// Gets or sets a value indicating whether the grid should show a hover effect on rows.
     /// </summary>
@@ -312,12 +314,12 @@ public partial class FluentDataGrid<TGridItem> : FluentComponentBase, IHandleEve
         }
 
         var mustRefreshData = dataSourceHasChanged
-            || (Pagination?.GetHashCode() != _lastRefreshedPaginationStateHash);
+            || Pagination?.GetHashCode() != _lastRefreshedPaginationStateHash;
 
         // We don't want to trigger the first data load until we've collected the initial set of columns,
         // because they might perform some action like setting the default sort order, so it would be wasteful
         // to have to re-query immediately
-        return (_columns.Count > 0 && mustRefreshData) ? RefreshDataCoreAsync() : Task.CompletedTask;
+        return _columns.Count > 0 && mustRefreshData ? RefreshDataCoreAsync() : Task.CompletedTask;
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -503,7 +505,7 @@ public partial class FluentDataGrid<TGridItem> : FluentComponentBase, IHandleEve
         else
         {
             // If we're not using Virtualize, we build and execute a request against the items provider directly
-            var startIndex = Pagination is null ? 0 : (Pagination.CurrentPageIndex * Pagination.ItemsPerPage);
+            var startIndex = Pagination is null ? 0 : Pagination.CurrentPageIndex * Pagination.ItemsPerPage;
             GridItemsProviderRequest<TGridItem> request = new(
                 startIndex, Pagination?.ItemsPerPage, _sortByColumn, _sortByAscending, thisLoadCts.Token);
             var result = await ResolveItemsRequestAsync(request);
@@ -606,7 +608,7 @@ public partial class FluentDataGrid<TGridItem> : FluentComponentBase, IHandleEve
 
     private string AriaSortValue(ColumnBase<TGridItem> column)
          => _sortByColumn == column
-             ? (_sortByAscending ? "ascending" : "descending")
+             ? _sortByAscending ? "ascending" : "descending"
              : "none";
 
     private string? ColumnHeaderClass(ColumnBase<TGridItem> column)

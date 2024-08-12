@@ -28,3 +28,6 @@ button.col-title {
     overflow: hidden;
     white-space: nowrap;
 }
+.g-checkbox:hover .g-checkbox__indicator:before {
+    border-color: var(--g-color-line-generic-accent-hover);
+}

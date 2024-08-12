@@ -3,7 +3,10 @@
     padding: 0 2px;
 
 }
-
+.gravity-ui-landing-navigation-layout-section-block__sub-section_active, .gravity-ui-landing-navigation-layout-section-block__sub-section_active:hover {
+    background:var(--g-color-base-brand-hover);
+    color: var(--g-color-base-brand);
+}
 ::deep .fluent-nav-item.expander:focus-within {
     outline-offset: 1px;
 }
@@ -17,7 +20,7 @@
     /* Hover and active highlighting */
     ::deep .fluent-nav-item .positioning-region:hover:not(:has(.disabled)) {
         cursor: pointer;
-        background: var(--neutral-fill-secondary-rest);
+        background: var(--g-color-scroll-handle);
     }
 
         /* Active item indicator */
@@ -28,7 +31,8 @@
             right: unset;
             width: 3px;
             height: calc(((var(--base-height-multiplier) + var(--density)) * var(--design-unit) / 2) * 1px);
-            background: var(--accent-fill-rest);
+            background: var(--g-color-scroll-corner);
+            color: var(--g-color-base-brand);
             border-radius: calc(var(--control-corner-radius) * 1px);
             margin: calc(var(--design-unit) * 2px) 2px;
             z-index: 5;
@@ -53,7 +57,7 @@
     position: relative;
     align-items: center;
     box-sizing: border-box;
-    background: var(--neutral-fill-stealth-rest);
+    background: var(--g-color-scroll-track);
     border: calc(var(--stroke-width) * 1px) solid transparent;
     border-radius: calc(var(--control-corner-radius) * 1px);
     min-height: calc(((var(--base-height-multiplier) + var(--density)) * var(--design-unit) + 1) * 1px);

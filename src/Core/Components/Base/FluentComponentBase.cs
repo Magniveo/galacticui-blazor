@@ -7,7 +7,7 @@ public abstract class FluentComponentBase : ComponentBase
     private ElementReference _ref;
 
     /// <summary>
-    /// Gets or sets the associated web component. 
+    /// Gets or sets the associated web component.
     /// May be <see langword="null"/> if accessed before the component is rendered.
     /// </summary>
     public ElementReference Element
@@ -31,7 +31,7 @@ public abstract class FluentComponentBase : ComponentBase
     /// Optional CSS class names. If given, these will be included in the class attribute of the component.
     /// </summary>
     [Parameter]
-    public virtual string? Class { get; set; } = null;
+    public virtual string? Class { get; set; }
 
     /// <summary>
     /// Optional in-line styles. If given, these will be included in the style attribute of the component.

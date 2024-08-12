@@ -3,7 +3,6 @@ export { parseColorHexRGB } from '@microsoft/fast-colors'
 import { SplitPanels } from './SplitPanels'
 import { DesignTheme } from './DesignTheme'
 import { FluentPageScript, onEnhancedLoad } from './FluentPageScript'
-
 interface Blazor {
   registerCustomEventType: (
     name: string,
@@ -30,7 +29,7 @@ interface FluentUIEventType {
 
 
 var styleSheet = new CSSStyleSheet();
-
+//const gravityui = new CSSStyleSheet("./Design/base.css");
 const styles = `
 body:has(.prevent-scroll) {
     overflow: hidden;
@@ -65,8 +64,12 @@ fluent-text-field.invalid::part(root)
 
 styleSheet.replaceSync(styles);
 // document.adoptedStyleSheets.push(styleSheet);
+
+var styleSheetGravity = new CSSStyleSheet();
+
 document.adoptedStyleSheets = [...document.adoptedStyleSheets, styleSheet];
 
+loadCSSFromFile('./_content/Microsoft.FluentUI.AspNetCore.Components/css/base.css');
 var beforeStartCalled = false;
 var afterStartedCalled = false;
 
@@ -329,3 +332,19 @@ export function beforeStart(options: any) {
 
   beforeStartCalled = true;
 }
+function loadCSSFromFile(filePath:any) {
+  const sheet = new CSSStyleSheet();
+
+  fetch(filePath)
+    .then(response => response.text())
+    .then(cssText => {
+      // Here we assume `replaceSync` is supported for simplicity
+      return sheet.replaceSync(cssText);
+    })
+    .then(() => {
+      document.adoptedStyleSheets = [...document.adoptedStyleSheets, sheet];
+    })
+    .catch(error => console.error('Failed to load CSS:', error));
+}
+
+// Usage

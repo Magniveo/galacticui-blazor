@@ -14,7 +14,6 @@ public partial class FluentDataGridRow<TGridItem> : FluentComponentBase, IHandle
 {
     internal string RowId { get; set; } = string.Empty;
     private readonly Dictionary<string, FluentDataGridCell<TGridItem>> cells = [];
-
     /// <summary>
     /// Gets or sets the reference to the item that holds this row's values.
     /// </summary>
@@ -58,9 +57,17 @@ public partial class FluentDataGridRow<TGridItem> : FluentComponentBase, IHandle
     [CascadingParameter]
     internal InternalGridContext<TGridItem> Owner { get; set; } = default!;
 
-    protected string? ClassValue => new CssBuilder(Class)
-        .AddClass("hover", when: Owner.Grid.ShowHover)
-        .Build();
+    public bool Selected { get; set; }
+
+    protected string? ClassValue
+    {
+        get => new CssBuilder(Class)
+            .AddClass(RowIndex > 0 ? "g-table__row" : "g-table__head")
+            //.AddClass("hover", when: Owner.Grid.ShowHover)
+            .AddClass(Selected?"g-table__row_selected":"")
+            .Build();
+        set => Class=value;
+    }
 
     protected string? StyleValue => new StyleBuilder(Style)
        .AddStyle("height", $"{Owner.Grid.ItemSize:0}px", () => Owner.Grid.Virtualize && RowType == DataGridRowType.Default)
@@ -78,7 +85,6 @@ public partial class FluentDataGridRow<TGridItem> : FluentComponentBase, IHandle
 
     internal void Register(FluentDataGridCell<TGridItem> cell)
     {
-
         cell.CellId = $"c{Owner.GetNextCellId()}";
         cells.Add(cell.CellId, cell);
     }
@@ -104,11 +110,22 @@ public partial class FluentDataGridRow<TGridItem> : FluentComponentBase, IHandle
     internal async Task HandleOnRowClickAsync(string rowId)
     {
         var row = GetRow(rowId);
-
+        row.Selected = !row.Selected;
         if (row != null && Owner.Grid.OnRowClick.HasDelegate)
         {
             await Owner.Grid.OnRowClick.InvokeAsync(row);
         }
+        //ClassValue = "g-table__row g-table__row_selected";
+        //row.ClassValue = ClassValue;
+        //var test = new CssBuilder(Class)
+            //.AddClass(RowIndex > 0 ? "g-table__row" : "g-table__head")
+            //.AddClass("hover", when: Owner.Grid.ShowHover)
+        //    .Build();
+        //row.ClassValue = "g-table__row g-table__row_selected";
+        //if(row.ClassValue.Contains())
+       /* row.Class = row.Class ??"g-table__row_selected";
+        var replace = row.Class.Replace("g-table__row_selected","");
+        row.Class = $"{replace} g-table__row_selected";*/
 
         if (row != null && row.RowType == DataGridRowType.Default)
         {

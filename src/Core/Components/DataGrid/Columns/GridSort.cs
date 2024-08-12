@@ -38,7 +38,7 @@ public sealed class GridSort<TGridItem>
             (expression, true));
 
     /// <summary>
-    /// Produces a <see cref="GridSort{T}"/> instance that sorts according to the specified <paramref name="expression"/> 
+    /// Produces a <see cref="GridSort{T}"/> instance that sorts according to the specified <paramref name="expression"/>
     /// using the specified <paramref name="comparer"/>, ascending.
     /// </summary>
     /// <typeparam name="U">The type of the expression's value.</typeparam>
@@ -60,7 +60,7 @@ public sealed class GridSort<TGridItem>
             (expression, false));
 
     /// <summary>
-    /// Produces a <see cref="GridSort{T}"/> instance that sorts according to the specified <paramref name="expression"/> 
+    /// Produces a <see cref="GridSort{T}"/> instance that sorts according to the specified <paramref name="expression"/>
     /// using the specified <paramref name="comparer"/>, descending.
     /// </summary>
     /// <typeparam name="U">The type of the expression's value.</typeparam>
@@ -229,14 +229,14 @@ public sealed class GridSort<TGridItem>
     {
         var result = new List<SortedProperty>
         {
-            new() { PropertyName = ToPropertyName(_firstExpression.Item1), Direction = (_firstExpression.Item2 ^ ascending) ? SortDirection.Descending : SortDirection.Ascending }
+            new() { PropertyName = ToPropertyName(_firstExpression.Item1), Direction = _firstExpression.Item2 ^ ascending ? SortDirection.Descending : SortDirection.Ascending }
         };
 
         if (_thenExpressions is not null)
         {
             foreach (var (thenLambda, thenAscending) in _thenExpressions)
             {
-                result.Add(new SortedProperty { PropertyName = ToPropertyName(thenLambda), Direction = (thenAscending ^ ascending) ? SortDirection.Descending : SortDirection.Ascending });
+                result.Add(new SortedProperty { PropertyName = ToPropertyName(thenLambda), Direction = thenAscending ^ ascending ? SortDirection.Descending : SortDirection.Ascending });
             }
         }
 

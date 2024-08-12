@@ -279,7 +279,7 @@ public abstract partial class FluentInputBase<TValue> : FluentComponentBase, IDi
     {
         get
         {
-            var fieldClass = (FieldBound && !Embedded) ? EditContext?.FieldCssClass(FieldIdentifier) : null;
+            var fieldClass = FieldBound && !Embedded ? EditContext?.FieldCssClass(FieldIdentifier) : null;
 
             var cssClass = CombineClassNames(AdditionalAttributes, fieldClass);
 

@@ -2,6 +2,7 @@ var initialColumnsWidths = '';
 var latestGridElement = null;
 
 export function init(gridElement) {
+    const selectedClass = 'g-table__row_selected';
     if (gridElement === undefined || gridElement === null) {
         return;
     };
@@ -13,6 +14,8 @@ export function init(gridElement) {
 
     const bodyClickHandler = event => {
         const columnOptionsElement = gridElement?.querySelector('.col-options');
+        const row = gridElement?.querySelector('fluent-data-grid-row');
+        console.log(row)
         if (columnOptionsElement && event.composedPath().indexOf(columnOptionsElement) < 0) {
             gridElement.dispatchEvent(new CustomEvent('closecolumnoptions', { bubbles: true }));
         }

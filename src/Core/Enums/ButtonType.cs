@@ -14,10 +14,29 @@ public enum ButtonType
     /// Submit button.
     /// </summary>
     Submit,
-
     /// <summary>
     /// Reset button.
     /// </summary>
     Reset,
-
+    Normal,
+    Action,
+    Outlined,
+    OutlinedInfo,
+    OutlinedSuccess,
+    OutlinedWarning,
+    OutlinedDanger,
+    OutlinedUtility,
+    OutlinedAction,
+    Raised,
+    Flat,
+    FlatSecondary,
+    FlatInfo,
+    FlatSuccess,
+    FlatWarning,
+    FlatDanger,
+    FlatUtility,
+    FlatAction,
+    NormalContrast,
+    OutlinedContrast,
+    FlatContrast
 }

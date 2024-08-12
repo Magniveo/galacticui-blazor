@@ -98,7 +98,7 @@ fluent-data-grid-cell {
     }
 
 ::deep .col-title {
-    padding: 0 calc((12 + (var(--design-unit) * 2 * var(--density))) * 1px);
+    padding: 0 calc((0 + (var(--design-unit) * 2 * var(--density))) * 1px);
     display: flex;
     align-items: center;
 }

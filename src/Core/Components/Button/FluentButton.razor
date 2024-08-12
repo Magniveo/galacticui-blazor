@@ -19,7 +19,7 @@ else
 @code{
     protected void RenderButton(RenderTreeBuilder __builder)
     {
-        <fluent-button @ref=Element
+        <gravity-button @ref=Element
                class="@(LoadingOverlay ? string.Empty : Class)"
                style="@(LoadingOverlay ? "width: 100%;" : Style)"
                autofocus=@Autofocus
@@ -38,8 +38,12 @@ else
                required=@Required
                aria-label=@Title
                title=@Title
+               size=@Size
+               pin=@Pin
                appearance=@Appearance.ToAttributeValue()
                @onclick="@OnClickHandlerAsync"
+               @onmouseenter="@OnMouseEnter"
+               @onmouseleave="@OnMouseLeave"
                @attributes="AdditionalAttributes">
             @if (IconStart != null)
             {
@@ -66,6 +70,6 @@ else
                                 Slot="@(ChildContent != null ? "end" : null)" />
                 }
             }
-        </fluent-button>
+        </gravity-button>
     }
 }

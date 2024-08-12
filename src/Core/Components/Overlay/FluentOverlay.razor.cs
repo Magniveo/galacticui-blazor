@@ -81,7 +81,7 @@ public partial class FluentOverlay
     public bool Dismissable { get; set; } = true;
 
     /// <summary>
-    /// Gets or sets the background color. 
+    /// Gets or sets the background color.
     /// Needs to be formatted as an HTML hex color string (#rrggbb or #rgb).
     /// Default is '#ffffff'.
     /// </summary>
@@ -114,7 +114,9 @@ public partial class FluentOverlay
 #else
             if (!Regex.IsMatch(BackgroundColor, "^(?:#([a-fA-F0-9]{6}|[a-fA-F0-9]{3}))"))
 #endif
+            {
                 throw new ArgumentException("BackgroundColor must be a valid HTML hex color string (#rrggbb or #rgb).");
+            }
             else
             {
                 _color = BackgroundColor[1..];

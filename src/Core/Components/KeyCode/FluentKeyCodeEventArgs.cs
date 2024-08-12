@@ -84,7 +84,7 @@ public class FluentKeyCodeEventArgs
                 ShiftKey ? "Shift" : string.Empty,
                 AltKey ? "Alt" : string.Empty,
                 MetaKey ? "Meta" : string.Empty,
-                Value.Length == 1 ? (Value == " " ? "Space" :Value.ToUpper()) : Value
+                Value.Length == 1 ? Value == " " ? "Space" :Value.ToUpper() : Value
             };
 
         return string.Join(" + ", keys.Where(i => !string.IsNullOrEmpty(i)));

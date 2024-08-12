@@ -5,7 +5,7 @@
 class LoadingTheme extends HTMLElement {
 
     className = "hidden-body";
-    defaultDarkColor = "#272727";
+    defaultDarkColor = "#251B25";
     defaultLightColor = "#fbfbfb";
 
     constructor() {

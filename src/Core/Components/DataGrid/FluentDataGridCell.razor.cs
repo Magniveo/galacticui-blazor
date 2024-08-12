@@ -55,6 +55,17 @@ public partial class FluentDataGridCell<TGridItem> : FluentComponentBase
     /// </summary>
     private ColumnBase<TGridItem>? Column => Owner.Owner.Grid._columns.ElementAtOrDefault(GridColumn - 1);
 
+    //[Parameter] public string? Class { get; set; } = "g-table__cell";
+    /*[Parameter] public override string? Class { get=> new CssBuilder(Class)
+        .AddClass("g-table__cell")
+        .Build();
+        set
+        {
+            Class = new CssBuilder()
+                .AddClass(value)
+                .Build();
+        }
+    }*/
     protected string? StyleValue => new StyleBuilder(Style)
        .AddStyle("height", $"{GridContext.Grid.ItemSize:0}px", () => !GridContext.Grid.Loading && GridContext.Grid.Virtualize && Owner.RowType == DataGridRowType.Default)
        .AddStyle("align-content", "center", () => !GridContext.Grid.Loading && GridContext.Grid.Virtualize && Owner.RowType == DataGridRowType.Default && string.IsNullOrEmpty(Style))

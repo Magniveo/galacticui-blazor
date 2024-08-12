@@ -5,7 +5,18 @@
     text-decoration: none;
     display: flex;
 }
-
+::deep .fluent-nav-link:hover {
+    background-color: rgba(255, 190, 92, 0.1);
+    color: rgb(255, 190, 92);
+}
+::deep .fluent-nav-link.active:hover {
+    background-color: rgba(255, 190, 92, 0.1);
+    color: rgb(255, 190, 92);
+}
+::deep .fluent-nav-link-active {
+    background-color: rgba(255, 190, 92, 0.1);
+    color: rgb(255, 190, 92);
+}
 ::deep .fluent-nav-icon:not(fluent-menu-item) {
     min-width: 20px;
 }

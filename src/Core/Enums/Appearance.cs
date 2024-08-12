@@ -36,5 +36,9 @@ public enum Appearance
     /// <summary>
     /// Show filled.
     /// </summary>
-    Filled
+    Filled,
+    Basic,
+    Outlined,
+    Flat,
+    Contrast
 }

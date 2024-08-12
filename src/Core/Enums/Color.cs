@@ -8,8 +8,8 @@ namespace Microsoft.FluentUI.AspNetCore.Components;
 public enum Color
 {
     /// <summary>
-    /// Use the '--neutral-foreground-rest' CSS variable color to draw the icon. 
-    /// Icon is drawn in the same color as the standard text. 
+    /// Use the '--neutral-foreground-rest' CSS variable color to draw the icon.
+    /// Icon is drawn in the same color as the standard text.
     /// </summary>
     [Description("var(--neutral-foreground-rest)")]
     Neutral,
@@ -23,7 +23,7 @@ public enum Color
 
     /// <summary>
     /// Use the '--warning' CSS variable color.
-    /// Note: This color is defined in the variables.css file. If this file is not being used, 
+    /// Note: This color is defined in the variables.css file. If this file is not being used,
     /// a CSS variable with this name and appropriate value needs to be created.
     /// </summary>
     [Description("var(--warning)")]
@@ -31,7 +31,7 @@ public enum Color
 
     /// <summary>
     /// Use the '--info' CSS variable color.
-    /// Note: This color is defined in the variables.css file. If this file is not being used, 
+    /// Note: This color is defined in the variables.css file. If this file is not being used,
     /// a CSS variable with this name and appropriate value needs to be created.
     /// </summary>
     [Description("var(--info)")]
@@ -39,7 +39,7 @@ public enum Color
 
     /// <summary>
     /// Use the '--error' CSS variable color.
-    /// Note: This color is defined in the variables.css file. If this file is not being used, 
+    /// Note: This color is defined in the variables.css file. If this file is not being used,
     /// a CSS variable with this name and appropriate value needs to be created.
     /// </summary>
     [Description("var(--error)")]
@@ -47,7 +47,7 @@ public enum Color
 
     /// <summary>
     /// Use the '--success' CSS variable color.
-    /// Note: This color is defined in the variables.css file. If this file is not being used, 
+    /// Note: This color is defined in the variables.css file. If this file is not being used,
     /// a CSS variable with this name and appropriate value needs to be created.
     /// </summary>
     [Description("var(--success)")]
@@ -82,4 +82,15 @@ public enum Color
     /// </summary>
     [Description("var(--neutral-foreground-rest)")]
     Custom,
+    /// <summary>
+    /// Supply
+    /// </summary>
+    [Description("var(--g-color-base-generic)")]
+    BaseGeneric,
+    [Description("var(--g-color-base-generic-hover)")]
+    BaseGenericHover,
+    [Description("var(--g-color-base-brand)")]
+    BaseBrand,
+    [Description("var(--g-color-base-brand-hover)")]
+    BaseBrandHover,
 }

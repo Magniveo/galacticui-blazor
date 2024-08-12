@@ -11,7 +11,7 @@
 }
 
 .paginator-nav {
-    padding: 0; 
+    padding: 0;
     display: flex;
     margin-inline-start: auto;
     margin-inline-end: 0;
@@ -19,7 +19,7 @@
     align-items: center;
 }
 
-    
-[dir="rtl"] * ::deep fluent-button > svg {
+
+[dir="rtl"] * ::deep gravity-button > svg {
     transform: rotate(180deg);
 }

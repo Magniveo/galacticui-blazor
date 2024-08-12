@@ -1,6 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.FluentUI.AspNetCore.Components.Components.Tooltip;
-using Microsoft.FluentUI.AspNetCore.Components.DesignTokens;
+//using Microsoft.FluentUI.AspNetCore.Components.DesignTokens;
 
 // This namespace is deliberately "Components" and not "Components.Extensions".
 namespace Microsoft.FluentUI.AspNetCore.Components;
@@ -27,7 +27,7 @@ public static class ServiceCollectionExtensions
         }
         services.AddSingleton(options);
 
-        services.AddDesignTokens();
+        //services.AddDesignTokens();
 
         return services;
     }

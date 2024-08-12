@@ -33,7 +33,7 @@ public abstract class FluentNavBase : FluentComponentBase
     /// It supports the theme colors, default value uses the themes drawer icon color.
     /// </summary>
     [Parameter]
-    public Color IconColor { get; set; } = Color.Accent;
+    public Color IconColor { get; set; } = Color.BaseGeneric;
 
     /// <summary>
     /// Gets or sets the icon drawing and fill color to a custom value.
@@ -112,7 +112,7 @@ public abstract class FluentNavBase : FluentComponentBase
     /// If a custom toggle is being used to hide/show the menu, this defines the 'onclick' code
     /// Uses the <see cref="CustomToggleId"/> as the id of the element that will be clicked
     /// </summary>
-    internal string? CustomToggleCode => (Owner is not null && Owner.CustomToggle) ? $"document.getElementById('{CustomToggleId}').click();" : null;
+    internal string? CustomToggleCode => Owner is not null && Owner.CustomToggle ? $"document.getElementById('{CustomToggleId}').click();" : null;
 
     protected async Task OnClickHandlerAsync(MouseEventArgs ev)
     {

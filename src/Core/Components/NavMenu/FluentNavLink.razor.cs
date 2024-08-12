@@ -9,6 +9,7 @@ public partial class FluentNavLink : FluentNavBase
 
     internal string? ClassValue => new CssBuilder(Class)
         .AddClass("fluent-nav-item")
+        //.AddClass(ActiveClass.Contains("active")?"fluent-nav-item-active":"")
         .Build();
 
     internal string? LinkClassValue => new CssBuilder("fluent-nav-link")

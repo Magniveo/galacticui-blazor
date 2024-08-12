@@ -11,3 +11,32 @@
     cursor: pointer;
     background-color: var(--datagrid-hover-color, var(--neutral-fill-stealth-hover));
 }
+
+.g-table__head .g-table__cell {
+    font-weight:var(--g-text-accent-font-weight)
+}
+.g-table__row_selected .g-table__cell_sticky_end, .g-table__row_selected .g-table__cell_sticky_start {
+    background:linear-gradient(to right, var(--g-color-base-selection), var(--g-color-base-selection)), linear-gradient(to right, var(--g-color-base-background), var(--g-color-base-background))
+}
+
+.g-table__row_selected.g-table__row_interactive:hover {
+    background:var(--g-color-base-selection-hover)
+}
+
+.g-table__row_selected.g-table__row_interactive:hover .g-table__cell_sticky_end, .g-table__row_selected.g-table__row_interactive:hover .g-table__cell_sticky_start {
+    background:linear-gradient(to right, var(--g-color-base-selection-hover), var(--g-color-base-selection-hover)), linear-gradient(to right, var(--g-color-base-background), var(--g-color-base-background))
+}
+.g-table__row_vertical-align_top {
+    vertical-align:top
+}
+
+.g-table__row_vertical-align_middle {
+    vertical-align:middle
+}
+
+.g-table__row_empty .g-table__cell {
+    text-align:center
+}
+.g-table__row_selected {
+    background:var(--g-color-base-selection)
+}

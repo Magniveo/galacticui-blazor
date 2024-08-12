@@ -1,7 +1,7 @@
 ﻿@namespace Microsoft.FluentUI.AspNetCore.Components
 @inherits FluentComponentBase
 @typeparam TGridItem
-<fluent-data-grid-cell cell-id="@CellId"
+<gravity-data-grid-cell cell-id="@CellId"
                        cell-type=@CellType.ToAttributeValue()
                        grid-column=@GridColumn
                        class="@Class"
@@ -10,4 +10,4 @@
                        @onclick="@HandleOnCellClickAsync"
                        @attributes="AdditionalAttributes">
     @ChildContent
-</fluent-data-grid-cell>
+</gravity-data-grid-cell>

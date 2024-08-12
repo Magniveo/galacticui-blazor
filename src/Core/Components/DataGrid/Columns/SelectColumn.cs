@@ -15,10 +15,10 @@ public class SelectColumn<TGridItem> : ColumnBase<TGridItem>
     /// </summary>
     public static string[] KEYBOARD_SELECT_KEYS = ["Enter", "NumpadEnter"];
 
-    private readonly Icon IconUnselectedMultiple = new CoreIcons.Regular.Size20.CheckboxUnchecked().WithColor(Color.FillInverse);
-    private readonly Icon IconSelectedMultiple = new CoreIcons.Filled.Size20.CheckboxChecked();
-    private readonly Icon IconUnselectedSingle = new CoreIcons.Regular.Size20.RadioButton().WithColor(Color.FillInverse);
-    private readonly Icon IconSelectedSingle = new CoreIcons.Filled.Size20.RadioButton();
+    private readonly Icon IconUnselectedMultiple = new CoreIcons.Regular.Size20.CheckboxUnchecked().WithColor(Color.BaseBrandHover);
+    private readonly Icon IconSelectedMultiple = new CoreIcons.Filled.Size20.CheckboxChecked().WithColor(Color.BaseBrand);
+    private readonly Icon IconUnselectedSingle = new CoreIcons.Regular.Size20.RadioButton().WithColor(Color.BaseBrandHover);
+    private readonly Icon IconSelectedSingle = new CoreIcons.Filled.Size20.RadioButton().WithColor(Color.BaseBrand);
 
     private DataGridSelectMode _selectMode = DataGridSelectMode.Single;
     private readonly List<TGridItem> _selectedItems = new List<TGridItem>();
@@ -69,7 +69,10 @@ public class SelectColumn<TGridItem> : ColumnBase<TGridItem>
             if (_selectedItems != value)
             {
                 _selectedItems.Clear();
-                _selectedItems.AddRange(value);
+                if (value != null)
+                {
+                    _selectedItems.AddRange(value);
+                }
             }
         }
     }
@@ -131,7 +134,7 @@ public class SelectColumn<TGridItem> : ColumnBase<TGridItem>
     /// Only when <see cref="SelectMode"/> is Multiple.
     /// </summary>
     [Parameter]
-    public Icon? IconIndeterminate { get; set; } = new CoreIcons.Filled.Size20.CheckboxIndeterminate();
+    public Icon? IconIndeterminate { get; set; } = new CoreIcons.Filled.Size20.CheckboxIndeterminate().WithColor(Color.BaseBrand);
 
     /// <summary>
     /// Gets or sets the Icon title display as a tooltip and used with Accessibility.
@@ -213,6 +216,7 @@ public class SelectColumn<TGridItem> : ColumnBase<TGridItem>
     {
         if (SelectFromEntireRow == true && row.RowType == DataGridRowType.Default)
         {
+            //row.Class=new CssBuilder().AddClass("g-table__row_selected").Build();
             return AddOrRemoveSelectedItemAsync(row.Item);
         }
 
@@ -386,6 +390,10 @@ public class SelectColumn<TGridItem> : ColumnBase<TGridItem>
                 builder.AddAttribute(4, "style", "cursor: pointer;");
             }
             builder.CloseComponent();
+
+            //builder.OpenComponent<FluentDataGrid<TGridItem>>(0);
+            //builder.AddAttribute(1, "class", "g-table__row_selected");
+            //builder.CloseComponent();
         });
     }
 
@@ -399,7 +407,7 @@ public class SelectColumn<TGridItem> : ColumnBase<TGridItem>
 
             case DataGridSelectMode.Multiple:
                 var selectedAll = GetSelectAll();
-                var iconAllChecked = (selectedAll == null && IconIndeterminate != null)
+                var iconAllChecked = selectedAll == null && IconIndeterminate != null
                                     ? IconIndeterminate
                                     : GetIcon(selectedAll);
 
@@ -413,10 +421,10 @@ public class SelectColumn<TGridItem> : ColumnBase<TGridItem>
                         builder.AddAttribute(3, "OnClick", EventCallback.Factory.Create<MouseEventArgs>(this, OnClickAllAsync));
                         builder.AddAttribute(4, "onkeydown", EventCallback.Factory.Create<KeyboardEventArgs>(this, OnKeyAllAsync));
                     }
-                    builder.AddAttribute(5, "Style", "margin-left: 12px;");
+                    builder.AddAttribute(5, "Style", "margin-left: -1px;");
                     builder.AddAttribute(6, "Title", iconAllChecked == IconIndeterminate
                                                         ? TitleAllIndeterminate
-                                                        : (iconAllChecked == GetIcon(true) ? TitleAllChecked : TitleAllUnchecked));
+                                                        : iconAllChecked == GetIcon(true) ? TitleAllChecked : TitleAllUnchecked);
                     builder.CloseComponent();
                 });
 
@@ -439,7 +447,7 @@ public class SelectColumn<TGridItem> : ColumnBase<TGridItem>
                 builder.OpenElement(0, "div");
                 if (!SelectAllDisabled)
                 {
-                    builder.AddAttribute(1, "style", "cursor: pointer; margin-left: 12px;");
+                    builder.AddAttribute(1, "style", "cursor: pointer; margin-left: -1px;");
                     builder.AddAttribute(2, "onclick", EventCallback.Factory.Create<MouseEventArgs>(this, OnClickAllAsync));
                     builder.AddAttribute(3, "onkeydown", EventCallback.Factory.Create<KeyboardEventArgs>(this, OnKeyAllAsync));
                 }

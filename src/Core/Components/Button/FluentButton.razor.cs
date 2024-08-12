@@ -26,6 +26,11 @@ public partial class FluentButton : FluentComponentBase, IAsyncDisposable
     private bool LoadingOverlay => Loading && IconStart == null && IconEnd == null;
 
     /// <summary>
+    /// Optional CSS class names. If given, these will be included in the class attribute of the component.
+    /// </summary>
+    [Parameter]
+    public override string? Class { get; set; } = "g-button";
+    /// <summary>
     /// Determines if the element should receive document focus on page load.
     /// </summary>
     [Parameter]
@@ -72,8 +77,19 @@ public partial class FluentButton : FluentComponentBase, IAsyncDisposable
     /// Gets or sets the button type. See <see cref="ButtonType"/> for more details.
     /// Default is ButtonType.Button.
     /// </summary>
+    private ButtonType? _type;
     [Parameter]
-    public ButtonType? Type { get; set; } = ButtonType.Button;
+    public ButtonType? Type {
+        get
+        {
+            return _type?? ButtonType.Normal;
+        }
+        set
+        {
+            _type = value;
+            setClassViaType(_type);
+        }
+    }
 
     /// <summary>
     /// Gets or sets the value of the element.
@@ -150,7 +166,6 @@ public partial class FluentButton : FluentComponentBase, IAsyncDisposable
     /// </summary>
     [Parameter]
     public string? Title { get; set; }
-
     /// <summary>
     /// Gets or sets the content to be rendered inside the component.
     /// </summary>
@@ -162,7 +177,41 @@ public partial class FluentButton : FluentComponentBase, IAsyncDisposable
     /// </summary>
     [Parameter]
     public EventCallback<MouseEventArgs> OnClick { get; set; }
+    [Parameter]public EventCallback<MouseEventArgs> OnMouseEnter { get; set; }
+    [Parameter]public EventCallback<MouseEventArgs> OnMouseLeave { get; set; }
+    [Parameter]public EventCallback<FocusEventArgs> OnFocus { get; set; }
+    [Parameter]public EventCallback<FocusEventArgs> OnBlur { get; set; }
+    /// <summary>
+    /// size	Sets button size xs s m l xl
+    /// </summary>
+    private ButtonSize? _size;
+    [Parameter]
+    public ButtonSize? Size
+    {
+        get { return _size;}
+        set
+        {
+            _size = value;
+            setSize(_size);
+        }
+    }
 
+    private ButtonPin? _pin;
+    /// <summary>
+    /// pin	Sets button edges style
+    /// </summary>
+    [Parameter]
+    public ButtonPin? Pin {
+        get
+        {
+            return _pin;
+        }
+        set
+        {
+            _pin = value;
+            setClassViaPin(_pin);
+        }
+    }
     protected override void OnParametersSet()
     {
         string[] values = ["_self", "_blank", "_parent", "_top"];
@@ -192,9 +241,12 @@ public partial class FluentButton : FluentComponentBase, IAsyncDisposable
 
     /// <summary />
     protected virtual MarkupString CustomStyle => new InlineStyleBuilder()
-        .AddStyle($"#{Id}::part(control)", "background", $"padding-box linear-gradient({BackgroundColor}, {BackgroundColor}), border-box {BackgroundColor}", when: !string.IsNullOrEmpty(BackgroundColor))
-        .AddStyle($"#{Id}::part(control)", "color", $"{Color}", when: !string.IsNullOrEmpty(Color))
-        .AddStyle($"#{Id}::part(control):hover", "opacity", "0.8", when: !string.IsNullOrEmpty(Color) || !string.IsNullOrEmpty(BackgroundColor))
+        //.AddStyle($"#{Id}::part(g-button)","background","")
+        //.AddStyle($"#{Id}::part(g-button)","color","")
+        //.AddStyle($"#{Id}::part(g-button:hover)","","")
+        //.AddStyle($"#{Id}::part(g-button)", "background", $"padding-box linear-gradient({BackgroundColor}, {BackgroundColor}), border-box {BackgroundColor}", when: !string.IsNullOrEmpty(BackgroundColor))
+        //.AddStyle($"#{Id}::part(g-button)", "color", $"{Color}", when: !string.IsNullOrEmpty(Color))
+        //.AddStyle($"#{Id}::part(g-button:hover)", "opacity", "0.8", when: !string.IsNullOrEmpty(Color) || !string.IsNullOrEmpty(BackgroundColor))
         .BuildMarkupString();
 
     /// <summary>
@@ -253,5 +305,203 @@ public partial class FluentButton : FluentComponentBase, IAsyncDisposable
             // The JSRuntime side may routinely be gone already if the reason we're disposing is that
             // the client disconnected. This is not an error.
         }
+    }
+
+    private Task setSize(ButtonSize? size)
+    {
+        switch (size)
+        {
+            case ButtonSize.Xl:
+                Class += " g-button_size_xl";
+                break;
+            case ButtonSize.L:
+                Class += " g-button_size_l";
+                break;
+            case ButtonSize.M:
+                Class += " g-button_size_m";
+                break;
+            case ButtonSize.S:
+                Class += " g-button_size_s";
+                break;
+            case ButtonSize.Xs:
+                Class += " g-button_size_xs";
+                break;
+        }
+
+        return Task.CompletedTask;
+    }
+
+    private Task setClassViaType(ButtonType? value)
+    {
+
+        switch (value)
+        {
+            case ButtonType.Normal:
+                {
+                    Class += $" g-button_view_normal";
+                    break;
+                }
+            case ButtonType.Action:
+                {
+                    Class += $" g-button_view_action";
+                    break;
+                }
+            case ButtonType.Outlined:
+                {
+                    Class += $" g-button_view_outlined";
+                    break;
+                }
+            case ButtonType.OutlinedInfo:
+                {
+                    Class += $" g-button_view_outlined-info";
+                    break;
+                }
+                case ButtonType.OutlinedSuccess:
+                {
+                    Class += $" g-button_view_outlined-info";
+                    break;
+                }
+                case ButtonType.OutlinedWarning:
+                {
+                    Class += $" g-button_view_outlined-info";
+                    break;
+                }
+                case ButtonType.OutlinedDanger:
+                {
+                    Class += $" g-button_view_outlined-danger";
+                    break;
+                }
+                case ButtonType.OutlinedUtility:
+                {
+                    Class += $" g-button_view_outlined-utility";
+                    break;
+                }
+                case ButtonType.OutlinedAction:
+                {
+                    Class += $" g-button_view_outlined-action";
+                    break;
+                }
+                case ButtonType.Raised:
+                {
+                    Class += $" g-button_view_raised";
+                    break;
+                }
+                case ButtonType.Flat:
+                {
+                    Class += $" g-button_view_flat";
+                    break;
+                }
+                case ButtonType.FlatSecondary:
+                {
+                    Class += $" g-button_view_flat-secondary";
+                    break;
+                }
+                case ButtonType.FlatInfo:
+                {
+                    Class += $" g-button_view_flat-info";
+                    break;
+                }
+                case ButtonType.FlatSuccess:
+                {
+                    Class += $" g-button_view_flat-success";
+                    break;
+                }
+                case ButtonType.FlatWarning:
+                {
+                    Class += $" g-button_view_outlined-warning";
+                    break;
+                }
+                case ButtonType.FlatDanger:
+                {
+                    Class += $" g-button_view_flat-danger";
+                    break;
+                }
+                case ButtonType.FlatUtility:
+                {
+                    Class += $" g-button_view_flat-utility";
+                    break;
+                }
+                case ButtonType.FlatAction:
+                {
+                    Class += $" g-button_view_flat-action";
+                    break;
+                }
+                case ButtonType.NormalContrast:
+                {
+                    Class += $" g-button_view_normal-contrast";
+                    break;
+                }
+                case ButtonType.OutlinedContrast:
+                {
+                    Class += $" g-button_view_outlined-contrast";
+                    break;
+                }
+                case ButtonType.FlatContrast:
+                {
+                    Class += $" g-button_view_flat-contrast";
+                    break;
+                }
+        }
+        return Task.CompletedTask;
+    }
+
+    private Task setClassViaPin(ButtonPin? pin)
+    {
+        switch (pin)
+        {
+                case ButtonPin.RoundRound:
+                    Class += " g-button_pin_round-round";
+                    break;
+                case ButtonPin.BrickBrick:
+                    Class += " g-button_pin_brick-brick";break;
+                case ButtonPin.ClearClear:
+                    Class += " g-button_pin_clear-clear";break;
+                case ButtonPin.CircleCircle:
+                    Class += " g-button_pin_cirlce-circle";break;
+                case ButtonPin.RoundBrick:
+                    Class += " g-button_pin_round-brick";
+                    break;
+                case ButtonPin.BrickRound:
+                    Class += " g-button_pin_brick-round";
+                    break;
+                case ButtonPin.RoundClear:
+                    Class += " g-button_pin_round-clear";break;
+                case ButtonPin.ClearRound:
+                    Class += " g-button_pin_clear-round";break;
+                case ButtonPin.BrickClear: Class += " g-button_pin_brick-clear";break;
+                case ButtonPin.ClearBrick: Class += " g-button_pin_clear-brick";break;
+                case ButtonPin.CircleBrick: Class += " g-button_pin_circle-brick";break;
+                case ButtonPin.BrickCircle: Class += " g-button_pin_brick-circle";break;
+                case ButtonPin.CircleClear: Class += " g-button_pin_circle-clear";break;
+                case ButtonPin.ClearCircle: Class += " g-button_pin_clear-circle";break;
+        }
+
+        return Task.CompletedTask;
+    }
+
+    public enum ButtonSize
+    {
+        Xs,
+        S,
+        M,
+        L,
+        Xl
+    }
+    public enum ButtonPin
+    {
+        RoundRound,
+        BrickBrick,
+        ClearClear,
+        CircleCircle,
+        RoundBrick,
+        BrickRound,
+        RoundClear,
+        ClearRound,
+        BrickClear,
+        ClearBrick,
+        CircleBrick,
+        BrickCircle,
+        CircleClear,
+        ClearCircle
     }
 }

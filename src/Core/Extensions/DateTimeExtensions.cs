@@ -69,7 +69,7 @@ public static class DateTimeExtensions
     public static DateTime StartOfWeek(this DateTime self, DayOfWeek firstDayOfWeek)
     {
         var diff = (7 + (self.DayOfWeek - firstDayOfWeek)) % 7;
-        if (self.Year == 1 && self.Month == 1 && (self.Day - diff) < 1)
+        if (self.Year == 1 && self.Month == 1 && self.Day - diff < 1)
         {
             return self.Date;
         }
@@ -89,7 +89,7 @@ public static class DateTimeExtensions
         var firstDayOfWeek = culture.DateTimeFormat.FirstDayOfWeek;
 
         var diff = (7 + (self.DayOfWeek - firstDayOfWeek)) % 7;
-        if (self.Year == minDate.Year && self.Month == minDate.Month && (self.Day - diff) < 1)
+        if (self.Year == minDate.Year && self.Month == minDate.Month && self.Day - diff < 1)
         {
             return self.Date;
         }
