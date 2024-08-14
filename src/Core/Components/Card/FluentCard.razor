@@ -7,17 +7,21 @@
          id="@Id"
          class="@ClassValue"
          style="@StyleValue"
+         theme=@Theme
+         size=@Size
          @attributes="AdditionalAttributes">
         @ChildContent
     </div>
 }
 else
 {
-    <fluent-card @ref=Element
+    <gravity-card @ref=Element
                  id="@Id"
                  class="@ClassValue"
                  style="@StyleValue"
+                 theme=@Theme
+                 size=@Size
                  @attributes="AdditionalAttributes">
         @ChildContent
-    </fluent-card>
+    </gravity-card>
 }
