@@ -1,4 +1,4 @@
-var initialColumnsWidths = '';
+let initialColumnsWidths = {};
 var latestGridElement = null;
 
 export function init(gridElement) {
@@ -8,7 +8,7 @@ export function init(gridElement) {
     };
 
     if (gridElement.querySelectorAll('.column-header.resizable').length > 0) {
-        initialColumnsWidths = gridElement.gridTemplateColumns;
+        initialColumnsWidths[gridElement.id] = gridElement.gridTemplateColumns ;
         enableColumnResizing(gridElement);
     }
 
@@ -66,6 +66,7 @@ export function init(gridElement) {
             document.body.removeEventListener('click', bodyClickHandler);
             document.body.removeEventListener('mousedown', bodyClickHandler);
             document.body.removeEventListener('keydown', keyDownHandler);
+            delete initialColumnsWidths[gridElement.id];
         }
     };
 }
@@ -93,7 +94,6 @@ export function checkColumnOptionsPosition(gridElement) {
         }
     }
 }
-
 
 export function enableColumnResizing(gridElement) {
     if (gridElement === latestGridElement)
@@ -163,7 +163,7 @@ export function enableColumnResizing(gridElement) {
 
 export function resetColumnWidths(gridElement) {
 
-    gridElement.gridTemplateColumns = initialColumnsWidths;
+    gridElement.gridTemplateColumns = initialColumnsWidths[gridElement.id];
 }
 
 export function resizeColumnDiscrete(gridElement, column, change) {
@@ -217,6 +217,25 @@ export function resizeColumnDiscrete(gridElement, column, change) {
     gridElement.gridTemplateColumns = columns
         .map(({ header }) => header.size)
         .join(' ');
+}
+
+export function autoFitGridColumns(gridElement, columnCount) {
+    let gridTemplateColumns = '';
+
+    for (var i = 0; i < columnCount; i++) {
+        const columnWidths = Array
+            .from(gridElement.querySelectorAll(`[grid-column="${i + 1}"]`))
+            .flatMap((x) => x.offsetWidth);
+
+        const maxColumnWidth = Math.max(...columnWidths);
+
+        gridTemplateColumns += ` ${maxColumnWidth}fr`;
+    }
+
+    gridElement.setAttribute("grid-template-columns", gridTemplateColumns);
+    gridElement.classList.remove("auto-fit");
+
+    initialColumnsWidths[gridElement.id] = gridTemplateColumns;
 }
 
 export function resizeColumnExact(gridElement, column, width) {
