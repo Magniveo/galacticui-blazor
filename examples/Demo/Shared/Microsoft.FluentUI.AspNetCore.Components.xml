@@ -811,243 +811,243 @@
             Gets or sets the content to be rendered inside the component.
             </summary>
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentButton.LibraryConfiguration">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GButton.LibraryConfiguration">
             <summary />
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentButton.JSRuntime">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GButton.JSRuntime">
             <summary />
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentButton._jsModule">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GButton._jsModule">
             <summary />
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentButton.Class">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GButton.Class">
             <summary>
             Optional CSS class names. If given, these will be included in the class attribute of the component.
             </summary>
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentButton.Autofocus">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GButton.Autofocus">
             <summary>
             Determines if the element should receive document focus on page load.
             </summary>
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentButton.FormId">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GButton.FormId">
             <summary>
             Gets or sets the id of a form to associate the element to.
             </summary>
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentButton.Action">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GButton.Action">
             <summary>
             See <see href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button">button</see> element for more details.
             </summary>
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentButton.Enctype">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GButton.Enctype">
             <summary>
             See <see href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button">button</see> element for more details.
             </summary>
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentButton.Method">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GButton.Method">
             <summary>
             See <see href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button">button</see> element for more details.
             </summary>
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentButton.NoValidate">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GButton.NoValidate">
             <summary>
             See <see href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button">button</see> element for more details.
             </summary>
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentButton.Target">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GButton.Target">
             <summary>
             See <see href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button">button</see> element for more details.
             Possible values: "_self" | "_blank" | "_parent" | "_top"
             </summary>
         </member>
-        <member name="F:Microsoft.FluentUI.AspNetCore.Components.FluentButton._type">
+        <member name="F:Microsoft.FluentUI.AspNetCore.Components.GButton._type">
             <summary>
             Gets or sets the button type. See <see cref="T:Microsoft.FluentUI.AspNetCore.Components.ButtonType"/> for more details.
             Default is ButtonType.Button.
             </summary>
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentButton.Value">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GButton.Value">
             <summary>
             Gets or sets the value of the element.
             </summary>
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentButton.CurrentValue">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GButton.CurrentValue">
             <summary>
             Gets or sets the element's current value.
             </summary>
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentButton.Disabled">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GButton.Disabled">
             <summary>
             Disables the form control, ensuring it doesn't participate in form submission.
             </summary>
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentButton.Name">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GButton.Name">
             <summary>
             Gets or sets the name of the element.
             Allows access by name from the associated form.
             </summary>
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentButton.Required">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GButton.Required">
             <summary>
             Gets or sets a value indicating whether the element needs to have a value.
             </summary>
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentButton.Appearance">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GButton.Appearance">
             <summary>
             Gets or sets the visual appearance. See <seealso cref="T:Microsoft.FluentUI.AspNetCore.Components.Appearance"/>
             Defaults to <seealso cref="F:Microsoft.FluentUI.AspNetCore.Components.Appearance.Neutral"/>
             </summary>
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentButton.BackgroundColor">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GButton.BackgroundColor">
             <summary>
-            Gets or sets the background color of this button (overrides the <see cref="P:Microsoft.FluentUI.AspNetCore.Components.FluentButton.Appearance"/> property).
+            Gets or sets the background color of this button (overrides the <see cref="P:Microsoft.FluentUI.AspNetCore.Components.GButton.Appearance"/> property).
             Set the value "rgba(0, 0, 0, 0)" to display a transparent button.
             </summary>
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentButton.Color">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GButton.Color">
             <summary>
-            Gets or sets the color of the font (overrides the <see cref="P:Microsoft.FluentUI.AspNetCore.Components.FluentButton.Appearance"/> property).
+            Gets or sets the color of the font (overrides the <see cref="P:Microsoft.FluentUI.AspNetCore.Components.GButton.Appearance"/> property).
             </summary>
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentButton.Loading">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GButton.Loading">
             <summary>
             Display a progress ring and disable the button.
             </summary>
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentButton.IconStart">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GButton.IconStart">
             <summary>
             Gets or sets the <see cref="T:Microsoft.FluentUI.AspNetCore.Components.Icon"/> displayed at the start of button content.
             </summary>
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentButton.IconEnd">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GButton.IconEnd">
             <summary>
             Gets or sets the <see cref="T:Microsoft.FluentUI.AspNetCore.Components.Icon"/> displayed at the end of button content.
             </summary>
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentButton.Title">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GButton.Title">
             <summary>
             Gets or sets the title of the button.
             The text usually displayed in a 'tooltip' popup when the mouse is over the button.
             </summary>
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentButton.ChildContent">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GButton.ChildContent">
             <summary>
             Gets or sets the content to be rendered inside the component.
             </summary>
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentButton.OnClick">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GButton.OnClick">
             <summary>
             Command executed when the user clicks on the button.
             </summary>
         </member>
-        <member name="F:Microsoft.FluentUI.AspNetCore.Components.FluentButton._size">
+        <member name="F:Microsoft.FluentUI.AspNetCore.Components.GButton._size">
             <summary>
             size	Sets button size xs s m l xl
             </summary>
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentButton.Pin">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GButton.Pin">
             <summary>
             pin	Sets button edges style
             </summary>
         </member>
-        <member name="M:Microsoft.FluentUI.AspNetCore.Components.FluentButton.OnAfterRenderAsync(System.Boolean)">
+        <member name="M:Microsoft.FluentUI.AspNetCore.Components.GButton.OnAfterRenderAsync(System.Boolean)">
             <summary />
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentButton.CustomStyle">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GButton.CustomStyle">
             <summary />
         </member>
-        <member name="M:Microsoft.FluentUI.AspNetCore.Components.FluentButton.#ctor">
+        <member name="M:Microsoft.FluentUI.AspNetCore.Components.GButton.#ctor">
             <summary>
-            Constructs an instance of <see cref="T:Microsoft.FluentUI.AspNetCore.Components.FluentButton"/>.
+            Constructs an instance of <see cref="T:Microsoft.FluentUI.AspNetCore.Components.GButton"/>.
             </summary>
         </member>
-        <member name="M:Microsoft.FluentUI.AspNetCore.Components.FluentButton.OnInitialized">
+        <member name="M:Microsoft.FluentUI.AspNetCore.Components.GButton.OnInitialized">
             <summary />
         </member>
-        <member name="M:Microsoft.FluentUI.AspNetCore.Components.FluentButton.OnClickHandlerAsync(Microsoft.AspNetCore.Components.Web.MouseEventArgs)">
+        <member name="M:Microsoft.FluentUI.AspNetCore.Components.GButton.OnClickHandlerAsync(Microsoft.AspNetCore.Components.Web.MouseEventArgs)">
             <summary />
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentCard.AreaRestricted">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GCard.AreaRestricted">
             <summary>
             By default, content in the card is restricted to the area of the card itself.
             If you want content to be able to overflow the card, set this property to false.
             </summary>
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentCard.Width">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GCard.Width">
             <summary>
             Gets or sets the width of the card. Must be a valid CSS measurement.
             </summary>
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentCard.Height">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GCard.Height">
             <summary>
             Gets or sets the height of the card. Must be a valid CSS measurement.
             </summary>
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentCard.ChildContent">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GCard.ChildContent">
             <summary>
             Gets or sets the content to be rendered inside the component.
             </summary>
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentCheckbox.LibraryConfiguration">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GCheckbox.LibraryConfiguration">
             <summary />
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentCheckbox.JSRuntime">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GCheckbox.JSRuntime">
             <summary />
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentCheckbox.Module">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GCheckbox.Module">
             <summary />
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentCheckbox.ChildContent">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GCheckbox.ChildContent">
             <summary>
             Gets or sets the content to be rendered inside the component.
             </summary>
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentCheckbox.ThreeState">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GCheckbox.ThreeState">
             <summary>
             Gets or sets a value indicating whether the CheckBox will allow three check states rather than two.
             </summary>
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentCheckbox.ThreeStateOrderUncheckToIntermediate">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GCheckbox.ThreeStateOrderUncheckToIntermediate">
             <summary>
             Gets or sets a value indicating the order of the three states of the CheckBox.
             False (by default), the order is Unchecked -> Checked -> Intermediate.
             True: the order is Unchecked -> Intermediate -> Checked.
             </summary>
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentCheckbox.ShowIndeterminate">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GCheckbox.ShowIndeterminate">
             <summary>
             Gets or sets a value indicating whether the user can display the indeterminate state by clicking the CheckBox.
             If this is not the case, the checkbox can be started in the indeterminate state, but the user cannot activate it with the mouse.
             Default is true.
             </summary>
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentCheckbox.CheckState">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GCheckbox.CheckState">
             <summary>
             Gets or sets the state of the CheckBox: true, false or null.
             </summary>
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentCheckbox.CheckStateChanged">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GCheckbox.CheckStateChanged">
             <summary>
-            Gets or sets a callback that updates the <see cref="P:Microsoft.FluentUI.AspNetCore.Components.FluentCheckbox.CheckState"/>.
+            Gets or sets a callback that updates the <see cref="P:Microsoft.FluentUI.AspNetCore.Components.GCheckbox.CheckState"/>.
             </summary>
         </member>
-        <member name="M:Microsoft.FluentUI.AspNetCore.Components.FluentCheckbox.SetCurrentAndIntermediateAsync(System.Nullable{System.Boolean})">
+        <member name="M:Microsoft.FluentUI.AspNetCore.Components.GCheckbox.SetCurrentAndIntermediateAsync(System.Nullable{System.Boolean})">
             <summary />
         </member>
-        <member name="M:Microsoft.FluentUI.AspNetCore.Components.FluentCheckbox.SetIntermediateAsync(System.Boolean)">
+        <member name="M:Microsoft.FluentUI.AspNetCore.Components.GCheckbox.SetIntermediateAsync(System.Boolean)">
             <summary />
         </member>
-        <member name="M:Microsoft.FluentUI.AspNetCore.Components.FluentCheckbox.SetCurrentCheckStateAsync(System.Boolean)">
+        <member name="M:Microsoft.FluentUI.AspNetCore.Components.GCheckbox.SetCurrentCheckStateAsync(System.Boolean)">
             <summary />
         </member>
-        <member name="M:Microsoft.FluentUI.AspNetCore.Components.FluentCheckbox.OnCheckedChangeHandlerAsync(Microsoft.FluentUI.AspNetCore.Components.CheckboxChangeEventArgs)">
+        <member name="M:Microsoft.FluentUI.AspNetCore.Components.GCheckbox.OnCheckedChangeHandlerAsync(Microsoft.FluentUI.AspNetCore.Components.CheckboxChangeEventArgs)">
             <summary />
         </member>
-        <member name="M:Microsoft.FluentUI.AspNetCore.Components.FluentCheckbox.UpdateAndRaiseCheckStateEventAsync(System.Nullable{System.Boolean})">
+        <member name="M:Microsoft.FluentUI.AspNetCore.Components.GCheckbox.UpdateAndRaiseCheckStateEventAsync(System.Nullable{System.Boolean})">
             <summary />
         </member>
-        <member name="M:Microsoft.FluentUI.AspNetCore.Components.FluentCheckbox.TryParseValueFromString(System.String,System.Boolean@,System.String@)">
+        <member name="M:Microsoft.FluentUI.AspNetCore.Components.GCheckbox.TryParseValueFromString(System.String,System.Boolean@,System.String@)">
             <summary />
         </member>
         <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentCollapsibleRegion.Expanded">

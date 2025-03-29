@@ -1,5 +1,5 @@
-﻿::deep .full-width, 
-::deep .full-width fluent-card {
+﻿::deep .full-width,
+::deep .full-width g-card {
     width: 600px;
     height: 300px
 }

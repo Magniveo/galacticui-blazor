@@ -21,15 +21,15 @@
             {
                 @if (Grid.ResizeType is not null)
                 {
-                    <FluentButton Appearance="Appearance.Stealth" class="col-options-button" @onclick="@(() => Grid.ShowColumnOptionsAsync(this))" aria-label="Filter this column">
+                    <GButton Appearance="Appearance.Stealth" class="col-options-button" @onclick="@(() => Grid.ShowColumnOptionsAsync(this))" aria-label="Filter this column">
                         <FluentIcon Value="@(new CoreIcons.Regular.Size24.ChevronDown())" Color="Color.Neutral" Width="20px" Style="opacity: 0.5;" />
-                    </FluentButton>
+                    </GButton>
                 }
                 else
                 {
                     @if (ColumnOptions is not null)
                     {
-                        <FluentButton Appearance="Appearance.Stealth" class="col-options-button" @onclick="@(() => Grid.ShowColumnOptionsAsync(this))" aria-label="Filter this column">
+                        <GButton Appearance="Appearance.Stealth" class="col-options-button" @onclick="@(() => Grid.ShowColumnOptionsAsync(this))" aria-label="Filter this column">
                             @if (Filtered.GetValueOrDefault())
                             {
                                 <FluentIcon Value="@(new CoreIcons.Regular.Size24.FilterDismiss())" />
@@ -39,7 +39,7 @@
                                 <FluentIcon Value="@(new CoreIcons.Regular.Size24.Filter())" />
                             }
 
-                        </FluentButton>
+                        </GButton>
                     }
                 }
             }
@@ -48,7 +48,7 @@
             {
                 <FluentKeyCode Only="new [] { KeyCode.Ctrl, KeyCode.Enter}" OnKeyDown="HandleKeyDown" class="keycapture">
                     <span class="col-sort-container" @oncontextmenu="@(() => Grid.RemoveSortByColumnAsync(this))" @oncontextmenu:preventDefault>
-                        <FluentButton Appearance="Appearance.Stealth" class="col-sort-button" @onclick="@(() => Grid.SortByColumnAsync(this))" aria-label="@tooltip" title="@tooltip">
+                        <GButton Appearance="Appearance.Stealth" class="col-sort-button" @onclick="@(() => Grid.SortByColumnAsync(this))" aria-label="@tooltip" title="@tooltip">
                             <div class="col-title-text" title="@tooltip">@Title</div>
 
                             @if (Grid.SortByAscending.HasValue && ShowSortIcon)
@@ -69,7 +69,7 @@
                                     <FluentIcon Value="@(new CoreIcons.Regular.Size24.Filter())" Slot="@(Align == Align.End ? "start" : "end")" Style="opacity: 0.5;" />
                                 }
                             }
-                        </FluentButton>
+                        </GButton>
                     </span>
                 </FluentKeyCode>
             }
@@ -91,15 +91,15 @@
             {
                 @if (Grid.ResizeType is not null)
                 {
-                    <FluentButton Appearance="Appearance.Stealth" class="col-options-button" @onclick="@(() => Grid.ShowColumnOptionsAsync(this))" aria-label="Filter this column">
+                    <GButton Appearance="Appearance.Stealth" class="col-options-button" @onclick="@(() => Grid.ShowColumnOptionsAsync(this))" aria-label="Filter this column">
                         <FluentIcon Value="@(new CoreIcons.Regular.Size24.ChevronDown())" Color="Color.Neutral" Width="20px" Style="opacity: 0.5;" />
-                    </FluentButton>
+                    </GButton>
                 }
                 else
                 {
                     @if (ColumnOptions is not null)
                     {
-                        <FluentButton Appearance="Appearance.Stealth" class="col-options-button" @onclick="@(() => Grid.ShowColumnOptionsAsync(this))" aria-label="Filter this column">
+                        <GButton Appearance="Appearance.Stealth" class="col-options-button" @onclick="@(() => Grid.ShowColumnOptionsAsync(this))" aria-label="Filter this column">
                             @if (Filtered.GetValueOrDefault())
                             {
                                 <FluentIcon Value="@(new CoreIcons.Regular.Size24.FilterDismiss())" />
@@ -109,7 +109,7 @@
                                 <FluentIcon Value="@(new CoreIcons.Regular.Size24.Filter())" />
                             }
 
-                        </FluentButton>
+                        </GButton>
                     }
                 }
             }

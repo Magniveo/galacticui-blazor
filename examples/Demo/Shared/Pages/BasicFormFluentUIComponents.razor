@@ -54,7 +54,7 @@
             <FluentValidationMessage For="@(() => starship.MaximumAccommodation)" />
         </div>
         <div>
-            <FluentCheckbox Name="approved" @bind-Value="starship.IsValidatedDesign" Required Label="Engineering approval" />
+            <GCheckbox Name="approved" @bind-Value="starship.IsValidatedDesign" Required Label="Engineering approval" />
             <FluentValidationMessage For="@(() => starship.IsValidatedDesign)" />
         </div>
         <div>
@@ -65,7 +65,7 @@
             <FluentSwitch Name="teleporter" @bind-value="starship.HasTeleporter" Label="Teleporter" CheckedMessage="Fully operational" UncheckedMessage="Under maintenance"/>
             <FluentValidationMessage For="@(() => starship.HasTeleporter)" />
         </div>
-        <FluentButton Type="ButtonType.Submit" Appearance="Appearance.Accent">Submit</FluentButton>
+        <GButton Type="ButtonType.Submit" Appearance="Appearance.Accent">Submit</GButton>
     </FluentStack>
 </EditForm>
 

@@ -1,11 +1,11 @@
 @namespace Microsoft.FluentUI.AspNetCore.Components
 @inherits FluentInputBase<bool>
-<fluent-checkbox @ref=Element
+<g-checkbox @ref=Element
                  class="@ClassValue"
                  style="@StyleValue"
                  readonly="@ReadOnly"
                  id=@Id
-                 value=@(bool.TrueString)
+                 value=@(bool.TrueString)F
                  current-value=@CurrentValue
                  disabled=@Disabled
                  name=@Name
@@ -25,4 +25,4 @@
         }
     }
     @ChildContent
-</fluent-checkbox>
+</g-checkbox>

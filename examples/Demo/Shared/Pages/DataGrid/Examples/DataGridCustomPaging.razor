@@ -16,12 +16,12 @@
         for (var pageIndex = 0; pageIndex <= pagination.LastPageIndex; pageIndex++)
         {
             var capturedIndex = pageIndex;
-            <FluentButton @onclick="@(() => GoToPageAsync(capturedIndex))"
+            <GButton @onclick="@(() => GoToPageAsync(capturedIndex))"
                     Appearance="@PageButtonAppearance(capturedIndex)"
                     aria-current="@AriaCurrentValue(capturedIndex)"
                     aria-label="@AriaLabel(capturedIndex + 1)">
                 @(capturedIndex + 1)
-            </FluentButton>
+            </GButton>
         }
     }
 </div>

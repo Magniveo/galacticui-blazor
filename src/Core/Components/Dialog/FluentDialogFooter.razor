@@ -13,21 +13,21 @@
         {
             @if (Dialog.Instance?.Parameters?.ShowPrimaryAction == true)
             {
-                <FluentButton Title="@Dialog.Instance?.Parameters?.PrimaryAction"
+                <GButton Title="@Dialog.Instance?.Parameters?.PrimaryAction"
                               OnClick="@OnPrimaryActionButtonClickAsync"
                               Appearance="Appearance.Accent"
                               Disabled="@(Dialog.Instance?.Parameters?.PrimaryActionEnabled == false)">
                     @Dialog.Instance?.Parameters?.PrimaryAction
-                </FluentButton>
+                </GButton>
             }
             @if (Dialog.Instance?.Parameters?.ShowSecondaryAction == true)
             {
-                <FluentButton Title="@Dialog.Instance?.Parameters?.SecondaryAction"
+                <GButton Title="@Dialog.Instance?.Parameters?.SecondaryAction"
                               OnClick="@OnSecondaryActionButtonClickAsync"
                               Appearance="Appearance.Neutral"
                               Disabled="@(Dialog.Instance?.Parameters?.SecondaryActionEnabled == false)">
                     @Dialog.Instance?.Parameters?.SecondaryAction
-                </FluentButton>
+                </GButton>
             }
         }
         else

@@ -75,16 +75,16 @@
             <div>
                 @if (index > 0)
                 {
-                    <FluentButton OnClick="@(() => MyWizard.GoToStepAsync(0))">Go to first page</FluentButton>
-                    <FluentButton OnClick="@(() => MyWizard.GoToStepAsync(Value - 1))">Previous</FluentButton>
+                    <GButton OnClick="@(() => MyWizard.GoToStepAsync(0))">Go to first page</GButton>
+                    <GButton OnClick="@(() => MyWizard.GoToStepAsync(Value - 1))">Previous</GButton>
                 }
             </div>
             <FluentSpacer />
             <div>
                 @if (index != lastStepIndex)
                 {
-                    <FluentButton OnClick="@(() => MyWizard.GoToStepAsync(Value + 1))" Appearance="Appearance.Accent">Next</FluentButton>
-                    <FluentButton OnClick="@(() => MyWizard.GoToStepAsync(lastStepIndex))" Appearance="Appearance.Accent">Go to last page</FluentButton>
+                    <GButton OnClick="@(() => MyWizard.GoToStepAsync(Value + 1))" Appearance="Appearance.Accent">Next</GButton>
+                    <GButton OnClick="@(() => MyWizard.GoToStepAsync(lastStepIndex))" Appearance="Appearance.Accent">Go to last page</GButton>
                 }
             </div>
         }

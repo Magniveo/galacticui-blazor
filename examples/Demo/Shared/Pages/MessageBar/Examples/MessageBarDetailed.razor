@@ -1,7 +1,7 @@
 ﻿@inject IMessageService MessageService
 
-<FluentButton OnClick="@DisplayMessage" Appearance="Appearance.Accent">Display</FluentButton>
-<FluentButton Appearance="Appearance.Neutral" OnClick="@((e) => MessageService.Clear())">Clear all messages</FluentButton>
+<GButton OnClick="@DisplayMessage" Appearance="Appearance.Accent">Display</GButton>
+<GButton Appearance="Appearance.Neutral" OnClick="@((e) => MessageService.Clear())">Clear all messages</GButton>
 
 @code
 {
@@ -35,7 +35,7 @@
             options.Title = counter % 2 == 0 ? $"This is the important stuff (#{counter})." : null;
             options.Body = "The extra information should be kept at roughly 100 characters (which is about this long maximal).";
             options.Intent = Enum.GetValues<MessageIntent>()[counter % 4];
-            options.Icon = new Icons.Regular.Size24.PersonCircle();            
+            options.Icon = new Icons.Regular.Size24.PersonCircle();
             options.ClearAfterNavigation = true;
             options.OnClose = (e) => { DemoLogger.WriteLine($"Message {e.Intent} dismissed"); return Task.CompletedTask; };
             options.Link = counter % 2 != 1 ? link : null;

@@ -15,7 +15,7 @@ public class FluentMenuButtonTests : TestBase
     public void FluentMenuButton_Default()
     {
         //Arrange
-        FluentButton button = default!;
+        GButton button = default!;
         FluentMenu menu = default!;
         string text = default!;
         string buttonStyle = default!;

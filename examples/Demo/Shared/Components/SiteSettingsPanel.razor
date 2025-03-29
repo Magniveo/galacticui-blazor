@@ -65,7 +65,7 @@
         </FluentPopover>
 
         <FluentStack VerticalAlignment="VerticalAlignment.Center">
-            <FluentButton OnClick="@ResetSiteAsync">Reset settings</FluentButton>
+            <GButton OnClick="@ResetSiteAsync">Reset settings</GButton>
             <FluentIcon Id="info" Value="@(new Icons.Regular.Size24.Info())" OnClick="@(() => _popVisible = !_popVisible)" />
         </FluentStack>
 

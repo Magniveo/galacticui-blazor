@@ -1,7 +1,7 @@
 ﻿@inject DataSource Data
 
 <FluentStack>
-    <FluentCard Width="300px" Height="300px">
+    <GCard Width="300px" Height="300px">
         <p>This card's content is restricted to its area. Open the select list below to see the result</p>
         <label for="people-listbox">Select a person</label>
         <FluentSelect TOption="Person"
@@ -13,8 +13,8 @@
                       @bind-Value="@SelectedValueART"
                       @bind-SelectedOption="@SelectedPersonART" />
 
-    </FluentCard>
-    <FluentCard Width="300px" Height="300px" AreaRestricted="false">
+    </GCard>
+    <GCard Width="300px" Height="300px" AreaRestricted="false">
         <p>This card's content is not restricted to its area. Open the select list below to see the result</p>
         <label for="people-listbox">Select a person</label>
         <FluentSelect TOption="Person"
@@ -26,7 +26,7 @@
                       @bind-Value="@SelectedValueARF"
                       @bind-SelectedOption="@SelectedPersonARF" />
 
-    </FluentCard>
+    </GCard>
 </FluentStack>
 @code
 {

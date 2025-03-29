@@ -1,4 +1,4 @@
-﻿<FluentInputFile @ref="@myFileUploader" 
+﻿<FluentInputFile @ref="@myFileUploader"
                  DragDropZoneVisible="false"
                  Mode="InputFileMode.SaveToTemporaryFolder"
                  Multiple="true"
@@ -7,7 +7,7 @@
                  Accept=".mp4, .mov, .avi"
                  OnProgressChange="@(e =>
                      {
-                         progressPercent = e.ProgressPercent; 
+                         progressPercent = e.ProgressPercent;
                          progressTitle = e.ProgressTitle;
                      })"
                  OnCompleted="@OnCompleted" />
@@ -17,9 +17,9 @@
     @progressTitle
 </FluentLabel>
 
-<FluentButton Id="MyUploadButton" Appearance="Appearance.Accent">
+<GButton Id="MyUploadButton" Appearance="Appearance.Accent">
     Upload files
-</FluentButton>
+</GButton>
 
 @if (Files.Any())
 {

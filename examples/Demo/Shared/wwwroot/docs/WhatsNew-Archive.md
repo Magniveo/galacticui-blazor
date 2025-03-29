@@ -66,7 +66,7 @@
 - Text Edit Style / 16 / Filled & Regular
 - Text Whole Word / 16 / Filled & Regular
 - Triangle / 24, 28 / Filled & Regular
-  
+
 **What's updated (Name / Size(s) / Variant(s))**
 - Arrow Bidirectional Left Right / 16 / Filled & Regular
 - Arrow Download / 24, 48 / Filled & Regular
@@ -74,15 +74,15 @@
 - Beaker Off / 20 / Filled & Regular
 - Beaker Settings / 20 / Filled & Regular
 - Clipboard Letter / 24 / Filled & Regular
-- Prohibited / 16, 24, 28, 48 / Filled & Regular 
+- Prohibited / 16, 24, 28, 48 / Filled & Regular
 
 ## V3.2.0
 - New NavMenu, NavGroup and NavLink components. **Breaking change** - See the [Upgrade guide](https://www.fluentui-blazor.net/UpgradeGuide) for details. See [NavMenu](https://www.fluentui-blazor.net/NavMenu) page for examples.
-- New FluentInputLabel component. 
-- FluentCard: Add AreaRestricted parameter to allow content to break out of card area.
+- New FluentInputLabel component.
+- GCard: Add AreaRestricted parameter to allow content to break out of card area.
 - Provide error message when FluentDialogProvider missing
 - It is now possible to add a tooltip to DataGridColumns
-- 
+-
 - Fix [#796](https://github.com/microsoft/fluentui-blazor/pull/796): Fix IconColor doc page
 - Fix [#797](https://github.com/microsoft/fluentui-blazor/pull/797): Fix MessageBar issues
 - Fix [#805](https://github.com/microsoft/fluentui-blazor/pull/805): InlineStyleBuilder on .NET6
@@ -124,7 +124,7 @@ Also addresses some other padding and layout issues with FluentDialog variants i
 * [FluentDataGridRow] Update for sticky header and example by @vnbaaij in https://github.com/microsoft/fluentui-blazor/pull/747
 * [FluentDatePicker and FluentTimePicker] Keep existing time/date by @dvoituron in https://github.com/microsoft/fluentui-blazor/pull/726
 * [FluentDatePicker] Update the popup position by @dvoituron in https://github.com/microsoft/fluentui-blazor/pull/724
-* [FluentDialog] Dialog enhancements (add dialog type, fix panel width setable), 
+* [FluentDialog] Dialog enhancements (add dialog type, fix panel width setable),
 * [FluentDialog] Enhancements by @vnbaaij in https://github.com/microsoft/fluentui-blazor/pull/717
 * [FluentDialog] Include components to customize the Dialog-box by @dvoituron in https://github.com/microsoft/fluentui-blazor/pull/764
 * [FluentDialog] Make all DialogService.Show..Async methods return IDialogReference by @vnbaaij in https://github.com/microsoft/fluentui-blazor/pull/694
@@ -169,7 +169,7 @@ Thanks to all contributors!
 - Fix [#684](https://github.com/microsoft/fluentui-blazor/pull/684): Make FluentToastContainer work better on mobile devices
 - Fix [#621](https://github.com/microsoft/fluentui-blazor/issues/621): Add area-hidden to FluentSearch clear button
 - Fix [#674](https://github.com/microsoft/fluentui-blazor/issues/674): Collapse FluentNavMenuGroup on click if no custom action/href is assigned
-- Fix [#680](https://github.com/microsoft/fluentui-blazor/issues/680): FluentTextField AutoComplete should be a string or enum and not a boolean 
+- Fix [#680](https://github.com/microsoft/fluentui-blazor/issues/680): FluentTextField AutoComplete should be a string or enum and not a boolean
 - Fix [#668](https://github.com/microsoft/fluentui-blazor/issues/668): v3.0.0 IIS debugging/deployments 'Failed to load resource'
 - Fix [#677](https://github.com/microsoft/fluentui-blazor/issues/677): FluentOverflow not working correctly
 - Fix [#667](https://github.com/microsoft/fluentui-blazor/issues/667): FluentTreeItem select area when Text property is used
@@ -177,7 +177,7 @@ Thanks to all contributors!
 - Fix [#624](https://github.com/microsoft/fluentui-blazor/issues/624): v3 Unhandled exception rendering in NavMenuContent of FluentMainLayout
 - Fix [#655](https://github.com/microsoft/fluentui-blazor/pull/655): ProgressToast rendering error for WASM
 
-**) To fix this issue update Microsoft.Fast.Components.FluentUI.Icons v3.0.1 
+**) To fix this issue update Microsoft.Fast.Components.FluentUI.Icons v3.0.1
 
 ### Other changes
 - FluentCombobox, FluentSelect and FluentListbox now support Width and Height properties
@@ -291,7 +291,7 @@ Thanks to all contributors!
 - Video Person Sparkle Off / 20, 24 / Filled & Regular
 - Warning / 32 / Filled & Regular
 - Window Database / 32 / Filled & Regular
- 
+
 
 **What's updated (Name / Size(s) / Variant(s))**
 - Add Square Multiple / 24 / Filled & Regular
@@ -388,14 +388,14 @@ and added other umbrella flags:
 - Fix [#528](https://github.com/microsoft/fluentui-blazor/issues/537): FluentDesignSystemProvider fixes
 
 ## V2.4.0
-- The `FluentSlider` is now generic which means it also supports `double`, `float`, `decimal`, `long' and `short` values besides `int` 
+- The `FluentSlider` is now generic which means it also supports `double`, `float`, `decimal`, `long' and `short` values besides `int`
 values. An example for this has been added to the demo site
 - Add Style to `FluentDesignSystemProvider` (thanks @luohuaRain)
 - Fix missing `ColumnOptions` button in `FluentDataGrid` when column style = `Align.Center` (thanks @cupsos)
 
 ## V2.3.7
 
-- Small Templates package updates. Version is now 2.0.6 (thanks @c0g1t8) 
+- Small Templates package updates. Version is now 2.0.6 (thanks @c0g1t8)
 - Update Fluent UI System Icons to version 1.1.204
 
 **What's new (Name / Size(s) / Variant(s))**
@@ -420,7 +420,7 @@ values. An example for this has been added to the demo site
 - Fix [#419](https://github.com/microsoft/fluentui-blazor/issues/419): Partial fix for feat: Add multi line text to FluentDataGrid PropertyColumn
 - Fix [#424](https://github.com/microsoft/fluentui-blazor/issues/422): Demo site not working on iPhone
 - Fix [#424](https://github.com/microsoft/fluentui-blazor/issues/424): [Demo apps] Infinite rendering loop in TableOfContents
-- Fix [#370](https://github.com/microsoft/fluentui-blazor/pull/439): FluentIcon performance improvements by @andreisaperski 
+- Fix [#370](https://github.com/microsoft/fluentui-blazor/pull/439): FluentIcon performance improvements by @andreisaperski
 - Make arrow keys work in FluentDataGrid colum options
 - Add required icon assets for all sizes
 - Add all Presence icons as required
@@ -450,12 +450,12 @@ values. An example for this has been added to the demo site
 
 ## V2.3.4
 - Fix not being able to use library in a Razor Class Library (discussion [#391](https://github.com/microsoft/fluentui-blazor/discussions/391))
-- Fix [#414](https://github.com/microsoft/fluentui-blazor/issues/414): Table of Contents doesn't work correctly with Markdown Section in demo site/new components 
+- Fix [#414](https://github.com/microsoft/fluentui-blazor/issues/414): Table of Contents doesn't work correctly with Markdown Section in demo site/new components
 - Fix [#413](https://github.com/microsoft/fluentui-blazor/issues/413): The default selected of the Navigation Menu is incorrect in Demo Site
-- Fix [#411](https://github.com/microsoft/fluentui-blazor/issues/411): Component FluentRadio / FluentRadioGroup not working Readonly or Disabled 
+- Fix [#411](https://github.com/microsoft/fluentui-blazor/issues/411): Component FluentRadio / FluentRadioGroup not working Readonly or Disabled
 
 ## V2.3.3
-- Fix [#405](https://github.com/microsoft/fluentui-blazor/issues/405): **Important if you are using icons** Incomplete GetIconConfiguration() is generated if PublishFluentEmojiAssets is set to false 
+- Fix [#405](https://github.com/microsoft/fluentui-blazor/issues/405): **Important if you are using icons** Incomplete GetIconConfiguration() is generated if PublishFluentEmojiAssets is set to false
 - Fix [#406](https://github.com/microsoft/fluentui-blazor/issues/406): Build error if FluentIconSizes doesn't have 20, but has 32
 V2.3.2 will be hidden from NuGet packages because of icon issue
 
@@ -464,7 +464,7 @@ V2.3.2 will be hidden from NuGet packages because of icon issue
 - [Unit Tests] Refactoring and fixing of unit tests
 - Rework of generators after code review
 - Update Fluent UI Sysem Icons to version 1.1.202
-- Fix [#402](https://github.com/microsoft/fluentui-blazor/issues/402): FluentUI Combobox in Blazor still showing value, not text 
+- Fix [#402](https://github.com/microsoft/fluentui-blazor/issues/402): FluentUI Combobox in Blazor still showing value, not text
 
 **What's new (Name / Size(s) / Variant(s))**
 - Airplane Landing / 16, 20, 24 / Filled & Regular
@@ -515,10 +515,10 @@ V2.3.2 will be hidden from NuGet packages because of icon issue
 ## V2.3.1
 - Update to .NET 8.0.0-preview.4
 - Accessibility compliance issue in DataGrid filter and pagination buttons fixed [#390](https://github.com/microsoft/fluentui-blazor/issues/390)
-- Unable to GET FluentIcon in Blazor Server fixed [#399](https://github.com/microsoft/fluentui-blazor/issues/399) 
+- Unable to GET FluentIcon in Blazor Server fixed [#399](https://github.com/microsoft/fluentui-blazor/issues/399)
 - Dead link in demo site fixed [#393](https://github.com/microsoft/fluentui-blazor/issues/393)
-- Update NumberFieldDefault.razor 
-- Create SearchInteractiveWithDebounce.razor 
+- Update NumberFieldDefault.razor
+- Create SearchInteractiveWithDebounce.razor
 
 Thanks @Ogglas and @pk9r327 for your contributions!
 
@@ -526,12 +526,12 @@ Thanks @Ogglas and @pk9r327 for your contributions!
 - **IMPORTANT Web components script is now included in the library**
 - New documentation pages added to demo site
 - Old demo environment no longer updated
-- Icon/Emoji fix for when using Windows authentication 
+- Icon/Emoji fix for when using Windows authentication
 
 ## Script change
-The heart of this library is formed by the Fluent UI Web Components and the accompanying `web-components.min.js` file. From now 
-on, the script is included in the library itself and no longer needs to be added to your `index.html` or `_Layout.cshtml`. In fact, doing this might lead to 
-unpredictable results. 
+The heart of this library is formed by the Fluent UI Web Components and the accompanying `web-components.min.js` file. From now
+on, the script is included in the library itself and no longer needs to be added to your `index.html` or `_Layout.cshtml`. In fact, doing this might lead to
+unpredictable results.
 
 > **If you are upgrading from an earlier version please remove the script from your `index.html` or `_Layout.cshtml` file.**
 
@@ -544,7 +544,7 @@ See the 'More information' section at [https://www.fluentui-blazor.net](https://
 code setup and Design Tokens.
 
 ## No cliffhangers...
-Also, because of the new domain, we sun-setted the older brave-cliff demo environment. The site is still up, but updates won't be deployed to that 
+Also, because of the new domain, we sun-setted the older brave-cliff demo environment. The site is still up, but updates won't be deployed to that
 environment anymore. A remark about that has been added to the home page at that URL.
 
 ## Icon/Emoji fix
@@ -556,7 +556,7 @@ An issue has been addressed where the FluentIcon/FluentEmoji components would no
 Updated readme to use new domain name (www.fluentui-blazor.net)
 
 Updated Fluent UI Sysem Icons to version 1.1.201
-    
+
 **What's new (Name / Size(s) / Variant(s))**
 - App Generic / 48 / Filled & Regular
 - Arrow Enter / 16 / Filled & Regular
@@ -597,7 +597,7 @@ Updated Fluent UI Sysem Icons to version 1.1.201
 - Text Bullet List Square Sparkle / 16, 20, 24 / Filled & Regular
 - Text Bullet List Square / 16, 32 / Filled & Regular
 - Translate Auto / 16, 20, 24 / Filled & Regular
-  
+
 **What's updated (Name / Size(s) / Variant(s))**
 - Book Add / 20 / Filled
 - Book Default / 20 / Filled
@@ -626,13 +626,13 @@ Updated Fluent UI Sysem Icons to version 1.1.201
 - Translate / 16, 20, 24 / Filled & Regular
 
 ## V2.2
-For version 2.2 we started working on adding .NET 8 support. One important new feature in Blazor with .NET 8 is the addition of the QuickGrid component. 
-QuickGrid is a high performance grid component for displaying data in tabular form. It is built to be a simple and convenient way to display your data, while 
-still providing powerful features like sorting, filtering, paging, and virtualization. 
+For version 2.2 we started working on adding .NET 8 support. One important new feature in Blazor with .NET 8 is the addition of the QuickGrid component.
+QuickGrid is a high performance grid component for displaying data in tabular form. It is built to be a simple and convenient way to display your data, while
+still providing powerful features like sorting, filtering, paging, and virtualization.
 
-QuickGrid was originally introduced as an experimental package based on .NET 7 and we copied its code over to the Fluent UI library to re-use its 
-features (and some more) but render it with the Fluent UI Web Components instead of its orignal rendering based on HTML table, tr and td elements. As part 
-of bringing QuickGrid into .NET 8 the ASP.NET Core team made some changes and improvements to the API. We brought these changes over to the `<FluentDataGrid>` as well. To update an app that uses `<FluentDataGrid>`, 
+QuickGrid was originally introduced as an experimental package based on .NET 7 and we copied its code over to the Fluent UI library to re-use its
+features (and some more) but render it with the Fluent UI Web Components instead of its orignal rendering based on HTML table, tr and td elements. As part
+of bringing QuickGrid into .NET 8 the ASP.NET Core team made some changes and improvements to the API. We brought these changes over to the `<FluentDataGrid>` as well. To update an app that uses `<FluentDataGrid>`,
 you may need to make the following adjustments:
 
 **------BREAKING CHANGES------**
@@ -651,16 +651,16 @@ All the examples in the [demo site](https://aka.ms/fluentui-blazor) have been up
 
 ## V2.1
 
-A more detailed description of all the changes and everything new can be found in [this blog post](https://baaijte.net/blog/whats-new-in-the-microsoft-fluent-ui-library-for-blazor-version-21/) 
+A more detailed description of all the changes and everything new can be found in [this blog post](https://baaijte.net/blog/whats-new-in-the-microsoft-fluent-ui-library-for-blazor-version-21/)
 
 **Important change:**
 
-**If you are currently *not using* icons and are *not planning* on using icons and/or moji in your application moving forward, 
+**If you are currently *not using* icons and are *not planning* on using icons and/or moji in your application moving forward,
 you do *not* have to make any changes to your project. If you *are* currently using icons, please read on.**
 
 With earlier versions of the library, all (then only icon) assets would always get published. Starting with this version, when not specifying settings
-in the project file with regards to usage of icons and/or emoji (see below) **NO** assets will be published to the output folder. 
-This means that no icons and/or emoji will be available for rendering (with exception of the icons that are used by the library itself). 
+in the project file with regards to usage of icons and/or emoji (see below) **NO** assets will be published to the output folder.
+This means that no icons and/or emoji will be available for rendering (with exception of the icons that are used by the library itself).
 
 For icons and emoji to work properly with 2.1.1 and later, two changes need to be made:
 1) Add properties to the `.csproj` file
@@ -673,67 +673,67 @@ See the blog post for more information.
 
 ```xml
 <PropertyGroup>
-    <!-- 
-        The icon component is part of the library. By default, NO icons (static assets) will be included when publishing the project. 
- 
-        Setting the property 'PublishFluentIconAssets' to false (default), or leaving the property out completely, will disable publishing of the 
-        icon static assets (with exception of the icons that are being used by the library itself). 
+    <!--
+        The icon component is part of the library. By default, NO icons (static assets) will be included when publishing the project.
 
-        Setting the property 'PublishFluentIconAssets' to 'true' will enable publishing of the icon static assets. You can limit what icon assets get 
+        Setting the property 'PublishFluentIconAssets' to false (default), or leaving the property out completely, will disable publishing of the
+        icon static assets (with exception of the icons that are being used by the library itself).
+
+        Setting the property 'PublishFluentIconAssets' to 'true' will enable publishing of the icon static assets. You can limit what icon assets get
         published by specifying a set of icon sizes and a set of variants in the '<FluentIconSizes>' and '<FluentIconVariants>' properties respectively.
 
-        To determine what icons will be published, the specified options for sizes and variants are combined. Specifying sizes '10' and '16' and 
-        variants 'Filled' and 'Regular' means all '10/Filled', all '10/Regular', all '16/Filled' and all '16/Regular' icons assets will be published. 
-        It is not possible to specify multiple individual combinations like '10/Filled' and '16/Regular' in the same set. 
+        To determine what icons will be published, the specified options for sizes and variants are combined. Specifying sizes '10' and '16' and
+        variants 'Filled' and 'Regular' means all '10/Filled', all '10/Regular', all '16/Filled' and all '16/Regular' icons assets will be published.
+        It is not possible to specify multiple individual combinations like '10/Filled' and '16/Regular' in the same set.
 
-        When no icon size set is specified in the '<FluentIconSizes>' property, ALL sizes will be included*  
-        When no icon variant set is specified in the '<FluentIconVariants>' property, ALL variants will be included*  
-        * when publishing of icon assets is enabled 
+        When no icon size set is specified in the '<FluentIconSizes>' property, ALL sizes will be included*
+        When no icon variant set is specified in the '<FluentIconVariants>' property, ALL variants will be included*
+        * when publishing of icon assets is enabled
     -->
     <PublishFluentIconAssets>true</PublishFluentIconAssets>
 
-    <!-- 
+    <!--
         Specify (at least) one or more sizes from the following options (separated by ','):
-        10,12,16,20,24,28,32,48 
+        10,12,16,20,24,28,32,48
         Leave out the property to have all sizes included.
     -->
     <FluentIconSizes>10,12,16,20,24,28,32,48</FluentIconSizes>
 
-    <!-- 
+    <!--
         Specify (at least) one or more variants from the following options (separated by ','):
-        Filled,Regular 
+        Filled,Regular
         Leave out the property to have all variants included.
     -->
     <FluentIconVariants>Filled,Regular</FluentIconVariants>
 
-    <!-- 
-        The emoji component is part of the library. By default, NO emojis (static assets) will be included when publishing the project. 
- 
-        Setting the property 'PublishFluentEmoji' to false (default), or leaving the property out completely, will disable publishing of the emoji static assets. 
+    <!--
+        The emoji component is part of the library. By default, NO emojis (static assets) will be included when publishing the project.
 
-        Setting the property 'PublishFluentEmojiAssets' to 'true' will enable publishing of the emoji static assets. You can limit what emoji assets get 
+        Setting the property 'PublishFluentEmoji' to false (default), or leaving the property out completely, will disable publishing of the emoji static assets.
+
+        Setting the property 'PublishFluentEmojiAssets' to 'true' will enable publishing of the emoji static assets. You can limit what emoji assets get
         published by specifying a set of emoji groups and a set of emoji styles in the '<FluentEmojiGroups>' and '<FluentEmojiStyles>' properties respectively.
 
-        To determine what emojis will be published, the specified options for sizes and variants are combined. Specifying emoji groups 'Activities' and 'Flags' 
+        To determine what emojis will be published, the specified options for sizes and variants are combined. Specifying emoji groups 'Activities' and 'Flags'
         and emoji styles 'Color' and 'Flat' means all 'Activities/Color', all 'Activities/Flat', all 'Flags/Color' and all 'Flags/Flat' emoji assets will be published.
 
         It is not possible to specify multiple individual combinations like 'Activities/Color' and 'Flags/Flat' in the same published set
 
-        When no emoji group set is specified in the '<FluentEmojiGroups>' property, ALL groups will be included*  
-        When no emoji variant set is specified in the '<FluentEmojiStyles>' property, ALL styles will be included*  
-        * when publishing of emoji assets is enabled 
+        When no emoji group set is specified in the '<FluentEmojiGroups>' property, ALL groups will be included*
+        When no emoji variant set is specified in the '<FluentEmojiStyles>' property, ALL styles will be included*
+        * when publishing of emoji assets is enabled
     -->
     <PublishFluentEmojiAssets>true</PublishFluentEmojiAssets>
 
-    <!-- 
+    <!--
         Specify (at least) one or more groups from the following options (separated by ','):
-        Activities,Animals_Nature,Flags,Food_Drink,Objects,People_Body,Smileys_Emotion,Symbols,Travel_Places 
+        Activities,Animals_Nature,Flags,Food_Drink,Objects,People_Body,Smileys_Emotion,Symbols,Travel_Places
         Leave out the property to have all groups included.
     -->
     <FluentEmojiGroups>Activities,Animals_Nature,Flags,Food_Drink,Objects,People_Body,Smileys_Emotion,Symbols,Travel_Places</FluentEmojiGroups>
 
-    <!-- 
-        Specify (at least) one or more styles from the following options (separated by ','): 
+    <!--
+        Specify (at least) one or more styles from the following options (separated by ','):
         Color,Flat,HighContrast
         Leave out the property to have all styles included.
     -->
@@ -751,10 +751,10 @@ builder.Services.AddFluentUIComponents(config);
 ```
 
 ## Other changes
-**New component**: 
-- `<FluentEmoji>` 
+**New component**:
+- `<FluentEmoji>`
 
-**Other changes:** 
+**Other changes:**
 - All `<FluentInputBase>` derived components now need to use `@bind-Value` or `ValueExpression`. This means an input derived component needs to be bound now.
   This is in-line with how it works with the built-in Blazor `<Input...>` components. All examples in the demo site have been updated to reflect this. The affected components are:
     - `<FluentCheckbox>`

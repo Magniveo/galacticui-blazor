@@ -38,15 +38,15 @@
 
 <!-- Footer -->
 <FluentDialogFooter>
-    <FluentButton Appearance="Appearance.Accent"
+    <GButton Appearance="Appearance.Accent"
                   Disabled="@(!_editContext.Validate())"
                   OnClick="@SaveAsync">
         Save
-    </FluentButton>
-    <FluentButton Appearance="Appearance.Neutral"
+    </GButton>
+    <GButton Appearance="Appearance.Neutral"
                   OnClick="@CancelAsync">
         Cancel
-    </FluentButton>
+    </GButton>
 </FluentDialogFooter>
 
 @code

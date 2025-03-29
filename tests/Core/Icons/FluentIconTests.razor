@@ -128,7 +128,7 @@
     {
         // Arrange && Act
         var icon = new SampleIcons.Samples.Info();
-        var cut = Render(@<FluentButton IconStart="@icon">My Button</FluentButton>);
+        var cut = Render(@<GButton IconStart="@icon">My Button</GButton>);
 
         // Assert
         cut.Verify();

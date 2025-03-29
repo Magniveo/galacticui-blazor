@@ -20,6 +20,6 @@
 }
 
 
-[dir="rtl"] * ::deep gravity-button > svg {
+[dir="rtl"] * ::deep g-button > svg {
     transform: rotate(180deg);
 }

@@ -5,10 +5,10 @@ using Microsoft.FluentUI.AspNetCore.Components.Utilities;
 using Microsoft.JSInterop;
 
 namespace Microsoft.FluentUI.AspNetCore.Components;
-public partial class FluentButton : FluentComponentBase, IAsyncDisposable
+public partial class GButton : FluentComponentBase, IAsyncDisposable
 {
 
-    private const string JAVASCRIPT_FILE = "./_content/Microsoft.FluentUI.AspNetCore.Components/Components/Button/FluentButton.razor.js";
+    private const string JAVASCRIPT_FILE = "./_content/Microsoft.FluentUI.AspNetCore.Components/Components/Button/GButton.razor.js";
 
     private readonly RenderFragment _renderButton;
 
@@ -221,11 +221,11 @@ public partial class FluentButton : FluentComponentBase, IAsyncDisposable
         }
         if (Appearance == AspNetCore.Components.Appearance.Filled)
         {
-            throw new ArgumentException("Appearance.Filled is not supported for FluentButton");
+            throw new ArgumentException("Appearance.Filled is not supported for GButton");
         }
         if (Appearance == AspNetCore.Components.Appearance.Hypertext)
         {
-            throw new ArgumentException("Appearance.Hypertext is not supported for FluentButton");
+            throw new ArgumentException("Appearance.Hypertext is not supported for GButton");
         }
     }
 
@@ -250,9 +250,9 @@ public partial class FluentButton : FluentComponentBase, IAsyncDisposable
         .BuildMarkupString();
 
     /// <summary>
-    /// Constructs an instance of <see cref="FluentButton"/>.
+    /// Constructs an instance of <see cref="GButton"/>.
     /// </summary>
-    public FluentButton()
+    public GButton()
     {
         _renderButton = RenderButton;
     }

@@ -2,12 +2,12 @@
 @inject IDialogService DialogService
 @using FluentUI.Demo.Shared.Pages.Dialog.Examples;
 
-<FluentButton OnClick="@AddInTopBar" Appearance="Appearance.Accent">Add on top</FluentButton>
-<FluentButton OnClick="@AddInNotificationCenter" Appearance="Appearance.Accent">Add in Notification Center</FluentButton>
-<FluentButton OnClick="@AddInDialog" Appearance="Appearance.Accent">Add in a dialog</FluentButton>
-<FluentButton OnClick="@AddNonDismissibleMessage" Appearance="Appearance.Accent">Add non-dismissible on top</FluentButton>
+<GButton OnClick="@AddInTopBar" Appearance="Appearance.Accent">Add on top</GButton>
+<GButton OnClick="@AddInNotificationCenter" Appearance="Appearance.Accent">Add in Notification Center</GButton>
+<GButton OnClick="@AddInDialog" Appearance="Appearance.Accent">Add in a dialog</GButton>
+<GButton OnClick="@AddNonDismissibleMessage" Appearance="Appearance.Accent">Add non-dismissible on top</GButton>
 
-<FluentButton Appearance="Appearance.Neutral" OnClick="@((e) => MessageService.Clear())">Clear all alerts</FluentButton>
+<GButton Appearance="Appearance.Neutral" OnClick="@((e) => MessageService.Clear())">Clear all alerts</GButton>
 
 @code
 {

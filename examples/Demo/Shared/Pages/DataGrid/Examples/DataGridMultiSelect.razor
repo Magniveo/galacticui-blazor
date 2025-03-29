@@ -1,10 +1,10 @@
 ﻿<FluentStack VerticalAlignment="VerticalAlignment.Center">
     <FluentSelect Items="@(Enum.GetValues<DataGridSelectMode>())"
                   @bind-SelectedOption="@Mode" />
-    <FluentCheckbox @bind-Value="@UseSelectedItems"
+    <GCheckbox @bind-Value="@UseSelectedItems"
                     @bind-Value:after="@(() => ResetSelectItems())"
                     Label="Use `SelectedItems` property" />
-    <FluentCheckbox @bind-Value="@SelectFromEntireRow"
+    <GCheckbox @bind-Value="@SelectFromEntireRow"
                     @bind-Value:after="@(() => ResetSelectItems())"
                     Label="Use `SelectFromEntireRow` property" />
 </FluentStack>

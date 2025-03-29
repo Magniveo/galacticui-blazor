@@ -41,21 +41,21 @@
             <div class="fluent-messagebar-container-action">
                 @if (ShowPrimaryAction)
                 {
-                    <FluentButton Appearance="@Appearance.Neutral"
+                    <GButton Appearance="@Appearance.Neutral"
                                   OnClick="@PrimaryActionClickedAsync"
                                   title="Alert action"
                                   Class="fluent-messagebar-action">
                         @PrimaryAction?.Text
-                    </FluentButton>
+                    </GButton>
                 }
                 @if (ShowSecondaryAction)
                 {
-                    <FluentButton Appearance="@Appearance.Neutral"
+                    <GButton Appearance="@Appearance.Neutral"
                                   OnClick="@SecondaryActionClickedAsync"
                                   title="Alert action"
                                   Class="fluent-messagebar-action">
                         @SecondaryAction?.Text
-                    </FluentButton>
+                    </GButton>
                 }
                 @if (AllowDismiss)
                 {
@@ -119,12 +119,12 @@
                 }
                 @if (ShowPrimaryAction)
                 {
-                    <FluentButton Appearance="Appearance.Neutral"
+                    <GButton Appearance="Appearance.Neutral"
                                   OnClick="@PrimaryActionClickedAsync"
                                   title="Notification action"
                                   Class="fluent-messagebar-action">
                         @PrimaryAction?.Text
-                    </FluentButton>
+                    </GButton>
                 }
 
             </div>

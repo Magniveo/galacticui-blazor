@@ -34,30 +34,30 @@
 
                 @if (DisplayPreviousButton)
                 {
-                    <FluentButton Appearance="Appearance.Neutral"
+                    <GButton Appearance="Appearance.Neutral"
                                   Style="@($"width: {buttonWidth};")"
                                   OnClick="@OnPreviousHandlerAsync">
                         @LabelButtonPrevious
-                    </FluentButton>
+                    </GButton>
                 }
 
                 <span style="margin-right: 10px" />
 
                 @if (DisplayNextButton)
                 {
-                    <FluentButton Appearance="Appearance.Accent"
+                    <GButton Appearance="Appearance.Accent"
                                   Style="@($"width: {buttonWidth};")"
                                   OnClick="@OnNextHandlerAsync">
                         @LabelButtonNext
-                    </FluentButton>
+                    </GButton>
                 }
                 else
                 {
-                    <FluentButton Appearance="Appearance.Accent"
+                    <GButton Appearance="Appearance.Accent"
                                   Style="@($"width: {buttonWidth};")"
                                   OnClick="OnFinishHandlerAsync">
                         @LabelButtonDone
-                    </FluentButton>
+                    </GButton>
                 }
             }
             else

@@ -1,19 +1,19 @@
 ﻿<div style="display: flex; width=100%">
-    <FluentButton id="myPopoverButtonH" Appearance="Appearance.Accent" @onclick="() => _visibleL = !_visibleL">
+    <GButton id="myPopoverButtonH" Appearance="Appearance.Accent" @onclick="() => _visibleL = !_visibleL">
         Open Callout 1
-    </FluentButton>
+    </GButton>
 
     <FluentSpacer />
 
-    <FluentButton id="myPopoverButtonM" Appearance="Appearance.Accent" @onclick="() => _visibleM = !_visibleM">
+    <GButton id="myPopoverButtonM" Appearance="Appearance.Accent" @onclick="() => _visibleM = !_visibleM">
         Open Callout 2
-    </FluentButton>
+    </GButton>
 
     <FluentSpacer />
 
-    <FluentButton id="myPopoverButtonF" Appearance="Appearance.Accent" @onclick="() => _visibleR = !_visibleR">
+    <GButton id="myPopoverButtonF" Appearance="Appearance.Accent" @onclick="() => _visibleR = !_visibleR">
         Open Callout 3
-    </FluentButton>
+    </GButton>
 
     <FluentPopover Style="width: 300px;" AnchorId="myPopoverButtonH" @bind-Open="_visibleL" AutoFocus="false">
         <Body>

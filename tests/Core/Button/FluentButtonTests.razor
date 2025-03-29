@@ -6,7 +6,7 @@
     public void FluentButton_Title()
     {
         // Arrange && Act
-        var cut = Render(@<FluentButton Title="My Title">My button</FluentButton>);
+        var cut = Render(@<GButton Title="My Title">My button</GButton>);
 
         // Assert
         cut.Verify();
@@ -16,7 +16,7 @@
     public void FluentButton_BackgroundColor()
     {
         // Arrange && Act
-        var cut = Render(@<FluentButton Id="MyButton" BackgroundColor="#ff0000">My button</FluentButton>);
+        var cut = Render(@<GButton Id="MyButton" BackgroundColor="#ff0000">My button</GButton>);
 
         // Assert
         cut.Verify();
@@ -26,7 +26,7 @@
     public void FluentButton_Color()
     {
         // Arrange && Act
-        var cut = Render(@<FluentButton Id="MyButton" Color="#00ff00">My button</FluentButton>);
+        var cut = Render(@<GButton Id="MyButton" Color="#00ff00">My button</GButton>);
 
         // Assert
         cut.Verify();
@@ -36,7 +36,7 @@
     public void FluentButton_BackgroundColorColor()
     {
         // Arrange && Act
-        var cut = Render(@<FluentButton Id="MyButton" BackgroundColor="#ff0000" Color="#00ff00">My button</FluentButton>);
+        var cut = Render(@<GButton Id="MyButton" BackgroundColor="#ff0000" Color="#00ff00">My button</GButton>);
 
         // Assert
         cut.Verify();
@@ -48,9 +48,9 @@
         bool clicked = false;
 
         // Arrange
-        var cut = Render(@<FluentButton OnClick="@(e => { clicked = true; } )">
+        var cut = Render(@<GButton OnClick="@(e => { clicked = true; } )">
                              My button
-                          </FluentButton>);
+                          </GButton>);
 
         // Act
         cut.Find("fluent-button").Click();

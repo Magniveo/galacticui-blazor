@@ -11,8 +11,8 @@ using Microsoft.AspNetCore.Components;
 namespace Microsoft.FluentUI.AspNetCore.Components;
 
 // Checkbox like items
-[BindElement("fluent-checkbox", null, "checked", "onchange")]
-[BindElement("fluent-checkbox", "value", "checked", "onchange")]
+[BindElement("g-checkbox", null, "checked", "onchange")]
+[BindElement("g-checkbox", "value", "checked", "onchange")]
 
 [BindElement("fluent-switch", null, "checked", "onchange")]
 [BindElement("fluent-switch", "value", "checked", "onchange")]

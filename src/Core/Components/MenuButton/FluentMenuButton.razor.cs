@@ -18,7 +18,7 @@ public partial class FluentMenuButton : FluentComponentBase
     /// Gets or sets a reference to the button.
     /// </summary>
     [Parameter]
-    public FluentButton? Button { get; set; }
+    public GButton? Button { get; set; }
 
     /// <summary>
     /// Gets or sets the button appearance.

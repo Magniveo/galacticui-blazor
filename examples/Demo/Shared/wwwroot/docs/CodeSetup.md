@@ -64,7 +64,7 @@ It is possible that the line is already there (but commented out).
 
 >**IMPORTANT:**
 >When you change the root namespace/assembly name of your project, you need to update the {PROJECT_NAME} in your code accordingly.
-          
+
 You can always add your own styles, using the `class` or `style` attribute on the components.
 By default, the classes are organised and checked by the component itself (in particular by checking that the class names are valid).
 Some frameworks, such as **Tailwind CSS**, add exceptions to class names (e.g. `min-h-[16px]` or `bg-[#ff0000]`).
@@ -77,13 +77,13 @@ builder.Services.AddFluentUIComponents(options =>
 });
 ```
 
-#### Reboot 
+#### Reboot
 **Reboot** is a collection of element-specific CSS changes in a single file to help kick-start building a site with the **Fluent UI Blazor** components for Blazor. It provides an elegant, consistent, and simple baseline to build upon.
-The library automatically includes reboot through the 
+The library automatically includes reboot through the
 
 If you want to use **Reboot**, you'll need to add to your `app.razor`, `index.html` or `_Layout.cshtml` file a line that includes the stylesheet (`.css` file). This can be done by adding the following line to the `<head>` section:
 
-```html    
+```html
 <link href="_content/Microsoft.FluentUI.AspNetCore.Components/css/reboot.css" rel="stylesheet" />
 ```
 
@@ -121,11 +121,11 @@ These providers are used by associated services to display Toasts, Dialog boxes,
 > **note:** If you get scrollbars in your application, move the providers up in the page elements hierarchy, for example into the `FluentBodyContent` component.
 
 ## Working with Icons and Emoji
-We have additional packages available that include the complete **Fluent UI System icons** and **Fluent UI Emoji** collections. 
+We have additional packages available that include the complete **Fluent UI System icons** and **Fluent UI Emoji** collections.
 Please refer to the [Icons and Emoji](https://www.fluentui-blazor.net/IconsAndEmoji) page for more information.
 
 ## Usage
-With the package installed, you can begin using the **Fluent UI Blazor components** in the same way as any other Blazor component. 
+With the package installed, you can begin using the **Fluent UI Blazor components** in the same way as any other Blazor component.
 
 ### Add Imports
 
@@ -139,10 +139,10 @@ After the package is added, you need to add the following in your  `_Imports.raz
 This is literally all you need in your views to use Fluent UI Blazor components.
 
 ```xml
-<FluentCard>
+<GCard>
   <h2>Hello World!</h2>
   <FluentButton Appearance="@Appearance.Accent">Click Me</FluentButton>
-</FluentCard>
+</GCard>
 ```
 
 ## Configuring the Design System
@@ -181,7 +181,7 @@ One of the most common design tokens is the `Direction` design token. It is requ
 You can use this library in **Blazor Hybrid** (MAUI/WPF/Windows Forms) projects. Setup is almost the same as described in the "Getting started" section above, but to get everything to work you'll need to take one extra step (for now) as described below:
 
 ### Temporary workaround for MAUI/WPF/Windows Forms issues
-Currently when using the WebView to run Blazor (so all Hybrid variants) the web-components script is not imported automatically (see [#404](https://github.com/microsoft/fluentui-blazor/issues/404)). 
+Currently when using the WebView to run Blazor (so all Hybrid variants) the web-components script is not imported automatically (see [#404](https://github.com/microsoft/fluentui-blazor/issues/404)).
 There is also an issue with loading the custom event handlers that are being configured by the web-components script. Until these are fixed on the WebView side, there is a workaround available, namely to intercept `'_framework/blazor.modules.json'` and provide proper JS initializers file (created by build). The needed	`initializersLoader.webview.js` has been added to the library and needs to be included with a script tag **before** the `_framework/blazor.webview.js` script tag:
 
 ```xml
@@ -193,7 +193,7 @@ The `app-name` attribute needs to match your app's assembly name - initializersL
 initializersLoader replaces standard `fetch` function with one which provides the correct file in place of the empty `blazor.modules.json`. `fetch` is restored to its original state once `_framework/blazor.modules.json` request is intercepted.
 
 For more information regarding the bug, see issue [15234](https://github.com/dotnet/maui/issues/15234) in the MAUI repo.
-	
+
 ## Use the DataGrid component with EF Core
 If you want to use the `<FluentDataGrid>` with data provided through EF Core, you need to install an additional package so the grid knows how to resolve queries asynchronously for efficiency.  .
 

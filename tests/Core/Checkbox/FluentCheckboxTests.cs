@@ -17,7 +17,7 @@ public class FluentCheckboxTests : TestBase
     public void FluentCheckbox_DefaultValues(bool currentValue)
     {
         // Arrange && Act
-        var cut = TestContext.RenderComponent<FluentCheckbox>(parameters =>
+        var cut = TestContext.RenderComponent<GCheckbox>(parameters =>
         {
             parameters.Bind(bind => bind.Value, currentValue, newValue => currentValue = false);
             parameters.AddChildContent("childContent");
@@ -33,7 +33,7 @@ public class FluentCheckboxTests : TestBase
     public void FluentCheckbox_ReadonlyParameter(bool currentValue)
     {
         // Arrange && Act
-        var cut = TestContext.RenderComponent<FluentCheckbox>(parameters =>
+        var cut = TestContext.RenderComponent<GCheckbox>(parameters =>
         {
             parameters.Bind(p => p.Value, currentValue, newValue => currentValue = false);
             parameters.Add(p => p.ReadOnly, true);
@@ -54,7 +54,7 @@ public class FluentCheckboxTests : TestBase
         var currentValue = true;
 
         // Arrange && Act
-        var cut = TestContext.RenderComponent<FluentCheckbox>(parameters =>
+        var cut = TestContext.RenderComponent<GCheckbox>(parameters =>
         {
             parameters.Bind(p => p.Value, currentValue, newValue => currentValue = true);
             parameters.Add(p => p.Id, idParameter);
@@ -71,7 +71,7 @@ public class FluentCheckboxTests : TestBase
         var currentValue = true;
 
         // Arrange && Act
-        var cut = TestContext.RenderComponent<FluentCheckbox>(parameters =>
+        var cut = TestContext.RenderComponent<GCheckbox>(parameters =>
         {
             parameters.Bind(p => p.Value, currentValue, newValue => currentValue = false);
             parameters.Add(p => p.Disabled, true);
@@ -92,7 +92,7 @@ public class FluentCheckboxTests : TestBase
         var currentValue = true;
 
         // Arrange && Act
-        var cut = TestContext.RenderComponent<FluentCheckbox>(parameters =>
+        var cut = TestContext.RenderComponent<GCheckbox>(parameters =>
         {
             parameters.Bind(p => p.Value, currentValue, newValue => currentValue = false);
             parameters.Add(p => p.Name, nameParameter);
@@ -109,7 +109,7 @@ public class FluentCheckboxTests : TestBase
         var currentValue = true;
 
         // Arrange && Act
-        var cut = TestContext.RenderComponent<FluentCheckbox>(parameters =>
+        var cut = TestContext.RenderComponent<GCheckbox>(parameters =>
         {
             parameters.Bind(p => p.Value, currentValue, newValue => currentValue = false);
             parameters.Add(p => p.Required, true);
@@ -126,7 +126,7 @@ public class FluentCheckboxTests : TestBase
         var currentValue = true;
 
         // Arrange && Act
-        var cut = TestContext.RenderComponent<FluentCheckbox>(parameters =>
+        var cut = TestContext.RenderComponent<GCheckbox>(parameters =>
         {
             parameters.Bind(p => p.Value, currentValue, newValue => currentValue = false);
             parameters.Add(p => p.Class, "additional-css-class");
@@ -143,7 +143,7 @@ public class FluentCheckboxTests : TestBase
         var currentValue = true;
 
         // Arrange && Act
-        var cut = TestContext.RenderComponent<FluentCheckbox>(parameters =>
+        var cut = TestContext.RenderComponent<GCheckbox>(parameters =>
         {
             parameters.Bind(p => p.Value, currentValue, newValue => currentValue = false);
             parameters.Add(p => p.Style, "background-color: red");
@@ -160,7 +160,7 @@ public class FluentCheckboxTests : TestBase
         var currentValue = true;
 
         // Arrange && Act
-        var cut = TestContext.RenderComponent<FluentCheckbox>(parameters =>
+        var cut = TestContext.RenderComponent<GCheckbox>(parameters =>
         {
             parameters.Bind(p => p.Value, currentValue, newValue => currentValue = false);
             parameters.AddUnmatched("parameterName", "parameterValue");
@@ -177,7 +177,7 @@ public class FluentCheckboxTests : TestBase
         var currentValue = true;
 
         // Arrange && Act
-        var cut = TestContext.RenderComponent<FluentCheckbox>(parameters =>
+        var cut = TestContext.RenderComponent<GCheckbox>(parameters =>
         {
             parameters.Bind(p => p.Value, currentValue, newValue => currentValue = false);
             parameters.AddUnmatched("parameter1Name", "parameter1Value");

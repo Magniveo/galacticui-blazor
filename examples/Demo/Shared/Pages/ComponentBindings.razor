@@ -84,9 +84,9 @@
                 </FluentRadioGroup>
             </div>
             <div>
-                <FluentCheckbox name="CheckboxValue" @bind-Value="Form.CheckboxValue">
+                <GCheckbox name="CheckboxValue" @bind-Value="Form.CheckboxValue">
                     Checkbox Value
-                </FluentCheckbox>
+                </GCheckbox>
             </div>
             <div style="max-width: 500px;">
                 <label for="SliderValue">Slider Value</label>
@@ -192,9 +192,9 @@
                 </FluentRadioGroup>
                 </div>
                 <div>
-                    <FluentCheckbox name="CheckboxValue" @bind-Value="Form.CheckboxValue">
+                    <GCheckbox name="CheckboxValue" @bind-Value="Form.CheckboxValue">
                         Checkbox Value
-                    </FluentCheckbox>
+                    </GCheckbox>
                 </div>
                 <div style="max-width: 500px;">
                     <label for="SliderValue">Slider Value</label>
@@ -214,7 +214,7 @@
                         </FluentSliderLabel>
                     </FluentSlider>
                 </div>
-                <FluentButton style="margin-top: calc(var(--design-unit) * 6px)">Submit</FluentButton>
+                <GButton style="margin-top: calc(var(--design-unit) * 6px)">Submit</GButton>
             </EditForm>
         </div>
     <div>
@@ -267,7 +267,7 @@
 
         [Required]
         public string? TextFieldValue { get; set; }
-        
+
         [Required]
         public string? SearchValue { get; set; }
 

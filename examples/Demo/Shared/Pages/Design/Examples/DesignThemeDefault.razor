@@ -19,24 +19,24 @@
                           Height="200px"
                           Width="250px"
                           @bind-SelectedOption="@OfficeColor">
-                <OptionTemplate>  
+                <OptionTemplate>
                     <FluentStack>
                         <FluentIcon Value="@(new Icons.Filled.Size20.RectangleLandscape())"
                                     Color="Color.Custom"
                                     CustomColor="@(@context.ToAttributeValue() != "default" ? context.ToAttributeValue() : "#036ac4" )" />
-                        <FluentLabel>@context</FluentLabel>  
+                        <FluentLabel>@context</FluentLabel>
                     </FluentStack>
-                </OptionTemplate> 
+                </OptionTemplate>
             </FluentSelect>
-            <FluentButton Appearance="Appearance.Accent" OnClick="PickRandomColor">Feeling lucky?</FluentButton>
+            <GButton Appearance="Appearance.Accent" OnClick="PickRandomColor">Feeling lucky?</GButton>
         </FluentGridItem>
     </FluentGrid>
 
     <FluentStack Style="margin: 30px 0px; padding: 30px; border: 1px solid var(--accent-fill-rest);">
         <FluentIcon Value="@(new Icons.Regular.Size24.Airplane())" />
         <FluentLabel>Example of content</FluentLabel>
-        <FluentButton Appearance="Appearance.Outline">Outline button</FluentButton>
-        <FluentButton Appearance="Appearance.Accent">Accent button</FluentButton>
+        <GButton Appearance="Appearance.Outline">Outline button</GButton>
+        <GButton Appearance="Appearance.Accent">Accent button</GButton>
     </FluentStack>
 </div>
 

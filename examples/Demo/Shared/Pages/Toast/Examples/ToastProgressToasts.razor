@@ -1,15 +1,15 @@
 ﻿@inject IToastService ToastService
 
 <FluentStack Wrap=true>
-    <FluentButton Appearance=Appearance.Neutral @onclick="@ShowExample">Progress toast example 1</FluentButton>
-    <FluentButton @ref=_button Appearance="Appearance.Neutral" @onclick=UpdateProgress>Update</FluentButton>
-    <FluentButton Appearance="Appearance.Neutral" @onclick=Reset>Reset</FluentButton>
-    <FluentButton Appearance="Appearance.Neutral" @onclick=Close>Close</FluentButton>
-    <FluentButton Appearance=Appearance.Neutral @onclick="@ShowIndeterminateExample">Indeterminate progress toast</FluentButton>
+    <GButton Appearance=Appearance.Neutral @onclick="@ShowExample">Progress toast example 1</GButton>
+    <GButton @ref=_button Appearance="Appearance.Neutral" @onclick=UpdateProgress>Update</GButton>
+    <GButton Appearance="Appearance.Neutral" @onclick=Reset>Reset</GButton>
+    <GButton Appearance="Appearance.Neutral" @onclick=Close>Close</GButton>
+    <GButton Appearance=Appearance.Neutral @onclick="@ShowIndeterminateExample">Indeterminate progress toast</GButton>
 </FluentStack>
 
 @code {
-    private FluentButton? _button;
+    private GButton? _button;
     private static string _id = "progressToast";
     private CancellationTokenSource _cancel = new();
 
@@ -86,7 +86,7 @@
 
     private void Reset()
     {
-        _cancel.Cancel();   
+        _cancel.Cancel();
         _progressToastData.Content.Progress = 0;
         ToastService.UpdateToast(_id, _progressToastData);
         _cancel = new();

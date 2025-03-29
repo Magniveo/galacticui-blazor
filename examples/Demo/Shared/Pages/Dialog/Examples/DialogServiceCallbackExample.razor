@@ -10,17 +10,17 @@
         When 'Trap focus' is checked, only the elements within the dialog will receive focus. When unchecked, focus will also move outside of the
         dialog.
     </p>
-    <FluentCheckbox Name="modal" @bind-Value="_modal">
+    <GCheckbox Name="modal" @bind-Value="_modal">
         Modal
-    </FluentCheckbox>
-    <FluentCheckbox Name="trap" @bind-Value="_trapFocus">
+    </GCheckbox>
+    <GCheckbox Name="trap" @bind-Value="_trapFocus">
         Trap focus
-    </FluentCheckbox>
+    </GCheckbox>
 </div>
 <div style="margin-top: 1rem;">
-    <FluentButton OnClick="@OpenDialogAsync" Appearance="Appearance.Accent">
+    <GButton OnClick="@OpenDialogAsync" Appearance="Appearance.Accent">
         Open Dialog
-    </FluentButton>
+    </GButton>
 </div>
 
 @code {

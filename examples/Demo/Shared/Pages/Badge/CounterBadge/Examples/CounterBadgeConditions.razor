@@ -15,41 +15,41 @@
     <dt>Parameters: <code>Count="0"</code>, <code>ShowWhen</code> not specified. Result: </dt>
     <dd>
         <FluentCounterBadge Count="0" Appearance="Appearance.Accent">
-            <FluentButton>
+            <GButton>
                 <FluentIcon Value="@(new Icons.Regular.Size24.Alert())" Color="@Color.Neutral" />
-            </FluentButton>
+            </GButton>
         </FluentCounterBadge>
     </dd>
     <dt>Parameters: <code>Count="0"</code>, <code>ShowWhen="@@(Count => Count >= 0)"</code>. Result: </dt>
     <dd>
         <FluentCounterBadge Count="0" BackgroundColor="@Color.Error" Color="Color.Fill" ShowWhen="@(Count => Count >= 0)">
-            <FluentButton>
+            <GButton>
                 <FluentIcon Value="@(new Icons.Regular.Size24.Alert())" Color="@Color.Neutral" />
-            </FluentButton>
+            </GButton>
         </FluentCounterBadge>
     </dd>
     <dt>Parameters: <code>Count="-4"</code>, <code>ShowWhen="@@(Count => Count &lt;= 0)"</code>. Result: </dt>
     <dd>
         <FluentCounterBadge Count="-4" BackgroundColor="@Color.Error" Color="Color.Fill" ShowWhen="@(Count => Count <= 0)">
-            <FluentButton>
+            <GButton>
                 <FluentIcon Value="@(new Icons.Regular.Size24.Alert())" Color="@Color.Neutral" />
-            </FluentButton>
+            </GButton>
         </FluentCounterBadge>
     </dd>
     <dt>Parameters: <code>Count="-4"</code>, <code>ShowWhen="@@(Count => Count > 3)"</code>. Result: </dt>
     <dd>
         <FluentCounterBadge Count="-4" BackgroundColor="@Color.Error" Color="Color.Fill" ShowWhen="@(Count => Count > 3)">
-            <FluentButton>
+            <GButton>
                 <FluentIcon Value="@(new Icons.Regular.Size24.Alert())" Color="@Color.Neutral" />
-            </FluentButton>
+            </GButton>
         </FluentCounterBadge>
     </dd>
     <dt>Parameters: <code>Count="4"</code>, <code>ShowWhen="@@(Count => Count > 3)"</code>. Result: </dt>
     <dd>
         <FluentCounterBadge Count="4" BackgroundColor="@Color.Error" Color="Color.Fill" ShowWhen="@(Count => Count > 3)">
-            <FluentButton>
+            <GButton>
                 <FluentIcon Value="@(new Icons.Regular.Size24.Alert())" Color="@Color.Neutral" />
-            </FluentButton>
+            </GButton>
         </FluentCounterBadge>
     </dd>
 </dl>

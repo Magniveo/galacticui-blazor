@@ -18,12 +18,12 @@
         bool? myState = initialState;
 
         // Arrange && Act
-        var cut = Render(@<FluentCheckbox Id="myCheck"
+        var cut = Render(@<GCheckbox Id="myCheck"
                 ThreeState="true"
                 @bind-CheckState="@myState"
                 @bind-Value="@myValue" />);
 
-        var component = cut.Find("fluent-checkbox");
+        var component = cut.Find("g-checkbox");
         component.TriggerEvent("oncheckedchange", new CheckboxChangeEventArgs() { Checked = !myValue });
 
 
@@ -42,13 +42,13 @@
         bool? myState = initialState;
 
         // Arrange && Act
-        var cut = Render(@<FluentCheckbox Id="myCheck"
+        var cut = Render(@<GCheckbox Id="myCheck"
                 ThreeState="true"
                 ThreeStateOrderUncheckToIntermediate="true"
                 @bind-CheckState="@myState"
                 @bind-Value="@myValue" />);
 
-        var component = cut.Find("fluent-checkbox");
+        var component = cut.Find("g-checkbox");
         component.TriggerEvent("oncheckedchange", new CheckboxChangeEventArgs() { Checked = !myValue });
 
         // Assert
@@ -63,13 +63,13 @@
         bool? myState = null;
 
         // Arrange
-        var cut = Render(@<FluentCheckbox Id="myCheck"
+        var cut = Render(@<GCheckbox Id="myCheck"
                 ThreeState="true"
                 ShowIndeterminate="false"
                 @bind-CheckState="@myState" />);
 
         // Act
-        var component = cut.Find("fluent-checkbox");
+        var component = cut.Find("g-checkbox");
 
         // ... Intermediate => Uncheck
         // ... Uncheck => Check
@@ -92,13 +92,13 @@
     //     bool myValue = initialValue;
 
     //     // Arrange && Act
-    //     var cut = Render(@<FluentCheckbox Id="myCheck"
+    //     var cut = Render(@<GCheckbox Id="myCheck"
     //             ThreeState="false"
     //             @bind-Value="@myValue" />
     //     );
 
 
-    //     var component = cut.Find("fluent-checkbox");
+    //     var component = cut.Find("g-checkbox");
     //     component.TriggerEvent("oncheckedchange", new CheckboxChangeEventArgs() { Checked = !myValue });
 
     //     await Task.Delay(5);
@@ -111,7 +111,7 @@
     public void FluentCheckbox_Labels()
     {
         // Arrange
-        var cut = Render(@<FluentCheckbox Label="MyLabel">My customized content</FluentCheckbox>);
+        var cut = Render(@<GCheckbox Label="MyLabel">My customized content</GCheckbox>);
 
         cut.Verify();
     }

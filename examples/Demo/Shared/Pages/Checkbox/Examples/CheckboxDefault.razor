@@ -1,8 +1,8 @@
 ﻿<h4>Horizontal</h4>
 <FluentStack>
-    <FluentCheckbox @bind-Value="@value1" Label="Apples" />
-    <FluentCheckbox @bind-Value="@value2" Disabled="true" Label="Bananas (disabled)" />
-    <FluentCheckbox @bind-Value="@value3" Label="Oranges" />
+    <GCheckbox @bind-Value="@value1" Label="Apples" />
+    <GCheckbox @bind-Value="@value2" Disabled="true" Label="Bananas (disabled)" />
+    <GCheckbox @bind-Value="@value3" Label="Oranges" />
 </FluentStack>
 
 <br />
@@ -10,9 +10,9 @@
 
 <h4>Vertical</h4>
 <FluentStack Orientation="Orientation.Vertical">
-    <FluentCheckbox @bind-Value="@value1">Apples</FluentCheckbox>
-    <FluentCheckbox @bind-Value="@value2" Disabled="true">Bananas (disabled)</FluentCheckbox>
-    <FluentCheckbox @bind-Value="@value3">Oranges</FluentCheckbox>
+    <GCheckbox @bind-Value="@value1">Apples</GCheckbox>
+    <GCheckbox @bind-Value="@value2" Disabled="true">Bananas (disabled)</GCheckbox>
+    <GCheckbox @bind-Value="@value3">Oranges</GCheckbox>
 </FluentStack>
 
 @code {

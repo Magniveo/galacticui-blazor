@@ -7,7 +7,7 @@
 
     @if (!string.IsNullOrEmpty(Title))
     {
-        <h2>@Title</h2>    
+        <h2>@Title</h2>
     }
 
     <FluentGrid Style="width: 100%;" Spacing="1">
@@ -24,7 +24,7 @@
                           Items="@(Enum.GetValues<EmojiStyle>())" />
         </FluentGridItem>
         <FluentGridItem>
-            <FluentButton IconStart="@(new Icons.Regular.Size24.ArrowCircleRight())"
+            <GButton IconStart="@(new Icons.Regular.Size24.ArrowCircleRight())"
                           OnClick="@StartNewSearchAsync" />
         </FluentGridItem>
     </FluentGrid>

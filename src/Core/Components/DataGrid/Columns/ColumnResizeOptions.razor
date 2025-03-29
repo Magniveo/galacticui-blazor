@@ -7,9 +7,9 @@
         <FluentLabel>@Label</FluentLabel>
 
         <FluentSpacer />
-        <FluentButton OnClick="@HandleShrinkAsync" IconStart="@(new CoreIcons.Regular.Size20.Subtract())" />
-        <FluentButton OnClick="@HandleGrowAsync" IconStart="@(new CoreIcons.Regular.Size20.Add())" />
-        <FluentButton OnClick="@HandleResetAsync" IconStart="@(new CoreIcons.Regular.Size20.ArrowReset())" />
+        <GButton OnClick="@HandleShrinkAsync" IconStart="@(new CoreIcons.Regular.Size20.Subtract())" />
+        <GButton OnClick="@HandleGrowAsync" IconStart="@(new CoreIcons.Regular.Size20.Add())" />
+        <GButton OnClick="@HandleResetAsync" IconStart="@(new CoreIcons.Regular.Size20.ArrowReset())" />
     }
     else
     {
@@ -26,10 +26,10 @@
                                  AutoComplete="off"
                                  @onkeydown="@HandleColumnWidthKeyDownAsync" />
             </div>
-            <FluentButton Style="height: 30px;" OnClick="@HandleColumnWidthAsync" Appearance="@Appearance.Accent">
+            <GButton Style="height: 30px;" OnClick="@HandleColumnWidthAsync" Appearance="@Appearance.Accent">
                 <FluentIcon Value="@(new CoreIcons.Regular.Size20.Checkmark())" Color="@Color.Fill" />
-            </FluentButton>
-            <FluentButton Style="height: 30px;" OnClick="@HandleResetAsync" IconStart="@(new CoreIcons.Regular.Size20.ArrowReset())" />
+            </GButton>
+            <GButton Style="height: 30px;" OnClick="@HandleResetAsync" IconStart="@(new CoreIcons.Regular.Size20.ArrowReset())" />
         </FluentStack>
     }
 </FluentStack>

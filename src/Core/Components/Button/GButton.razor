@@ -19,7 +19,7 @@ else
 @code{
     protected void RenderButton(RenderTreeBuilder __builder)
     {
-        <gravity-button @ref=Element
+        <g-button @ref=Element
                class="@(LoadingOverlay ? string.Empty : Class)"
                style="@(LoadingOverlay ? "width: 100%;" : Style)"
                autofocus=@Autofocus
@@ -70,6 +70,6 @@ else
                                 Slot="@(ChildContent != null ? "end" : null)" />
                 }
             }
-        </gravity-button>
+        </g-button>
     }
 }

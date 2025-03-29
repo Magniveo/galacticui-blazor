@@ -1,61 +1,61 @@
 ﻿@inject IToastService ToastService
 
 <FluentStack Wrap=true>
-    <FluentButton Appearance=Appearance.Neutral @onclick="ClearAll">Clear all</FluentButton>
+    <GButton Appearance=Appearance.Neutral @onclick="ClearAll">Clear all</GButton>
 
-    <FluentButton Appearance=Appearance.Neutral @onclick="ClearAllPreserveQueue">Clear all, preserve queue</FluentButton>
+    <GButton Appearance=Appearance.Neutral @onclick="ClearAllPreserveQueue">Clear all, preserve queue</GButton>
 
-    <FluentButton Appearance=Appearance.Neutral @onclick="ClearIntent">Clear specific intent</FluentButton>
+    <GButton Appearance=Appearance.Neutral @onclick="ClearIntent">Clear specific intent</GButton>
 
-    <FluentButton Appearance=Appearance.Neutral @onclick="ClearSuccess">
+    <GButton Appearance=Appearance.Neutral @onclick="ClearSuccess">
         <FluentIcon Value="@(new Icons.Filled.Size20.CheckmarkCircle())" Color="@Color.Success" Slot="start" />
         Clear success
-    </FluentButton>
+    </GButton>
 
-    <FluentButton Appearance=Appearance.Neutral @onclick="ClearWarning">
+    <GButton Appearance=Appearance.Neutral @onclick="ClearWarning">
         <FluentIcon Value="@(new Icons.Filled.Size20.Warning())" Color="@Color.Warning" Slot="start" />
         Clear warning
-    </FluentButton>
+    </GButton>
 
-    <FluentButton Appearance=Appearance.Neutral @onclick="ClearError">
+    <GButton Appearance=Appearance.Neutral @onclick="ClearError">
         <FluentIcon Value="@(new Icons.Filled.Size20.DismissCircle())" Color="@Color.Error" Slot="start" />
         Clear error
-    </FluentButton>
+    </GButton>
 
-    <FluentButton Appearance=Appearance.Neutral @onclick="ClearInfo">
+    <GButton Appearance=Appearance.Neutral @onclick="ClearInfo">
         <FluentIcon Value="@(new Icons.Filled.Size20.Info())" Color="@Color.Info" Slot="start" />
         Clear info
-    </FluentButton>
+    </GButton>
 
-    <FluentButton Appearance=Appearance.Neutral @onclick="ClearProgress">
+    <GButton Appearance=Appearance.Neutral @onclick="ClearProgress">
         <FluentIcon Value="@(new Icons.Regular.Size20.Flash())" Color="@Color.Neutral" Slot="start" />
         Clear progress
-    </FluentButton>
+    </GButton>
 
-    <FluentButton Appearance=Appearance.Neutral @onclick="ClearUpload">
+    <GButton Appearance=Appearance.Neutral @onclick="ClearUpload">
         <FluentIcon Value="@(new Icons.Regular.Size20.ArrowUpload())" Color="@Color.Neutral" Slot="start" />
         Clear upload
-    </FluentButton>
+    </GButton>
 
-    <FluentButton Appearance=Appearance.Neutral @onclick="ClearDownload">
+    <GButton Appearance=Appearance.Neutral @onclick="ClearDownload">
         <FluentIcon Value="@(new Icons.Regular.Size20.ArrowDownload())" Color="@Color.Neutral" Slot="start" />
         Clear download
-    </FluentButton>
+    </GButton>
 
-    <FluentButton Appearance=Appearance.Neutral @onclick="ClearEvent">
+    <GButton Appearance=Appearance.Neutral @onclick="ClearEvent">
         <FluentIcon Value="@(new Icons.Regular.Size20.CalendarLtr())" Color="@Color.Neutral" Slot="start" />
         Clear event
-    </FluentButton>
+    </GButton>
 
-    <FluentButton Appearance=Appearance.Neutral @onclick="ClearAvatar">
+    <GButton Appearance=Appearance.Neutral @onclick="ClearAvatar">
         <FluentIcon Value="@(new Icons.Regular.Size20.Person())" Color="@Color.Neutral" Slot="start" />
         Clear avatar
-    </FluentButton>
+    </GButton>
 
-    <FluentButton Appearance=Appearance.Neutral @onclick="ClearCustomIntent">
+    <GButton Appearance=Appearance.Neutral @onclick="ClearCustomIntent">
         <FluentIcon Value="@(new Icons.Regular.Size20.Delete())" Color="@Color.Neutral" Slot="start" />
         Clear custom
-    </FluentButton>
+    </GButton>
 </FluentStack>
 
 @code {

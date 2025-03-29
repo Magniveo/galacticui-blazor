@@ -1,45 +1,45 @@
 ﻿<p>With icon at Start or End</p>
 <FluentStack>
-    <FluentButton IconStart="@(new Icons.Regular.Size16.Globe())">
+    <GButton IconStart="@(new Icons.Regular.Size16.Globe())">
         Button
-    </FluentButton>
-    <FluentButton IconStart="@(new Icons.Regular.Size16.Globe())"
+    </GButton>
+    <GButton IconStart="@(new Icons.Regular.Size16.Globe())"
                   Appearance="Appearance.Accent">
         Button
-    </FluentButton>
-    <FluentButton IconEnd="@(new Icons.Regular.Size16.Globe())">
+    </GButton>
+    <GButton IconEnd="@(new Icons.Regular.Size16.Globe())">
         Button
-    </FluentButton>
-    <FluentButton IconEnd="@(new Icons.Regular.Size16.Globe())"
+    </GButton>
+    <GButton IconEnd="@(new Icons.Regular.Size16.Globe())"
                   Appearance="Appearance.Accent">
         Button
-    </FluentButton>
+    </GButton>
 </FluentStack>
 
 <p>With icon in default slot</p>
-<FluentButton IconEnd="@(new Icons.Regular.Size16.Globe())"
+<GButton IconEnd="@(new Icons.Regular.Size16.Globe())"
               Title="Globe"
               OnClick="@(() => DemoLogger.WriteLine("Button clicked"))" />
 
 <p>With icon in the content. By doing it this way, it is possible to specify a <code>Color</code> for the icon.</p>
-<FluentButton>
+<GButton>
     <FluentIcon Value="@(new Icons.Regular.Size32.Globe())" Color="Color.Error" Slot="start" />
     Button
-</FluentButton>
+</GButton>
 
 <p>With icon and loading</p>
 <FluentStack>
-    <FluentButton IconStart="@(new Icons.Regular.Size16.ArrowClockwise())"
+    <GButton IconStart="@(new Icons.Regular.Size16.ArrowClockwise())"
                   Loading="@loading"
                   OnClick="@StartLoadingAsync">
         Refresh
-    </FluentButton>
-    <FluentButton IconStart="@(new Icons.Regular.Size16.ArrowClockwise())"
+    </GButton>
+    <GButton IconStart="@(new Icons.Regular.Size16.ArrowClockwise())"
                   Appearance="Appearance.Accent"
                   Loading="@loading"
                   OnClick="@StartLoadingAsync">
         Refresh
-    </FluentButton>
+    </GButton>
 </FluentStack>
 
 @code {

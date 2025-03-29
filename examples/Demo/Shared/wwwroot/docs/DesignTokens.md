@@ -1,10 +1,10 @@
 ## Design Token support
- 
+
 The Fluent UI Blazor Components enable design customization and personalization, while automatically maintaining accessibility. This is
 accomplished through setting various "Design Tokens". In total there are over 160 distinct design tokens defined in the library and you can
 use all of these from Blazor, both from C# code as in a declarative way in your `.razor` pages.
 
-See <a href="https://learn.microsoft.com/en-us/fluent-ui/web-components/design-system/design-tokens" target="_blank">https://learn.microsoft.com/en-us/fluent-ui/web-components/design-system/design-tokens</a> for more 
+See <a href="https://learn.microsoft.com/en-us/fluent-ui/web-components/design-system/design-tokens" target="_blank">https://learn.microsoft.com/en-us/fluent-ui/web-components/design-system/design-tokens</a> for more
 information on how Design Tokens are implemented in the web components script.
 
 ## Styling web components with Design Tokens
@@ -22,7 +22,7 @@ The most common need for setting a token is to switch between light and dark mod
 - `BaseLayerLuminance`: Set to `StandardLuminance.DarkMode` to switch into dark mode.
 
 This is a decimal value, and the `LightMode` and `DarkMode` constants represent the standard points for light and dark mode. You could set it to any value `0` (black) to `1` (white) depending on your needs.
->**Note:** To get the corresponding value from the `StandardLuminance` enum, use the `GetLuminanceValue()` extension method. 
+>**Note:** To get the corresponding value from the `StandardLuminance` enum, use the `GetLuminanceValue()` extension method.
 
 #### Layers and fill color
 
@@ -225,10 +225,10 @@ A special layer for floating layers, like flyouts or menus. It will be lighter t
 
 
 > **Important**
-> 
-> 
-> **The Design Tokens are manipulated through JavaScript interop working with an `ElementReference`. There is no JavaScript element until after the component 
-is rendered. This means you can only work with the Design Tokens from code after the component has been rendered in `OnAfterRenderAsync` and not in any earlier 
+>
+>
+> **The Design Tokens are manipulated through JavaScript interop working with an `ElementReference`. There is no JavaScript element until after the component
+is rendered. This means you can only work with the Design Tokens from code after the component has been rendered in `OnAfterRenderAsync` and not in any earlier
 lifecycle methods**.
 
 There are a couple of methods available **per design token** to get or set its value:
@@ -305,9 +305,9 @@ public async Task OnClick()
 ```
 
 As can be seen in the code above (with the `ref4.Element`), it is possible to apply multiple tokens to the same component.
- 
-For Design Tokens that work with a color value, you must call the `ToSwatch()` extension method on a string value or use one of the Swatch constructors. This 
-makes sure the color is using a format that Design Tokens can handle. A Swatch has a lot of commonality with the `System.Drawing.Color` struct. Instead of 
+
+For Design Tokens that work with a color value, you must call the `ToSwatch()` extension method on a string value or use one of the Swatch constructors. This
+makes sure the color is using a format that Design Tokens can handle. A Swatch has a lot of commonality with the `System.Drawing.Color` struct. Instead of
 the values of the components being between 0 and 255, in a Swatch the components are expressed as a value between 0 and 1.
 
 ### Using Design Tokens as components
@@ -315,7 +315,7 @@ The Design Tokens can also be used as components in a `.razor` page directely. I
 
 ```html
 <BaseLayerLuminance Value="(float?)0.15">
-	<FluentCard ParentReference="@context">
+	<GCard ParentReference="@context">
 		<div class="contents">
 			Dark
 			<FluentButton Appearance="Appearance.Accent">Accent</FluentButton>
@@ -323,17 +323,17 @@ The Design Tokens can also be used as components in a `.razor` page directely. I
 			<FluentButton Appearance="Appearance.Outline">Outline</FluentButton>
 			<FluentButton Appearance="Appearance.Lightweight">Lightweight</FluentButton>
 		</div>
-	</FluentCard>
+	</GCard>
 </BaseLayerLuminance>
 ```
 
-To make this work, a link needs to be created between the Design Token component and its child components. This is done with the `ParentReference="@context"` construct. 
+To make this work, a link needs to be created between the Design Token component and its child components. This is done with the `ParentReference="@context"` construct.
 
 > **Note**
-> 
+>
 > Only one Design Token component at a time can be used this way. If you need to set more tokens, use the code approach as described in Option 1 above.
 
 
 ## Colors for integration with specific Microsoft products
-If you are configuring the components for integration into a specific Microsoft product, the following table provides `AccentBaseColor` values you can use. 
+If you are configuring the components for integration into a specific Microsoft product, the following table provides `AccentBaseColor` values you can use.
 *The specific accent colors for many Office applications are offered in the `OfficeColor` enumeration.*

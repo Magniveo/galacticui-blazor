@@ -6,7 +6,7 @@
               UncheckedMessage="KeyDown only"
               Style="margin-bottom: 10px;" />
 
-<FluentCard>
+<GCard>
     @if (!KeyPressed.Any())
     {
         <div>Press any key to get the keycode info.</div>
@@ -16,7 +16,7 @@
     {
         <span class="key" type="@key.Event">@key.Key</span>
     }
-</FluentCard>
+</GCard>
 
 @code
 {

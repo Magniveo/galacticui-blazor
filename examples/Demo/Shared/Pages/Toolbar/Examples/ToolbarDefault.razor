@@ -2,8 +2,8 @@
 @inject BaseLayerLuminance BaseLayerLuminance
 
 <FluentToolbar id="toolbar-fluent-components">
-    <FluentButton Appearance="Appearance.Accent">Accent Button</FluentButton>
-    <FluentButton Appearance="Appearance.Stealth">Stealth Button</FluentButton>
+    <GButton Appearance="Appearance.Accent">Accent Button</GButton>
+    <GButton Appearance="Appearance.Stealth">Stealth Button</GButton>
     <FluentRadioGroup @bind-Value=value1>
         <FluentRadio Value=@("one") Checked="true">One</FluentRadio>
         <FluentRadio Value=@("two")>Two</FluentRadio>
@@ -11,7 +11,7 @@
     </FluentRadioGroup>
     <FluentMenuButton @ref=menubutton Text="Select brand color" Items="@items" OnMenuChanged="HandleOnMenuChanged"></FluentMenuButton>
 
-    <FluentButton>Button</FluentButton>
+    <GButton>Button</GButton>
 
     <FluentInputLabel ForId="s1" Orientation="Orientation.Horizontal">Select something</FluentInputLabel>
     <FluentSelect Id="s1" Class="below outline" @bind-Value="@comboboxValue" TOption="string">
@@ -20,7 +20,7 @@
         <FluentOption id="option-17">Option 3</FluentOption>
     </FluentSelect>
 
-    <FluentCheckbox @bind-Value=check1>Checkbox</FluentCheckbox>
+    <GCheckbox @bind-Value=check1>Checkbox</GCheckbox>
 </FluentToolbar>
 
 
@@ -33,8 +33,8 @@
             <FluentRadio Value=@("four")>Export</FluentRadio>
             <FluentRadio Value=@("five")>Automate</FluentRadio>
         </FluentRadioGroup>
-        <FluentButton Appearance="Appearance.Stealth">Stealth</FluentButton>
-        <FluentButton Appearance="Appearance.Accent">Refresh</FluentButton>
+        <GButton Appearance="Appearance.Stealth">Stealth</GButton>
+        <GButton Appearance="Appearance.Accent">Refresh</GButton>
         <FluentBadge>21 items</FluentBadge>
         <FluentRadioGroup @bind-Value=value3 slot="end">
             <FluentRadio>Filter</FluentRadio>

@@ -5,15 +5,15 @@ using Microsoft.FluentUI.AspNetCore.Components.Utilities;
 using Microsoft.JSInterop;
 
 namespace Microsoft.FluentUI.AspNetCore.Components;
-public partial class FluentCheckbox : FluentInputBase<bool>
+public partial class GCheckbox : FluentInputBase<bool>
 {
     private const bool VALUE_FOR_INDETERMINATE = false;
     private bool _intermediate = false;
     private bool? _checkState = false;
-    private const string JAVASCRIPT_FILE = "./_content/Microsoft.FluentUI.AspNetCore.Components/Components/Checkbox/FluentCheckbox.razor.js";
+    private const string JAVASCRIPT_FILE = "./_content/Microsoft.FluentUI.AspNetCore.Components/Components/Checkbox/GCheckbox.razor.js";
 
     [DynamicDependency(DynamicallyAccessedMemberTypes.All, typeof(CheckboxChangeEventArgs))]
-    public FluentCheckbox()
+    public GCheckbox()
     {
         Id = Identifier.NewId();
     }
@@ -90,6 +90,7 @@ public partial class FluentCheckbox : FluentInputBase<bool>
         get
         {
             return new CssBuilder(base.ClassValue)
+                .AddClass("g-checkbox")
                 .AddClass("disabled", when: Disabled)
                 .AddClass("checked", when: Value)
                 .AddClass("indeterminate", when: ThreeState && CheckState is null)

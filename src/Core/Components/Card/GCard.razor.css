@@ -1,8 +1,8 @@
-fluent-card ::deep {
+g-card ::deep {
     padding: calc(var(--design-unit) * 5px);
 }
 
-.fluent-card-minimal-style ::deep {
+.g-card ::deep {
     height: var(--card-height, 100%);
     width: var(--card-width, 100%);
     contain: content;
@@ -18,14 +18,13 @@ fluent-card ::deep {
     --_--border-color: #0000;
     --_--border-width: 0;
     --_--box-shadow: none;
-    box-shadow: var(--g-card-box-shadow, var(--_--box-shadow));
+    box-shadow: var(--g-card-box-shadow,var(--_--box-shadow));
     box-sizing: border-box;
-    background-color: var(--g-card-background-color, var(--_--background-color));
-    border: var(--g-card-border-width, var(--_--border-width)) solid var(--g-card-border-color, var(--_--border-color));
-    border-radius: var(--g-card-border-radius, var(--_--border-radius));
-    outline:none
+    background-color: var(--g-card-background-color,var(--_--background-color));
+    border: var(--g-card-border-width,var(--_--border-width)) solid var(--g-card-border-color,var(--_--border-color));
+    border-radius: var(--g-card-border-radius,var(--_--border-radius));
+    outline: none;
 }
-
 .g-card_theme_normal {
     --_--border-color: var(--g-color-line-generic);
     --_--background-color:var(--g-color-base-generic)

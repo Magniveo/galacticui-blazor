@@ -1,11 +1,11 @@
 ﻿<FluentToolbar id="toolbar-fluent-components">
-    <FluentButton Appearance="Appearance.Accent">Go</FluentButton>
+    <GButton Appearance="Appearance.Accent">Go</GButton>
     <FluentRadioGroup Required="true" Name="navigation" @bind-Value=value>
         <FluentRadio Value=@("back")>back</FluentRadio>
         <FluentRadio Value=@("forward")>forward</FluentRadio>
         <FluentRadio Value=@("refresh")>refresh</FluentRadio>
     </FluentRadioGroup>
-    <FluentButton Appearance="Appearance.Accent">Stop</FluentButton>
+    <GButton Appearance="Appearance.Accent">Stop</GButton>
 </FluentToolbar>
 
 @code

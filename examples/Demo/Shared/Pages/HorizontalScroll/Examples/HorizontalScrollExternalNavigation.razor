@@ -1,25 +1,25 @@
 ﻿<FluentHorizontalScroll @ref="_horizontalScroll" Speed="600" Easing=ScrollEasing.EaseInOut>
-    <FluentCard>Card number 1</FluentCard>
-    <FluentCard>Card number 2</FluentCard>
-    <FluentCard>Card number 3</FluentCard>
-    <FluentCard>Card number 4</FluentCard>
-    <FluentCard>Card number 5</FluentCard>
-    <FluentCard>Card number 6</FluentCard>
-    <FluentCard>Card number 7</FluentCard>
-    <FluentCard>Card number 8</FluentCard>
-    <FluentCard>Card number 9</FluentCard>
-    <FluentCard>Card number 10</FluentCard>
-    <FluentCard>Card number 11</FluentCard>
-    <FluentCard>Card number 12</FluentCard>
-    <FluentCard>Card number 13</FluentCard>
-    <FluentCard>Card number 14</FluentCard>
-    <FluentCard>Card number 15</FluentCard>
-    <FluentCard>Card number 16</FluentCard>
+    <GCard>Card number 1</GCard>
+    <GCard>Card number 2</GCard>
+    <GCard>Card number 3</GCard>
+    <GCard>Card number 4</GCard>
+    <GCard>Card number 5</GCard>
+    <GCard>Card number 6</GCard>
+    <GCard>Card number 7</GCard>
+    <GCard>Card number 8</GCard>
+    <GCard>Card number 9</GCard>
+    <GCard>Card number 10</GCard>
+    <GCard>Card number 11</GCard>
+    <GCard>Card number 12</GCard>
+    <GCard>Card number 13</GCard>
+    <GCard>Card number 14</GCard>
+    <GCard>Card number 15</GCard>
+    <GCard>Card number 16</GCard>
 </FluentHorizontalScroll>
 
-<FluentButton @onclick="() => _horizontalScroll.ScrollToPrevious()">Scroll to Previous</FluentButton>
-<FluentButton @onclick="() => _horizontalScroll.ScrollToNext()">Scroll to Next</FluentButton>
-<FluentButton @onclick="() => _horizontalScroll.ScrollInView(10)">Scroll to 10</FluentButton>
+<GButton @onclick="() => _horizontalScroll.ScrollToPrevious()">Scroll to Previous</GButton>
+<GButton @onclick="() => _horizontalScroll.ScrollToNext()">Scroll to Next</GButton>
+<GButton @onclick="() => _horizontalScroll.ScrollInView(10)">Scroll to 10</GButton>
 
 @code {
     FluentHorizontalScroll _horizontalScroll = default!;

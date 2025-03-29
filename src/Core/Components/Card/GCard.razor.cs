@@ -3,7 +3,7 @@ using Microsoft.FluentUI.AspNetCore.Components.Utilities;
 
 namespace Microsoft.FluentUI.AspNetCore.Components;
 
-public partial class FluentCard
+public partial class GCard
 {
     protected string? StyleValue => new StyleBuilder(Style)
         .AddStyle("width", Width, !string.IsNullOrEmpty(Width))
@@ -39,15 +39,6 @@ public partial class FluentCard
     private string GetCssClassTheme()
     {
         return $"g-card_theme_{Theme}";
-        switch (Theme)
-        {
-            case "normal" :return  "g-card_theme_normal";
-            case "info" :return  "g-card_theme_info";
-            case "success" :return  "g-card_theme_success";
-            case "warning" :return  "g-card_theme_warning";
-            case "danger" :return  "g-card_theme_danger";
-        }
-        return  "g-card_theme_normal";
     }
 
     /// <summary>

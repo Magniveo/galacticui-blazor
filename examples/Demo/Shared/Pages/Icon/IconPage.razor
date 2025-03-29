@@ -7,8 +7,8 @@
 <h1>Icon</h1>
 
 <p>
-    The <a title="FluentUI System Icons repository" href="https://github.com/microsoft/fluentui-system-icons" target="_blank" rel="noopener">Fluent UI System Icons</a> 
-    are a (still growing) collection of familiar, friendly and modern icons from Microsoft. At the moment there are more than 2200 distinct icons 
+    The <a title="FluentUI System Icons repository" href="https://github.com/microsoft/fluentui-system-icons" target="_blank" rel="noopener">Fluent UI System Icons</a>
+    are a (still growing) collection of familiar, friendly and modern icons from Microsoft. At the moment there are more than 2200 distinct icons
     available in both filled and outlined versions and in various sizes. In total the collections consists of well over 11k icons in SVG format.
 </p>
 <p>
@@ -27,9 +27,9 @@
 </p>
 
 <p>
-    You can use any of these icons by levaraging the <code>&lt;FluentIcon&gt;</code>&nbsp;component. See below for the parameters and examples. 
-    There is also a search capability available on this page wich allows you to browse to all the different icons. At the moment the icons 
-    displayed in this explorer below are always using the default blue accent color. When using the icons in your application, they will render 
+    You can use any of these icons by levaraging the <code>&lt;FluentIcon&gt;</code>&nbsp;component. See below for the parameters and examples.
+    There is also a search capability available on this page wich allows you to browse to all the different icons. At the moment the icons
+    displayed in this explorer below are always using the default blue accent color. When using the icons in your application, they will render
     in the color set with the <code>Color</code> parameter.
 </p>
 
@@ -45,7 +45,7 @@
         A lot of the web components have named slots that declare locations in which content can be rendered.
         FluentIcon leverages this capability through its <code>Slot</code> parameter. With this you can for
         example render the icon in front (<code>Slot="start"</code>) or after (<code>Slot="end"</code>) a
-        label in a <code>FluentButton</code> component.
+        label in a <code>GButton</code> component.
     </Description>
 </DemoSection>
 
@@ -78,20 +78,20 @@
     <br />
     <ul>
         <li>
-            <FluentIcon Value="@(new MyCircle())" Width="16px" /> 
+            <FluentIcon Value="@(new MyCircle())" Width="16px" />
             <code>&lt;FluentIcon Value="@@(new MyCircle())" Width="16px" /></code>
         </li>
         <li>
-            <FluentIcon Value="@(new MyCircle().WithColor("red"))" Width="16px" /> 
+            <FluentIcon Value="@(new MyCircle().WithColor("red"))" Width="16px" />
             <code>&lt;FluentIcon Value="@@(new MyCircle().WithColor("red"))" Width="16px" /></code>
         </li>
         <li>
-            @(new MyCircle().ToMarkup("16px", "blue")) 
+            @(new MyCircle().ToMarkup("16px", "blue"))
             <code>@@new MyCircle().ToMarkup("16px", "blue")</code>
         </li>
         <li>
-            <FluentButton IconStart="@(new MyCircle())" Loading="@ButtonIsLoading" OnClick="@(e => ButtonIsLoading = !ButtonIsLoading)">Refresh</FluentButton>
-            <code>&lt;FluentButton IconStart="@@(new MyCircle())">Refresh&lt;/FluentButton></code>
+            <GButton IconStart="@(new MyCircle())" Loading="@ButtonIsLoading" OnClick="@(e => ButtonIsLoading = !ButtonIsLoading)">Refresh</GButton>
+            <code>&lt;GButton IconStart="@@(new MyCircle())">Refresh&lt;/GButton></code>
         </li>
     </ul>
     Setting <code>Width=""</code> (an empty string) makes the icon 100% width of the enclosing
@@ -108,18 +108,18 @@
         // Default Color (`fill` style)
         WithColor("#F97316");
     }
-}</CodeSnippet>    
+}</CodeSnippet>
 </p>
 <p>
-    Using the <b>IconSize.Custom</b> size, certain restrictions will apply: <code>FluentButton.Loading</code> or <code>Icon.ToMarkup</code> could be affected.
+    Using the <b>IconSize.Custom</b> size, certain restrictions will apply: <code>GButton.Loading</code> or <code>Icon.ToMarkup</code> could be affected.
 </p>
 
 <h2 id="documentation">Documentation</h2>
 
 <ApiDocumentation Component="typeof(FluentIcon<>)" InstanceTypes="@(new[] {typeof(Icon)})" GenericLabel="Icon">
     <Description>
-        You can use either the <code>Icon</code> or <code>Value</code> parameter to specify the icon to render. The <code>Icon</code> parameter takes a 
-        <code>Icon</code> Type, while the <code>Value</code> parameter takes a icon object. 
+        You can use either the <code>Icon</code> or <code>Value</code> parameter to specify the icon to render. The <code>Icon</code> parameter takes a
+        <code>Icon</code> Type, while the <code>Value</code> parameter takes a icon object.
     </Description>
 </ApiDocumentation>
 

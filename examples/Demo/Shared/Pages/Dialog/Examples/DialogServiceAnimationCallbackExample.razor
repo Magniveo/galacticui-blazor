@@ -7,9 +7,9 @@
     </p>
 </div>
 <div style="margin-top: 1rem;">
-    <FluentButton OnClick="@OpenDialogAsync" Appearance="Appearance.Accent">
+    <GButton OnClick="@OpenDialogAsync" Appearance="Appearance.Accent">
         Open Dialog
-    </FluentButton>
+    </GButton>
 </div>
 
 @code {
@@ -55,9 +55,9 @@
                 {
                     //
                     // * Because of the JS code below, this `await` will block until the animation completes or is interrupted.
-                    // * 
+                    // *
                     // * WARNING: Don't use `eval`, it's dangerous! This is just a proof-of-concept demonstrating the OnDialogClosing/OnDialogOpened EventCallbacks.
-                    // 
+                    //
                     await JS.InvokeVoidAsync("eval", $@"
                         async function func() {{
                             let dialog = document.getElementById('{instance.Id}')?.dialog;
