@@ -1,3 +1,7 @@
+// ------------------------------------------------------------------------
+// MIT License - Copyright (c) Microsoft Corporation. All rights reserved.
+// ------------------------------------------------------------------------
+
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.AspNetCore.Components.Web;
@@ -12,6 +16,10 @@ namespace Microsoft.FluentUI.AspNetCore.Components;
 /// <typeparam name="TGridItem">The type of data represented by each row in the grid.</typeparam>
 public abstract partial class ColumnBase<TGridItem>
 {
+    private bool _isMenuOpen;
+    private static readonly string[] KEYBOARD_MENU_SELECT_KEYS = ["Enter", "NumpadEnter"];
+    private readonly string _columnId = Identifier.NewId();
+
     [CascadingParameter]
     internal InternalGridContext<TGridItem> InternalGridContext { get; set; } = default!;
 
@@ -21,6 +29,12 @@ public abstract partial class ColumnBase<TGridItem>
     /// </summary>
     [Parameter]
     public string? Title { get; set; }
+
+    /// <summary>
+    /// Gets or sets the index (1-based) of the column
+    /// </summary>
+    [Parameter]
+    public int Index { get; set; }
 
     /// <summary>
     /// Gets or sets the an optional CSS class name.
@@ -51,10 +65,16 @@ public abstract partial class ColumnBase<TGridItem>
     public bool Tooltip { get; set; } = false;
 
     /// <summary>
-    /// Gets or sets the value to be used as the tooltip and aria-label in this column's cells
+    /// Gets or sets the function that defines the value to be used as the tooltip and aria-label in this column's cells
     /// </summary>
     [Parameter]
     public Func<TGridItem, string?>? TooltipText { get; set; }
+
+    /// <summary>
+    /// Gets or sets the tooltip text for the column header.
+    /// </summary>
+    [Parameter]
+    public string? HeaderTooltip { get; set; }
 
     /// <summary>
     /// Gets or sets an optional template for this column's header cell.
@@ -94,7 +114,7 @@ public abstract partial class ColumnBase<TGridItem>
     /// <summary>
     /// Gets or sets the sorting rules for a column.
     /// </summary>
-    public abstract GridSort<TGridItem>? SortBy { get; set; }
+    public abstract IGridSort<TGridItem>? SortBy { get; set; }
 
     /// <summary>
     /// Gets or sets the initial sort direction.
@@ -127,6 +147,16 @@ public abstract partial class ColumnBase<TGridItem>
     /// Gets a reference to the enclosing <see cref="FluentDataGrid{TGridItem}" />.
     /// </summary>
     protected FluentDataGrid<TGridItem> Grid => InternalGridContext.Grid;
+
+    protected bool AnyColumnActionEnabled => Sortable is true || ColumnOptions != null || Grid.ResizableColumns;
+
+    protected override void OnInitialized()
+    {
+        if (GetType() == typeof(SelectColumn<TGridItem>))
+        {
+            Align = Align.Center;
+        }
+    }
 
     /// <summary>
     /// Event callback for when the row is clicked.
@@ -209,7 +239,7 @@ public abstract partial class ColumnBase<TGridItem>
         }
     }
 
-    public bool ShowSortIcon;
+    public bool IsActiveSortColumn;
 
     /// <summary>
     /// Constructs an instance of <see cref="ColumnBase{TGridItem}" />.
@@ -217,5 +247,76 @@ public abstract partial class ColumnBase<TGridItem>
     public ColumnBase()
     {
         HeaderContent = RenderDefaultHeaderContent;
+    }
+
+    private async Task HandleColumnHeaderClickedAsync()
+    {
+        var hasSorting = Sortable is true || IsDefaultSortColumn;
+        var hasResize = Grid.ResizableColumns;
+        var hasOptions = ColumnOptions is not null;
+        var hasMultiple = (hasSorting && hasResize) || (hasSorting && hasOptions) || (hasResize && hasOptions);
+
+        if (hasMultiple)
+        {
+            _isMenuOpen = !_isMenuOpen;
+            StateHasChanged();
+        }
+        else if (hasSorting)
+        {
+            await Grid.SortByColumnAsync(this);
+        }
+        else if (hasResize)
+        {
+            await Grid.ShowColumnResizeAsync(this);
+        }
+        else if (hasOptions)
+        {
+            await Grid.ShowColumnOptionsAsync(this);
+        }
+    }
+
+    private async Task HandleSortMenuKeyDownAsync(KeyboardEventArgs args)
+    {
+        if (KEYBOARD_MENU_SELECT_KEYS.Contains(args.Key))
+        {
+            await Grid.SortByColumnAsync(this);
+            StateHasChanged();
+            _isMenuOpen = false;
+        }
+    }
+
+    private async Task HandleResizeMenuKeyDownAsync(KeyboardEventArgs args)
+    {
+        if (KEYBOARD_MENU_SELECT_KEYS.Contains(args.Key))
+        {
+            await Grid.ShowColumnResizeAsync(this);
+            _isMenuOpen = false;
+        }
+    }
+
+    private async Task HandleOptionsMenuKeyDownAsync(KeyboardEventArgs args)
+    {
+        if (KEYBOARD_MENU_SELECT_KEYS.Contains(args.Key))
+        {
+            await Grid.ShowColumnOptionsAsync(this);
+            _isMenuOpen = false;
+        }
+    }
+
+    private string GetSortOptionText()
+    {
+        if (Grid.SortByAscending.HasValue && IsActiveSortColumn)
+        {
+            if (Grid.SortByAscending is true)
+            {
+                return Grid.ColumnSortLabels.SortMenuAscendingLabel;
+            }
+            else
+            {
+                return Grid.ColumnSortLabels.SortMenuDescendingLabel;
+            }
+        }
+
+        return Grid.ColumnSortLabels.SortMenu;
     }
 }

@@ -1,8 +1,13 @@
 export * from '@fluentui/web-components/dist/web-components'
 export { parseColorHexRGB } from '@microsoft/fast-colors'
+
+import { accentBaseColor, neutralBaseColor, SwatchRGB, } from '@fluentui/web-components/dist/web-components'
+import { parseColorHexRGB } from '@microsoft/fast-colors'
+import { ColorsUtils } from './Design/ColorsUtils'
 import { SplitPanels } from './SplitPanels'
 import { DesignTheme } from './DesignTheme'
 import { FluentPageScript, onEnhancedLoad } from './FluentPageScript'
+
 interface Blazor {
   registerCustomEventType: (
     name: string,
@@ -27,9 +32,8 @@ interface FluentUIEventType {
   type: string;
 }
 
-
 var styleSheet = new CSSStyleSheet();
-//const gravityui = new CSSStyleSheet("./Design/base.css");
+
 const styles = `
 body:has(.prevent-scroll) {
     overflow: hidden;
@@ -50,12 +54,13 @@ body:has(.prevent-scroll) {
     --highlight-bg: #fff3cd;
 }
 
-
+fluent-number-field.invalid::part(root),
 [role='checkbox'].invalid::part(control),
 [role='combobox'].invalid::part(control),
 fluent-combobox.invalid::part(control),
 fluent-text-area.invalid::part(control),
-fluent-text-field.invalid::part(root)
+fluent-text-field.invalid::part(root),
+.fluent-autocomplete-multiselect.invalid > fluent-text-field::part(root)
 {
     outline: calc(var(--stroke-width) * 1px)  solid var(--error);
 }
@@ -64,12 +69,8 @@ fluent-text-field.invalid::part(root)
 
 styleSheet.replaceSync(styles);
 // document.adoptedStyleSheets.push(styleSheet);
-
-var styleSheetGravity = new CSSStyleSheet();
-
 document.adoptedStyleSheets = [...document.adoptedStyleSheets, styleSheet];
 
-loadCSSFromFile('./_content/Microsoft.FluentUI.AspNetCore.Components/css/base.css');
 var beforeStartCalled = false;
 var afterStartedCalled = false;
 
@@ -111,18 +112,6 @@ export function afterServerStarted(blazor: any) {
 }
 
 export function afterStarted(blazor: Blazor, mode: string) {
-
-  blazor.registerCustomEventType('radiogroupclick', {
-    browserEventName: 'click',
-    createEventArgs: event => {
-      if (event.target!._readOnly || event.target!._disabled) {
-        return null;
-      }
-      return {
-        value: event.target!.value
-      };
-    }
-  });
 
   blazor.registerCustomEventType('checkedchange', {
     browserEventName: 'change',
@@ -185,6 +174,19 @@ export function afterStarted(blazor: Blazor, mode: string) {
       return null;
     }
   });
+
+  blazor.registerCustomEventType('radiogroupchange', {
+    browserEventName: 'change',
+    createEventArgs: event => {
+      if (event.target!.localName == 'fluent-radio-group') {
+        return {
+          value: event.target.value,
+        }
+      };
+      return null;
+    }
+  });
+
   blazor.registerCustomEventType('selectedchange', {
     browserEventName: 'selected-change',
     createEventArgs: event => {
@@ -270,24 +272,6 @@ export function afterStarted(blazor: Blazor, mode: string) {
     }
   });
 
-  blazor.registerCustomEventType('cellfocus', {
-    browserEventName: 'cell-focused',
-    createEventArgs: event => {
-      return {
-        cellId: event.detail.attributes['cell-id'].value
-      };
-    }
-  });
-
-  blazor.registerCustomEventType('rowfocus', {
-    browserEventName: 'row-focused',
-    createEventArgs: event => {
-      return {
-        rowId: event.detail.attributes['row-id'].value
-      };
-    }
-  });
-
   blazor.registerCustomEventType('splitterresized', {
     browserEventName: 'splitterresized',
     createEventArgs: event => {
@@ -297,11 +281,30 @@ export function afterStarted(blazor: Blazor, mode: string) {
       }
     }
   });
+
   blazor.registerCustomEventType('splittercollapsed', {
     browserEventName: 'splittercollapsed',
     createEventArgs: event => {
       return {
         collapsed: event.detail.collapsed
+      }
+    }
+  });
+
+  blazor.registerCustomEventType('controlinput', {
+    browserEventName: 'input',
+    createEventArgs: event => {
+      return {
+        value: event.target.control.value
+      }
+    }
+  });
+
+  blazor.registerCustomEventType('comboboxchange', {
+    browserEventName: 'change',
+    createEventArgs: event => {
+      return {
+        value: event.target._selectedOptions[0] ? event.target._selectedOptions[0].value : event.target.value
       }
     }
   });
@@ -317,7 +320,6 @@ export function afterStarted(blazor: Blazor, mode: string) {
     }
   }
 
-
   if (typeof blazor.addEventListener === 'function' && mode === 'web') {
     customElements.define('fluent-page-script', FluentPageScript);
     blazor.addEventListener('enhancedload', onEnhancedLoad);
@@ -332,19 +334,21 @@ export function beforeStart(options: any) {
 
   beforeStartCalled = true;
 }
-function loadCSSFromFile(filePath:any) {
-  const sheet = new CSSStyleSheet();
 
-  fetch(filePath)
-    .then(response => response.text())
-    .then(cssText => {
-      // Here we assume `replaceSync` is supported for simplicity
-      return sheet.replaceSync(cssText);
-    })
-    .then(() => {
-      document.adoptedStyleSheets = [...document.adoptedStyleSheets, sheet];
-    })
-    .catch(error => console.error('Failed to load CSS:', error));
+export function updateAccentBaseColor(value: string | null) {
+  const color = value == null || !value.startsWith("#") ? ColorsUtils.getHexColor(value) : value;
+  const rgb = parseColorHexRGB(color);
+  if (rgb != null) {
+    const swatch = SwatchRGB.from(rgb);
+    accentBaseColor.withDefault(swatch);
+  }
 }
 
-// Usage
+export function updateNeutralBaseColor(value: string | null) {
+  const color = value == null || !value.startsWith("#") ? ColorsUtils.getHexColor(value) : value;
+  const rgb = parseColorHexRGB(color);
+  if (rgb != null) {
+    const swatch = SwatchRGB.from(rgb);
+    neutralBaseColor.withDefault(swatch);
+  }
+}

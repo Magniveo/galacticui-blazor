@@ -1,26 +1,85 @@
+// ------------------------------------------------------------------------
+// MIT License - Copyright (c) Microsoft Corporation. All rights reserved.
+// ------------------------------------------------------------------------
+
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
 using Microsoft.AspNetCore.Components;
 using Microsoft.FluentUI.AspNetCore.Components.Extensions;
 using Microsoft.FluentUI.AspNetCore.Components.Utilities;
+using Microsoft.FluentUI.AspNetCore.Components.Utilities.InternalDebounce;
+using Microsoft.JSInterop;
 
 namespace Microsoft.FluentUI.AspNetCore.Components;
 
-public partial class FluentSlider<TValue> : FluentInputBase<TValue>
+public partial class FluentSlider<TValue> : FluentInputBase<TValue>, IAsyncDisposable
     where TValue : System.Numerics.INumber<TValue>
 {
+    private const string JAVASCRIPT_FILE = "./_content/Microsoft.FluentUI.AspNetCore.Components/Components/Slider/FluentSlider.razor.js";
+
+    /// <summary />
+    [Inject]
+    private IJSRuntime JSRuntime { get; set; } = default!;
+
+    /// <summary />
+    private IJSObjectReference? Module { get; set; }
+
+    private TValue? max;
+    private TValue? min;
+    private bool updateSliderThumb = false;
+    private DebounceAction Debounce { get; init; }
+    public FluentSlider()
+    {
+        Debounce = new DebounceAction();
+    }
+
     /// <summary>
     /// Gets or sets the slider's minimal value.
     /// </summary>
     [Parameter, EditorRequired]
-    public TValue? Min { get; set; }
+    public TValue? Min
+    {
+        get => min;
+        set
+        {
+            if (min != value)
+            {
+                min = value;
+                updateSliderThumb = true;
+            }
+        }
+    }
 
     /// <summary>
     /// Gets or sets the slider's maximum value.
     /// </summary>
     [Parameter, EditorRequired]
-    public TValue? Max { get; set; }
+    public TValue? Max
+    {
+        get => max;
+        set
+        {
+            if (max != value)
+            {
+                max = value;
+                updateSliderThumb = true;
+            }
+        }
+    }
+
+    public override TValue? Value
+    {
+        get => base.Value;
+        set
+        {
+            if (base.Value != value)
+            {
+                base.Value = value;
+                updateSliderThumb = true;
+            }
+        }
+    }
 
     /// <summary>
     /// Gets or sets the slider's step value.
@@ -29,7 +88,7 @@ public partial class FluentSlider<TValue> : FluentInputBase<TValue>
     public TValue? Step { get; set; }
 
     /// <summary>
-    /// Gets or sets the orentation of the slider. See <see cref="AspNetCore.Components.Orientation"/>
+    /// Gets or sets the orientation of the slider. See <see cref="AspNetCore.Components.Orientation"/>
     /// </summary>
     [Parameter]
     public Orientation? Orientation { get; set; }
@@ -45,6 +104,28 @@ public partial class FluentSlider<TValue> : FluentInputBase<TValue>
     /// </summary>
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            Module ??= await JSRuntime.InvokeAsync<IJSObjectReference>("import", JAVASCRIPT_FILE);
+        }
+        else
+        {
+            if (updateSliderThumb)
+            {
+                updateSliderThumb = false;
+                if (Module is not null)
+                {
+                    Debounce.Run(100, async () =>
+                    {
+                        await Module!.InvokeVoidAsync("updateSlider", Element);
+                    });
+                }
+            }
+        }
+    }
 
     protected override string? ClassValue
     {
@@ -99,25 +180,20 @@ public partial class FluentSlider<TValue> : FluentInputBase<TValue>
         };
     }
 
-    private static readonly string _stepAttributeValue = GetStepAttributeValue();
-
-    private static string GetStepAttributeValue()
+    public async ValueTask DisposeAsync()
     {
-        // Unwrap Nullable<T>, because InputBase already deals with the Nullable aspect
-        // of it for us. We will only get asked to parse the T for nonempty inputs.
-        var targetType = Nullable.GetUnderlyingType(typeof(TValue)) ?? typeof(TValue);
-        if (targetType == typeof(int) ||
-            targetType == typeof(long) ||
-            targetType == typeof(short) ||
-            targetType == typeof(float) ||
-            targetType == typeof(double) ||
-            targetType == typeof(decimal))
+        try
         {
-            return "1";
+            if (Module is not null)
+            {
+                await Module.DisposeAsync();
+            }
         }
-        else
+        catch (Exception ex) when (ex is JSDisconnectedException ||
+                                   ex is OperationCanceledException)
         {
-            throw new InvalidOperationException($"The type '{targetType}' is not a supported numeric type.");
+            // The JSRuntime side may routinely be gone already if the reason we're disposing is that
+            // the client disconnected. This is not an error.
         }
     }
 }

@@ -1,16 +1,43 @@
+// ------------------------------------------------------------------------
+// MIT License - Copyright (c) Microsoft Corporation. All rights reserved.
+// ------------------------------------------------------------------------
+
 using System.Globalization;
 using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using Microsoft.FluentUI.AspNetCore.Components.Extensions;
 using Microsoft.FluentUI.AspNetCore.Components.Utilities;
+using Microsoft.JSInterop;
 
 namespace Microsoft.FluentUI.AspNetCore.Components;
 
 /// <summary />
-public partial class FluentOverlay
+public partial class FluentOverlay : IAsyncDisposable
 {
+    private readonly string _defaultId = Identifier.NewId();
     private string? _color = null;
     private int _r, _g, _b;
+
+    private const string JAVASCRIPT_FILE = "./_content/Microsoft.FluentUI.AspNetCore.Components/Components/Overlay/FluentOverlay.razor.js";
+    private const string DEFAULT_NEUTRAL_COLOR = "#808080";
+
+    private DotNetObjectReference<FluentOverlay>? _dotNetHelper = null;
+
+    /// <summary />
+    [Inject]
+    private GlobalState GlobalState { get; set; } = default!;
+
+    /// <summary />
+    [Inject]
+    private LibraryConfiguration LibraryConfiguration { get; set; } = default!;
+
+    /// <summary />
+    [Inject]
+    private IJSRuntime JSRuntime { get; set; } = default!;
+
+    /// <summary />
+    private IJSObjectReference? _jsModule { get; set; }
 
     /// <summary />
     protected string? ClassValue => new CssBuilder("fluent-overlay")
@@ -21,11 +48,26 @@ public partial class FluentOverlay
     protected string? StyleValue => new StyleBuilder()
         .AddStyle("cursor", "auto", () => Transparent)
         .AddStyle("background-color", $"rgba({_r}, {_g}, {_b}, {Opacity.ToString()!.Replace(',', '.')})", () => !Transparent)
+        //.AddStyle("opacity", Opacity.ToString()!.Replace(',', '.'), CheckCSSVariableName().IsMatch(BackgroundColor))
         .AddStyle("cursor", "default", () => !Transparent)
-        .AddStyle("position", "fixed", () => FullScreen)
-        .AddStyle("position", "absolute", () => !FullScreen)
+        .AddStyle("position", FullScreen ? "fixed" : "absolute")
+        .AddStyle("display", "flex")
+        .AddStyle("align-items", Alignment.ToAttributeValue())
+        .AddStyle("justify-content", Justification.ToAttributeValue())
+        .AddStyle("pointer-events", "none", () => Interactive)
         .AddStyle("z-index", $"{ZIndex.Overlay}")
         .Build();
+
+    /// <summary />
+    protected string? StyleContentValue => new StyleBuilder()
+        .AddStyle("pointer-events", "auto", () => Interactive)
+        .Build();
+
+    /// <summary>
+    /// Gets or sets the unique identifier of the overlay.
+    /// </summary>
+    [Parameter]
+    public string? Id { get; set; }
 
     /// <summary>
     /// Gets or sets a value indicating whether the overlay is visible.
@@ -34,7 +76,7 @@ public partial class FluentOverlay
     public bool Visible { get; set; } = false;
 
     /// <summary>
-    /// Callback for when overlay visisbility changes.
+    /// Callback for when overlay visibility changes.
     /// </summary>
     [Parameter]
     public EventCallback<bool> VisibleChanged { get; set; }
@@ -53,6 +95,7 @@ public partial class FluentOverlay
 
     /// <summary>
     /// Gets or sets the opacity of the overlay.
+    /// Default is 0.4.
     /// </summary>
     [Parameter]
     public double? Opacity { get; set; }
@@ -77,16 +120,34 @@ public partial class FluentOverlay
     [Parameter]
     public bool FullScreen { get; set; } = false;
 
+    /// <summary>
+    /// Gets or sets a value indicating whether the overlay is interactive, except for the element with the specified <see cref="InteractiveExceptId"/>.
+    /// In other words, the elements below the overlay remain usable (mouse-over, click) and the overlay will closed when clicked.
+    /// </summary>
+    [Parameter]
+    public bool Interactive { get; set; } = false;
+
+    /// <summary>
+    /// Gets or sets the HTML identifier of the element that is not interactive when the overlay is shown.
+    /// This property is ignored if <see cref="Interactive"/> is false.
+    /// </summary>
+    [Parameter]
+    public string? InteractiveExceptId { get; set; } = null;
+
+    /// <summary>
+    /// Gets of sets a value indicating if the overlay can be dismissed by clicking on it.
+    /// Default is true.
+    /// </summary>
     [Parameter]
     public bool Dismissable { get; set; } = true;
 
     /// <summary>
     /// Gets or sets the background color.
-    /// Needs to be formatted as an HTML hex color string (#rrggbb or #rgb).
-    /// Default is '#ffffff'.
+    /// Needs to be formatted as an HTML hex color string (#rrggbb or #rgb)
+    /// Default NeutralBaseColor token value (#808080).
     /// </summary>
     [Parameter]
-    public string BackgroundColor { get; set; } = "#ffffff";
+    public string? BackgroundColor { get; set; }
 
     [Parameter]
     public bool PreventScroll { get; set; } = false;
@@ -94,9 +155,28 @@ public partial class FluentOverlay
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
 
-    protected override void OnParametersSet()
+    protected override async Task OnParametersSetAsync()
     {
-        if (!Transparent && Opacity == 0)
+        if (Interactive)
+        {
+            if (string.IsNullOrEmpty(Id))
+            {
+                Id = _defaultId;
+            }
+
+            if (Visible)
+            {
+                // Add a document.addEventListener when Visible is true
+                await InvokeOverlayInitializeAsync();
+            }
+            else
+            {
+                // Remove a document.addEventListener when Visible is false
+                await InvokeOverlayDisposeAsync();
+            }
+        }
+
+        if (!Transparent && Opacity is null)
         {
             Opacity = 0.4;
         }
@@ -106,44 +186,67 @@ public partial class FluentOverlay
             Transparent = false;
         }
 
-        if (!string.IsNullOrWhiteSpace(BackgroundColor))
+        BackgroundColor ??= GlobalState.NeutralColor ?? DEFAULT_NEUTRAL_COLOR;
+
+        if (!CheckRGBString().IsMatch(BackgroundColor))
         {
+            throw new ArgumentException("BackgroundColor must be a valid HTML hex color string (#rrggbb or #rgb)");
+        }
 
-#if NET7_0_OR_GREATER
-            if (!CheckRGBString().IsMatch(BackgroundColor))
-#else
-            if (!Regex.IsMatch(BackgroundColor, "^(?:#([a-fA-F0-9]{6}|[a-fA-F0-9]{3}))"))
-#endif
-            {
-                throw new ArgumentException("BackgroundColor must be a valid HTML hex color string (#rrggbb or #rgb).");
-            }
-            else
-            {
-                _color = BackgroundColor[1..];
-            }
+        _color = BackgroundColor[1..];
 
-            if (_color.Length == 6)
-            {
-                _r = int.Parse(_color[..2], NumberStyles.HexNumber);
-                _g = int.Parse(_color[2..4], NumberStyles.HexNumber);
-                _b = int.Parse(_color[4..], NumberStyles.HexNumber);
-            }
-            else
-            {
-                _r = int.Parse(_color[0..1], NumberStyles.HexNumber);
-                _g = int.Parse(_color[1..2], NumberStyles.HexNumber);
-                _b = int.Parse(_color[2..], NumberStyles.HexNumber);
-            }
+        if (_color.Length == 6)
+        {
+            _r = int.Parse(_color[..2], NumberStyles.HexNumber);
+            _g = int.Parse(_color[2..4], NumberStyles.HexNumber);
+            _b = int.Parse(_color[4..], NumberStyles.HexNumber);
+        }
+        else
+        {
+            _r = int.Parse(_color[0..1], NumberStyles.HexNumber);
+            _g = int.Parse(_color[1..2], NumberStyles.HexNumber);
+            _b = int.Parse(_color[2..], NumberStyles.HexNumber);
         }
     }
-
-    protected async Task OnCloseHandlerAsync(MouseEventArgs e)
+    protected override void OnInitialized()
     {
-        if (!Dismissable)
+        GlobalState.OnChange += UpdateNeutralColor;
+    }
+
+    private void UpdateNeutralColor()
+    {
+        BackgroundColor = GlobalState.NeutralColor;
+        StateHasChanged();
+    }
+
+    [JSInvokable]
+    public async Task OnCloseInteractiveAsync(MouseEventArgs e)
+    {
+        if (!Dismissable || !Visible)
         {
             return;
         }
 
+        // Remove the document.removeEventListener
+        await InvokeOverlayDisposeAsync();
+
+        // Close the overlay
+        await OnCloseInternalHandlerAsync(e);
+    }
+
+    public async Task OnCloseHandlerAsync(MouseEventArgs e)
+    {
+        if (!Dismissable || !Visible || Interactive)
+        {
+            return;
+        }
+
+        // Close the overlay
+        await OnCloseInternalHandlerAsync(e);
+    }
+
+    private async Task OnCloseInternalHandlerAsync(MouseEventArgs e)
+    {
         Visible = false;
 
         if (VisibleChanged.HasDelegate)
@@ -155,13 +258,43 @@ public partial class FluentOverlay
         {
             await OnClose.InvokeAsync(e);
         }
-
-        return;
     }
 
-#if NET7_0_OR_GREATER
+    /// <summary>
+    /// Disposes the overlay.
+    /// </summary>
+    /// <returns></returns>
+    public async ValueTask DisposeAsync()
+    {
+        await InvokeOverlayDisposeAsync();
+
+        if (_jsModule != null)
+        {
+            await _jsModule.DisposeAsync();
+        }
+
+        GlobalState.OnChange -= UpdateNeutralColor;
+    }
+
+    /// <summary />
+    private async Task InvokeOverlayInitializeAsync()
+    {
+        _dotNetHelper ??= DotNetObjectReference.Create(this);
+        _jsModule ??= await JSRuntime.InvokeAsync<IJSObjectReference>("import", JAVASCRIPT_FILE.FormatCollocatedUrl(LibraryConfiguration));
+
+        var containerId = FullScreen ? null : Id;
+        await _jsModule.InvokeVoidAsync("overlayInitialize", _dotNetHelper, containerId, InteractiveExceptId);
+    }
+
+    /// <summary />
+    private async Task InvokeOverlayDisposeAsync()
+    {
+        if (_jsModule != null && Interactive)
+        {
+            await _jsModule.InvokeVoidAsync("overlayDispose", InteractiveExceptId);
+        }
+    }
+
     [GeneratedRegex("^(?:#(?:[a-fA-F0-9]{6}|[a-fA-F0-9]{3}))")]
     private static partial Regex CheckRGBString();
-#endif
-
 }

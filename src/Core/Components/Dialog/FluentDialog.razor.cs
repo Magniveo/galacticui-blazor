@@ -165,6 +165,10 @@ public partial class FluentDialog : FluentComponentBase
     public void Show()
     {
         Hidden = false;
+        if (Instance is not null)
+        {
+            Instance.Parameters.Visible = true;
+        }
         RefreshHeaderFooter();
     }
 
@@ -174,7 +178,10 @@ public partial class FluentDialog : FluentComponentBase
     public void Hide()
     {
         Hidden = true;
-        RefreshHeaderFooter();
+        if (Instance is not null)
+        {
+            Instance.Parameters.Visible = false;
+        }
     }
 
     /// <summary>
@@ -233,6 +240,16 @@ public partial class FluentDialog : FluentComponentBase
             if (Instance.Parameters.OnDialogClosing.HasDelegate)
             {
                 await Instance.Parameters.OnDialogClosing.InvokeAsync(Instance);
+            }
+
+            if (Instance.Parameters.ValidateDialogAsync != null && !dialogResult.Cancelled)
+            {
+                var isValid = await Instance.Parameters.ValidateDialogAsync();
+
+                if (!isValid)
+                {
+                    return;
+                }
             }
         }
         DialogContext?.DialogContainer.DismissInstance(Id!, dialogResult);

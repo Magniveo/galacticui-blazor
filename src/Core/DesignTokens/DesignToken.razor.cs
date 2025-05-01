@@ -1,6 +1,9 @@
+// ------------------------------------------------------------------------
+// MIT License - Copyright (c) Microsoft Corporation. All rights reserved.
+// ------------------------------------------------------------------------
+
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.AspNetCore.Components;
-using Microsoft.FluentUI.AspNetCore.Components.Extensions;
 using Microsoft.JSInterop;
 
 namespace Microsoft.FluentUI.AspNetCore.Components.DesignTokens;
@@ -74,7 +77,7 @@ public partial class DesignToken<T> : ComponentBase, IDesignToken<T>, IAsyncDisp
 
     private async Task InitJSReferenceAsync()
     {
-        _jsModule ??= await JSRuntime.InvokeAsync<IJSObjectReference>("import", JAVASCRIPT_FILE.FormatCollocatedUrl(LibraryConfiguration));
+        _jsModule ??= await JSRuntime.InvokeAsync<IJSObjectReference>("import", JAVASCRIPT_FILE);
     }
 
 #pragma warning disable VSTHRD200 // Use "Async" suffix for async methods
@@ -85,7 +88,19 @@ public partial class DesignToken<T> : ComponentBase, IDesignToken<T>, IAsyncDisp
     public async ValueTask<DesignToken<T>> WithDefault(string value)
     {
         await InitJSReferenceAsync();
-        await _jsModule.InvokeVoidAsync(Name + ".withDefault", value);
+
+        if (Name == "accentBaseColor")
+        {
+            await _jsModule.InvokeVoidAsync("updateAccentBaseColor", value);
+        }
+        else if (Name == "neutralBaseColor")
+        {
+            await _jsModule.InvokeVoidAsync("updateNeutralBaseColor", value);
+        }
+        else
+        {
+            await _jsModule.InvokeVoidAsync(Name + ".withDefault", value);
+        }
         return this;
     }
 
@@ -148,7 +163,6 @@ public partial class DesignToken<T> : ComponentBase, IDesignToken<T>, IAsyncDisp
     /// Convert a hex color string to a value the DesignToken can work with
     /// </summary>
     /// <returns>the value</returns>
-    [SuppressMessage("Style", "VSTHRD200:Use `Async` suffix for async methods", Justification = "#vNext: To update in the next version")]
     public async ValueTask<object> ParseColorHex(string color)
     {
         await InitJSReferenceAsync();

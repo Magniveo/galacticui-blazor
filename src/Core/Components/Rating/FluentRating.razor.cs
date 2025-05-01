@@ -1,7 +1,12 @@
-using Microsoft.AspNetCore.Components;
-using Microsoft.FluentUI.AspNetCore.Components.Utilities;
+// ------------------------------------------------------------------------
+// MIT License - Copyright (c) Microsoft Corporation. All rights reserved.
+// ------------------------------------------------------------------------
+
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
+using Microsoft.FluentUI.AspNetCore.Components.Utilities;
 
 namespace Microsoft.FluentUI.AspNetCore.Components;
 
@@ -37,7 +42,7 @@ public partial class FluentRating : FluentInputBase<int>
     public Icon IconOutline { get; set; } = new CoreIcons.Regular.Size20.Star();
 
     /// <summary>
-    /// Gets or sets the icon drawing and fill color. 
+    /// Gets or sets the icon drawing and fill color.
     /// Value comes from the <see cref="Color"/> enumeration. Defaults to Accent.
     /// </summary>
     [Parameter]
@@ -106,6 +111,15 @@ public partial class FluentRating : FluentInputBase<int>
         else
         {
             await SetCurrentValueAsync(value);
+        }
+    }
+
+    private async Task OnKeyDownAsync(KeyboardEventArgs args)
+    {
+        if (AllowReset && args.Key == " ")
+        {
+            await SetCurrentValueAsync(0);
+            await UpdateHoverValueAsync(null);
         }
     }
 

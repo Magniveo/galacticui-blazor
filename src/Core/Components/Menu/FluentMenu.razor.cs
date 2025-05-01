@@ -112,7 +112,7 @@ public partial class FluentMenu : FluentComponentBase, IDisposable
     public HorizontalPosition HorizontalPosition { get; set; } = HorizontalPosition.Unset;
 
     /// <summary>
-    /// Gets or sets a value indicating whether the region overlaps the anchor on the horizontal axis. 
+    /// Gets or sets a value indicating whether the region overlaps the anchor on the horizontal axis.
     /// Default is false which places the region adjacent to the anchor element.
     /// </summary>
     [Parameter]
@@ -161,6 +161,24 @@ public partial class FluentMenu : FluentComponentBase, IDisposable
     [Parameter]
     public int HorizontalThreshold { get; set; } = 200;
 
+    /// <summary>
+    /// Gets or sets the Horizontal viewport lock.
+    /// </summary>
+    [Parameter]
+    public bool HorizontalViewportLock { get; set; }
+
+    /// <summary>
+    /// Gets or sets the horizontal scaling mode.
+    /// </summary>
+    [Parameter]
+    public AxisScalingMode? HorizontalScaling { get; set; }
+
+    /// <summary>
+    /// Raised when FluentMenuItem Checked changed.
+    /// </summary>
+    [Parameter]
+    public EventCallback<FluentMenuItem> OnCheckedChanged { get; set; }
+
     protected override void OnInitialized()
     {
         if (Anchored && string.IsNullOrEmpty(Anchor))
@@ -171,6 +189,11 @@ public partial class FluentMenu : FluentComponentBase, IDisposable
         _menuService = ServiceProvider?.GetService<IMenuService>();
         if (MenuService != null && DrawMenuWithService)
         {
+            if (string.IsNullOrEmpty(MenuService.ProviderId))
+            {
+                throw new ArgumentNullException(nameof(UseMenuService), "<FluentMenuProvider /> needs to be added to the main layout of your application/site.");
+            }
+
             MenuService.Add(this);
         }
 
@@ -182,9 +205,10 @@ public partial class FluentMenu : FluentComponentBase, IDisposable
     {
         if (firstRender)
         {
+            _jsModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", JAVASCRIPT_FILE.FormatCollocatedUrl(LibraryConfiguration));
+
             if (Trigger != MouseButton.None)
             {
-                _jsModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", JAVASCRIPT_FILE.FormatCollocatedUrl(LibraryConfiguration));
 
                 _dotNetHelper = DotNetObjectReference.Create(this);
 
@@ -297,6 +321,16 @@ public partial class FluentMenu : FluentComponentBase, IDisposable
         {
             await OpenChanged.InvokeAsync(Open);
         }
+    }
+
+    internal async Task NotifyCheckedChangedAsync(FluentMenuItem fluentMenuItem)
+    {
+        await OnCheckedChanged.InvokeAsync(fluentMenuItem);
+    }
+
+    internal async Task<bool> IsCheckedAsync (FluentMenuItem item)
+    {
+        return await _jsModule.InvokeAsync<bool>("isChecked", item.Id);
     }
 
     /// <summary>

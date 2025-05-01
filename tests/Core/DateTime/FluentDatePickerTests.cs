@@ -2,10 +2,10 @@
 // MIT License - Copyright (c) Microsoft Corporation. All rights reserved.
 // ------------------------------------------------------------------------
 
+using System.Globalization;
 using Bunit;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.DependencyInjection;
-using System.Globalization;
 using Xunit;
 
 namespace Microsoft.FluentUI.AspNetCore.Components.Tests.DateTime;
@@ -14,6 +14,9 @@ public class FluentDatePickerTests : TestBase
 {
     [Inject]
     private LibraryConfiguration LibraryConfiguration { get; set; } = new LibraryConfiguration();
+
+    [Inject]
+    public GlobalState GlobalState { get; set; } = new GlobalState();
 
     [Fact]
     public void FluentDatePicker_Closed()
@@ -46,6 +49,7 @@ public class FluentDatePickerTests : TestBase
         using var ctx = new TestContext();
         ctx.JSInterop.Mode = JSRuntimeMode.Loose;
         ctx.Services.AddSingleton(LibraryConfiguration);
+        ctx.Services.AddSingleton(GlobalState);
 
         // Act
         var picker = ctx.RenderComponent<FluentDatePicker>();
@@ -72,6 +76,7 @@ public class FluentDatePickerTests : TestBase
         using var ctx = new TestContext();
         ctx.JSInterop.Mode = JSRuntimeMode.Loose;
         ctx.Services.AddSingleton(LibraryConfiguration);
+        ctx.Services.AddSingleton(GlobalState);
         var today = System.DateTime.Today;
 
         // Act
@@ -182,6 +187,7 @@ public class FluentDatePickerTests : TestBase
         using var ctx = new TestContext();
         ctx.JSInterop.Mode = JSRuntimeMode.Loose;
         ctx.Services.AddSingleton(LibraryConfiguration);
+        ctx.Services.AddSingleton(GlobalState);
 
         // Act
         var picker = ctx.RenderComponent<FluentDatePicker>(parameters =>
@@ -224,5 +230,66 @@ public class FluentDatePickerTests : TestBase
 
         // Assert
         Assert.Equal(System.DateTime.Parse("2022-03-12"), picker.Instance.Value);
+    }
+
+    [Theory]
+    [InlineData(null)]
+    [InlineData("2024-06-05")]
+    public void FluentDatePicker_DoubleClickToSetDateInTextField(string plainDateTime)
+    {
+        // Arrange
+        using var ctx = new TestContext();
+        ctx.JSInterop.Mode = JSRuntimeMode.Loose;
+        ctx.Services.AddSingleton(LibraryConfiguration);
+        System.DateTime? dt = string.IsNullOrEmpty(plainDateTime) ? null : System.DateTime.Parse(plainDateTime);
+
+        // Act
+        var picker = ctx.RenderComponent<FluentDatePicker>(parameters =>
+        {
+            parameters.Add(p => p.DoubleClickToDate, dt);
+        });
+
+        var textField = picker.Find("fluent-text-field");
+
+        // Double-Click
+        textField.DoubleClick();
+
+        // Assert
+        Assert.False(picker.Instance.Opened);
+
+        if (dt.HasValue)
+        {
+            Assert.Equal(dt.Value, picker.Instance.Value);
+        }
+        else
+        {
+            Assert.Null(picker.Instance.Value);
+        }
+    }
+
+    [Fact]
+    public void FluentDatePicker_OnDoubleClickEventTriggers()
+    {
+        // Arrange
+        using var ctx = new TestContext();
+        ctx.JSInterop.Mode = JSRuntimeMode.Loose;
+        ctx.Services.AddSingleton(LibraryConfiguration);
+        var expected = "EventWorks";
+
+        // Act
+        var actual = string.Empty;
+
+        var picker = ctx.RenderComponent<FluentDatePicker>(parameters =>
+        {
+            parameters.Add(p => p.OnDoubleClick, e => actual = expected);
+        });
+
+        var textField = picker.Find("fluent-text-field");
+
+        // Double-Click
+        textField.DoubleClick();
+
+        // Assert
+        Assert.Equal(expected, actual);
     }
 }

@@ -16,7 +16,7 @@
 <GButton Appearance="Appearance.Accent" @onclick="() => visible = !visible">Show Overlay</GButton>
 
 <FluentOverlay @bind-Visible=@visible
-               Opacity="0.4"
+               Transparent="false"
                Alignment="@alignment"
                Justification="@justification"
                OnClose="HandleOnClose">

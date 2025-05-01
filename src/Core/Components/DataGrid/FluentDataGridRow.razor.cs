@@ -14,6 +14,7 @@ public partial class FluentDataGridRow<TGridItem> : FluentComponentBase, IHandle
 {
     internal string RowId { get; set; } = string.Empty;
     private readonly Dictionary<string, FluentDataGridCell<TGridItem>> cells = [];
+
     /// <summary>
     /// Gets or sets the reference to the item that holds this row's values.
     /// </summary>
@@ -55,37 +56,35 @@ public partial class FluentDataGridRow<TGridItem> : FluentComponentBase, IHandle
     /// Gets or sets the owning <see cref="FluentDataGrid{TItem}"/> component
     /// </summary>
     [CascadingParameter]
-    internal InternalGridContext<TGridItem> Owner { get; set; } = default!;
+    internal InternalGridContext<TGridItem> InternalGridContext { get; set; } = default!;
 
-    public bool Selected { get; set; }
+    /// <summary>
+    /// Gets a reference to the enclosing <see cref="FluentDataGrid{TGridItem}" />.
+    /// </summary>
+    protected FluentDataGrid<TGridItem> Grid => InternalGridContext.Grid;
 
-    protected string? ClassValue
-    {
-        get => new CssBuilder(Class)
-            .AddClass(RowIndex > 0 ? "g-table__row" : "g-table__head")
-            //.AddClass("hover", when: Owner.Grid.ShowHover)
-            .AddClass(Selected?"g-table__row_selected":"")
-            .Build();
-        set => Class=value;
-    }
+    protected string? ClassValue => new CssBuilder(Class)
+        .AddClass("fluent-data-grid-row")
+        .AddClass("hover", when: Grid.ShowHover)
+        .Build();
 
     protected string? StyleValue => new StyleBuilder(Style)
-       .AddStyle("height", $"{Owner.Grid.ItemSize:0}px", () => Owner.Grid.Virtualize && RowType == DataGridRowType.Default)
-       .AddStyle("height", "100%", () => (!Owner.Grid.Virtualize || Owner.Rows.Count == 0) && Owner.Grid.Loading && RowType == DataGridRowType.Default)
-       .AddStyle("align-items", "center", () => Owner.Grid.Virtualize && RowType == DataGridRowType.Default && string.IsNullOrEmpty(Style))
+       //.AddStyle("height", $"{Grid.ItemSize:0}px", () => Grid.Virtualize && RowType == DataGridRowType.Default)
+       //.AddStyle("height", "100%", () => (!Grid.Virtualize || InternalGridContext.Rows.Count == 0) && Grid.Loading && RowType == DataGridRowType.Default)
        .Build();
 
     protected override void OnInitialized()
     {
-        RowId = $"r{Owner.GetNextRowId()}";
-        Owner.Register(this);
+        RowId = $"r{InternalGridContext.GetNextRowId()}";
+        InternalGridContext.Register(this);
     }
 
-    public void Dispose() => Owner.Unregister(this);
+    public void Dispose() => InternalGridContext.Unregister(this);
 
     internal void Register(FluentDataGridCell<TGridItem> cell)
     {
-        cell.CellId = $"c{Owner.GetNextCellId()}";
+
+        cell.CellId = $"c{InternalGridContext.GetNextCellId()}";
         cells.Add(cell.CellId, cell);
     }
 
@@ -94,15 +93,11 @@ public partial class FluentDataGridRow<TGridItem> : FluentComponentBase, IHandle
         cells.Remove(cell.CellId!);
     }
 
-    private async Task HandleOnCellFocusAsync(DataGridCellFocusEventArgs args)
+    internal async Task HandleOnRowFocusAsync()
     {
-        var cellId = args.CellId;
-        if (cells.TryGetValue(cellId!, out var cell))
+        if (Grid.OnRowFocus.HasDelegate)
         {
-            if (cell != null && cell.CellType == DataGridCellType.Default)
-            {
-                await Owner.Grid.OnCellFocus.InvokeAsync(cell);
-            }
+            await Grid.OnRowFocus.InvokeAsync(this);
         }
     }
 
@@ -110,26 +105,20 @@ public partial class FluentDataGridRow<TGridItem> : FluentComponentBase, IHandle
     internal async Task HandleOnRowClickAsync(string rowId)
     {
         var row = GetRow(rowId);
-        row.Selected = !row.Selected;
-        if (row != null && Owner.Grid.OnRowClick.HasDelegate)
+
+        if (row is not null && !string.IsNullOrWhiteSpace(row.Class) && (row.Class.Contains(FluentDataGrid<TGridItem>.EMPTY_CONTENT_ROW_CLASS) || row.Class.Contains(FluentDataGrid<TGridItem>.LOADING_CONTENT_ROW_CLASS)))
         {
-            await Owner.Grid.OnRowClick.InvokeAsync(row);
+            return;
         }
-        //ClassValue = "g-table__row g-table__row_selected";
-        //row.ClassValue = ClassValue;
-        //var test = new CssBuilder(Class)
-            //.AddClass(RowIndex > 0 ? "g-table__row" : "g-table__head")
-            //.AddClass("hover", when: Owner.Grid.ShowHover)
-        //    .Build();
-        //row.ClassValue = "g-table__row g-table__row_selected";
-        //if(row.ClassValue.Contains())
-       /* row.Class = row.Class ??"g-table__row_selected";
-        var replace = row.Class.Replace("g-table__row_selected","");
-        row.Class = $"{replace} g-table__row_selected";*/
+
+        if (row != null && Grid.OnRowClick.HasDelegate)
+        {
+            await Grid.OnRowClick.InvokeAsync(row);
+        }
 
         if (row != null && row.RowType == DataGridRowType.Default)
         {
-            foreach (var column in Owner.Grid._columns)
+            foreach (var column in Grid._columns)
             {
                 await column.OnRowClickAsync(row);
             }
@@ -140,9 +129,9 @@ public partial class FluentDataGridRow<TGridItem> : FluentComponentBase, IHandle
     internal async Task HandleOnRowDoubleClickAsync(string rowId)
     {
         var row = GetRow(rowId);
-        if (row != null && Owner.Grid.OnRowDoubleClick.HasDelegate)
+        if (row != null && Grid.OnRowDoubleClick.HasDelegate)
         {
-            await Owner.Grid.OnRowDoubleClick.InvokeAsync(row);
+            await Grid.OnRowDoubleClick.InvokeAsync(row);
         }
     }
 
@@ -154,10 +143,16 @@ public partial class FluentDataGridRow<TGridItem> : FluentComponentBase, IHandle
             return;
         }
 
-        var row = GetRow(rowId, r => r.RowType == DataGridRowType.Default);
-        if (row != null)
+        var row = GetRow(rowId);
+
+        if (row != null && Grid.OnRowClick.HasDelegate)
         {
-            foreach (var column in Owner.Grid._columns)
+            await Grid.OnRowClick.InvokeAsync(row);
+        }
+
+        if (row != null && row.RowType == DataGridRowType.Default)
+        {
+            foreach (var column in Grid._columns)
             {
                 await column.OnRowKeyDownAsync(row, e);
             }
@@ -166,7 +161,7 @@ public partial class FluentDataGridRow<TGridItem> : FluentComponentBase, IHandle
 
     private FluentDataGridRow<TGridItem>? GetRow(string rowId, Func<FluentDataGridRow<TGridItem>, bool>? where = null)
     {
-        if (!string.IsNullOrEmpty(rowId) && Owner.Rows.TryGetValue(rowId, out var row))
+        if (!string.IsNullOrEmpty(rowId) && InternalGridContext.Rows.TryGetValue(rowId, out var row))
         {
             return where == null
                  ? row

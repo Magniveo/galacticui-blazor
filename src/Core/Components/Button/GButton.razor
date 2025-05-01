@@ -21,7 +21,7 @@ else
     {
         <g-button @ref=Element
                class="@(LoadingOverlay ? string.Empty : Class)"
-               style="@(LoadingOverlay ? "width: 100%;" : Style)"
+               style="@Style"
                autofocus=@Autofocus
                form=@FormId
                formaction=@Action
@@ -42,6 +42,7 @@ else
                pin=@Pin
                appearance=@Appearance.ToAttributeValue()
                @onclick="@OnClickHandlerAsync"
+               @onclick:stopPropagation="@StopPropagation"
                @onmouseenter="@OnMouseEnter"
                @onmouseleave="@OnMouseLeave"
                @attributes="AdditionalAttributes">

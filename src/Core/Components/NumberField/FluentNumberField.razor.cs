@@ -1,3 +1,7 @@
+// ------------------------------------------------------------------------
+// MIT License - Copyright (c) Microsoft Corporation. All rights reserved.
+// ------------------------------------------------------------------------
+
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using Microsoft.AspNetCore.Components;
@@ -6,7 +10,7 @@ using Microsoft.JSInterop;
 
 namespace Microsoft.FluentUI.AspNetCore.Components;
 
-public partial class FluentNumberField<TValue> : FluentInputBase<TValue>
+public partial class FluentNumberField<TValue> : FluentInputBase<TValue>, IAsyncDisposable
 {
     private const string JAVASCRIPT_FILE = "./_content/Microsoft.FluentUI.AspNetCore.Components/Components/TextField/FluentTextField.razor.js";
 
@@ -86,7 +90,7 @@ public partial class FluentNumberField<TValue> : FluentInputBase<TValue>
     /// Gets or sets the error message to show when the field can not be parsed.
     /// </summary>
     [Parameter]
-    public string ParsingErrorMessage { get; set; } = "The {0} field must be a number.";
+    public string ParsingErrorMessage { get; set; } = "The {0} field must be a (valid) number.";
 
     /// <summary>
     /// Gets or sets the content to be rendered inside the component.
@@ -94,17 +98,32 @@ public partial class FluentNumberField<TValue> : FluentInputBase<TValue>
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
 
+    /// <summary>
+    /// If true, the min and max values will be automatically set based on the type of TValue,
+    /// unless an explicit value for Min or Max is provided.
+    /// </summary>
+    [Parameter]
+    public bool UseTypeConstraints { get; set; }
+
     private static readonly string _stepAttributeValue = GetStepAttributeValue();
+
+    // If type constraints is true and min is null, set min to the minimum value of TValue.
+    private string? MinValue => UseTypeConstraints && Min == null ? InputHelpers<TValue>.GetMinValue() : Min;
+
+    // If type constraints is true and max is null, set max to the maximum value of TValue.
+    private string? MaxValue => UseTypeConstraints && Max == null ? InputHelpers<TValue>.GetMaxValue() : Max;
 
     private static string GetStepAttributeValue()
     {
-        // Unwrap Nullable<T>, because InputBase already deals with the Nullable aspect
-        // of it for us. We will only get asked to parse the T for nonempty inputs.
         var targetType = Nullable.GetUnderlyingType(typeof(TValue)) ?? typeof(TValue);
         if (targetType == typeof(sbyte) ||
+            targetType == typeof(byte) ||
             targetType == typeof(int) ||
+            targetType == typeof(uint) ||
             targetType == typeof(long) ||
+            targetType == typeof(ulong) ||
             targetType == typeof(short) ||
+            targetType == typeof(ushort) ||
             targetType == typeof(float) ||
             targetType == typeof(double) ||
             targetType == typeof(decimal))
@@ -117,20 +136,6 @@ public partial class FluentNumberField<TValue> : FluentInputBase<TValue>
         }
     }
 
-    protected override bool TryParseValueFromString(string? value, [MaybeNullWhen(false)] out TValue result, [NotNullWhen(false)] out string? validationErrorMessage)
-    {
-        if (BindConverter.TryConvertTo(value, CultureInfo.InvariantCulture, out result))
-        {
-            validationErrorMessage = null;
-            return true;
-        }
-        else
-        {
-            validationErrorMessage = string.Format(CultureInfo.InvariantCulture, ParsingErrorMessage, FieldBound ? FieldIdentifier.FieldName : UnknownBoundField);
-            return false;
-        }
-    }
-
     /// <summary>
     /// Formats the value as a string. Derived classes can override this to determine the formatting used for <c>CurrentValueAsString</c>.
     /// </summary>
@@ -138,7 +143,7 @@ public partial class FluentNumberField<TValue> : FluentInputBase<TValue>
     /// <returns>A string representation of the value.</returns>
     protected override string? FormatValueAsString(TValue? value)
     {
-        // Avoiding a cast to IFormattable to avoid boxing.
+        // Directly convert to string using InvariantCulture for all types
         return value switch
         {
             null => null,
@@ -149,8 +154,30 @@ public partial class FluentNumberField<TValue> : FluentInputBase<TValue>
             float @float => BindConverter.FormatValue(@float, CultureInfo.InvariantCulture),
             double @double => BindConverter.FormatValue(@double, CultureInfo.InvariantCulture),
             decimal @decimal => BindConverter.FormatValue(@decimal, CultureInfo.InvariantCulture),
+            uint @uint => BindConverter.FormatValue(@uint, CultureInfo.InvariantCulture)?.ToString(),
+            ushort @ushort => BindConverter.FormatValue(@ushort, CultureInfo.InvariantCulture)?.ToString(),
+            ulong @ulong => BindConverter.FormatValue(@ulong, CultureInfo.InvariantCulture)?.ToString(),
             _ => throw new InvalidOperationException($"Unsupported type {value.GetType()}"),
         };
+    }
+
+    protected override bool TryParseValueFromString(string? value, [MaybeNullWhen(false)] out TValue result, [NotNullWhen(false)] out string? validationErrorMessage)
+    {
+        try
+        {
+            if (BindConverter.TryConvertTo(value, CultureInfo.InvariantCulture, out result))
+            {
+                validationErrorMessage = null;
+                return true;
+            }
+        }
+        catch (ArgumentException)
+        {
+            result = default!;
+        }
+
+        validationErrorMessage = string.Format(CultureInfo.InvariantCulture, ParsingErrorMessage, FieldBound ? FieldIdentifier.FieldName : UnknownBoundField);
+        return false;
     }
 
     protected override void OnParametersSet()
@@ -165,12 +192,31 @@ public partial class FluentNumberField<TValue> : FluentInputBase<TValue>
 
         if (firstRender)
         {
+            Module ??= await JSRuntime.InvokeAsync<IJSObjectReference>("import", JAVASCRIPT_FILE.FormatCollocatedUrl(LibraryConfiguration));
+            await Module.InvokeVoidAsync("ensureCurrentValueMatch", Element);
+
             if (AutoComplete != null && !string.IsNullOrEmpty(Id))
             {
-                Module ??= await JSRuntime.InvokeAsync<IJSObjectReference>("import", JAVASCRIPT_FILE.FormatCollocatedUrl(LibraryConfiguration));
                 await Module.InvokeVoidAsync("setControlAttribute", Id, "autocomplete", AutoComplete);
             }
 
+        }
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        try
+        {
+            if (Module is not null)
+            {
+                await Module.DisposeAsync();
+            }
+        }
+        catch (Exception ex) when (ex is JSDisconnectedException ||
+                                   ex is OperationCanceledException)
+        {
+            // The JSRuntime side may routinely be gone already if the reason we're disposing is that
+            // the client disconnected. This is not an error.
         }
     }
 }

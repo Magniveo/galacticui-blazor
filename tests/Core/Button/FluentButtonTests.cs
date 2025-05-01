@@ -21,7 +21,7 @@ public partial class FluentButtonTests : TestContext
         using var id = Identifier.SequentialContext();
 
         // Act
-        var cut = RenderComponent<GButton>(parameters =>
+        var cut = RenderComponent<FluentButton>(parameters =>
         {
             parameters.AddChildContent("fluent-button");
         });
@@ -361,9 +361,10 @@ public partial class FluentButtonTests : TestContext
     public void FluentButton_IconStart()
     {
         // Arrange && Act
-        var cut = RenderComponent<GButton>(parameters =>
+        var icon = new SampleIcons.Samples.Info();
+        var cut = RenderComponent<FluentButton>(parameters =>
         {
-            parameters.Add(p => p.IconStart, SampleIcons.Info);
+            parameters.Add(p => p.IconStart, icon);
             parameters.AddChildContent("My button");
         });
 
@@ -377,7 +378,7 @@ public partial class FluentButtonTests : TestContext
         // Arrange && Act
         var cut = RenderComponent<GButton>(parameters =>
         {
-            parameters.Add(p => p.IconEnd, SampleIcons.Info);
+            parameters.Add(p => p.IconEnd, icon);
             parameters.AddChildContent("My button");
         });
 
@@ -391,7 +392,7 @@ public partial class FluentButtonTests : TestContext
         // Arrange && Act
         var cut = RenderComponent<GButton>(parameters =>
         {
-            parameters.Add(p => p.IconEnd, SampleIcons.Info);
+            parameters.Add(p => p.IconEnd, icon);
         });
 
         // Assert
