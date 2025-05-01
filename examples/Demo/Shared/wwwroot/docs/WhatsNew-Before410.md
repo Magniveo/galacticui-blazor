@@ -32,7 +32,7 @@
 
 ### Icons
 - Update to Fluent UI System Icons 1.1.249
-    
+
     **What's new (Name / Size(s) / Variant(s))**
     - Arrow Download / 32 / Light
     - Color Fill Accent / 32 / Light
@@ -47,7 +47,7 @@
     - Shield Task / 32 / Filled & Regular
     - Toolbox / 32 / Filled & Light & Regular
     - Warning Lock Open / 16, 20, 24 / Filled & Regular
- 
+
     **What's updated (Name / Size(s) / Variant(s))**
     - Sound Wave Circle / 20 / Filled & Regular
     - Vehicle Motorcycle / 16, 20, 24, 28, 32, 48 / Filled & Regular
@@ -118,7 +118,7 @@
 - Introduction of a new 'Light' variant of icons. For now a set of 153 icons in size 32 has been added.
 
 - Update to Fluent UI System Icons 1.1.247
-    
+
     **What's new (Name / Size(s) / Variant(s))**
     - Accessibility More / 16, 20, 24 / Filled & Regular
     - Battery 0 / 28, 32 / Filled & Regular
@@ -150,13 +150,13 @@
     - Person Mail / 32 / Light
     - Puzzle Piece / 12 / Filled & Regular
     - Teaching / 20 / Filled & Regular
- 
+
      **What's updated (Name / Size(s) / Variant(s))**
      - Arrow Forward Down Lightning / 20, 24 / Filled & Regular
      - Notebook Lightning / 20, 24 / Filled & Regular
 
 - Update to Fluent UI System Icons 1.1.245
-    
+
     **What's new (Name / Size(s) / Variant(s))**
     - Arrow Collapse All / 16 / Filled & Regular
     - Arrow Expand All / 16, 20, 24 / Filled & Regular
@@ -167,7 +167,7 @@
     - Prompt / 16, 20, 24, 28, 32, 48 / Filled & Regular
     - Search Sparkle / 16, 20, 24, 28, 32, 48 / Filled & Regular
     - Slide Text Call / 16, 20, 24, 28, 48 / Filled & Regular
-    - Slide Text Cursor / 20, 24 / Filled & Regular    
+    - Slide Text Cursor / 20, 24 / Filled & Regular
     - Vehicle Motorcycle / 16, 20, 24, 28, 32, 48 / Filled & Regular
 
      **What's updated (Name / Size(s) / Variant(s))**
@@ -181,7 +181,7 @@
 ### Breaking change
 - \[Option\] Change Option<TType>.Text type to `string?` ([#2063](https://github.com/microsoft/fluentui-blazor/pull/2063)). See also discussion [#2062](https://github.com/microsoft/fluentui-blazor/discussions/2062)
 
-### Demo site and documentation 
+### Demo site and documentation
 - Add DataGridTableScroll demo ([#2098](https://github.com/microsoft/fluentui-blazor/pull/2098))
 - Adds office color table to Design Tokens page ([#2073](https://github.com/microsoft/fluentui-blazor/pull/2073))
 - Cleans up more code snippets ([#2173](https://github.com/microsoft/fluentui-blazor/pull/2173))
@@ -253,11 +253,11 @@
     - Square Dovetail Joint / 12, 16, 20, 24, 28, 32, 48 / Filled & Regular
     - Table Cursor / 16, 20, 24 / Filled & Regular
     - Transparency Square / 20, 24 / Filled & Regular
- 
+
      **What's updated (Name / Size(s) / Variant(s))**
     - Notepad / 32 / Filled & Regular
     - Replay / 20 / Filled & Regular
-   
+
 - Update to Fluent UI System Icons 1.1.239
 
     **What's new (Name / Size(s) / Variant(s))**
@@ -277,15 +277,15 @@
     - Person Tentative / 16, 20, 24 / Filled & Regular
     - Tab Desktop Search / 16, 20, 24 / Filled & Regular
     - Table Sparkle / 20, 24 / Filled & Regular
- 
+
     **What's updated (Name / Size(s) / Variant(s))**
     - Chart Multiple / 20, 24 / Filled & Regular
     - Column Edit / 24 / Filled & Regular
     - Data Pie / 24 / Filled & Regular
-    
+
 ## v4.7.2
 
-### Demo site and documentation 
+### Demo site and documentation
 - \[Docs\] New Video and PageTitle ([#1925](https://github.com/microsoft/fluentui-blazor/pull/1925))
 
 ### Components
@@ -302,7 +302,7 @@
 - \[Lists\] Also set Value (and InternalValue) when SelectedOption is set ([#1970](https://github.com/microsoft/fluentui-blazor/pull/1970))
 - \[MessageBar\] Supply a default value for the message intent when using MessageOptions ([#1993](https://github.com/microsoft/fluentui-blazor/pull/1993))
 - \[NavMenu\] Fix keyboard navigation ([#1950](https://github.com/microsoft/fluentui-blazor/pull/1950))
-- \[NavMenu\] Make sure text is shown when in mobile view in SSR. 
+- \[NavMenu\] Make sure text is shown when in mobile view in SSR.
 - \[ProfileMenu\] Remove ProfileMenu from demo site header and change examples ([#1924](https://github.com/microsoft/fluentui-blazor/pull/1924))
 - \[Tabs\] Not using ClassValue and StyleValue when rendering ([#1931](https://github.com/microsoft/fluentui-blazor/pull/1931))
 - \[Tabs\] Prevent error 'An item with the same key has already been added ([#2006](https://github.com/microsoft/fluentui-blazor/pull/2006))
@@ -324,7 +324,7 @@
 ### Breaking change
 - \[Extensions\] Add a namespace for extension methods to prevent possible naming clashes ([#1776](https://github.com/microsoft/fluentui-blazor/pull/1776))
 
-### Demo site and documentation 
+### Demo site and documentation
 - \[Docs\] Update Progress stroke examples dropdowns ([#1835](https://github.com/microsoft/fluentui-blazor/pull/1835))
 - \[Docs\] Update KeyCodeGlobalExample.razor.css to fix dark mode visuals ([#1834](https://github.com/microsoft/fluentui-blazor/pull/1834))
 - \[Docs\] Update Highlighter example to use FluentTextField instead of input ([#1833](https://github.com/microsoft/fluentui-blazor/pull/1833))
@@ -354,7 +354,7 @@
 - \[Pipeline\] Add Code Coverage Report ([#1861](https://github.com/microsoft/fluentui-blazor/pull/1861))
 
 ### Icons
-- Update to Fluent UI System Icons 1.1.237 
+- Update to Fluent UI System Icons 1.1.237
 
 	**What's new (Name / Size(s) / Variant(s))**
 	- Book / 48 / Filled & Regular
@@ -372,15 +372,15 @@
 	- Settings Chat / 16 / Filled & Regular
 	- Share Multiple / 16, 20, 24 / Filled & Regular
 	- Slide Play / 20, 24 / Filled & Regular
- 
+
 	**What's updated (Name / Size(s) / Variant(s))**
 	- Book Add / 28 / Filled & Regular
 	- Book Contacts / 20, 24, 28, 32 / Filled & Regular
-	- Book / 28 / Filled & Regular   
+	- Book / 28 / Filled & Regular
 
 ## V4.6.1
 
-### Demo site and documentation 
+### Demo site and documentation
 - \[Demo & docs\] Fix documentation error ([#1767](https://github.com/microsoft/fluentui-blazor/pull/1767))
 - \[Demo & docs\] Home page cleanup ([#1763](https://github.com/microsoft/fluentui-blazor/pull/1763))
 - \[Demo & docs\] Removes caching of markdown files for Server demo app ([#1822](https://github.com/microsoft/fluentui-blazor/pull/1822))
@@ -473,7 +473,7 @@
 
 ## V4.6.1
 
-### Demo site and documentation 
+### Demo site and documentation
 - \[Demo & docs\] Fix documentation error ([#1767](https://github.com/microsoft/fluentui-blazor/pull/1767))
 - \[Demo & docs\] Home page cleanup ([#1763](https://github.com/microsoft/fluentui-blazor/pull/1763))
 - \[Demo & docs\] Removes caching of markdown files for Server demo app ([#1822](https://github.com/microsoft/fluentui-blazor/pull/1822))
@@ -586,7 +586,7 @@
 	- Tab Desktop Multiple Sparkle / 16, 20, 24 / Filled & Regular
 	- Tab Desktop Multiple / 24 / Filled & Regular
 	- Vehicle Tractor / 20, 24 / Filled & Regular
- 
+
   **What's updated (Name / Size(s) / Variant(s))**
 	- Classification / 20, 24 / Filled & Regular
 	- Emoji Add / 20 / Filled & Regular
@@ -600,7 +600,7 @@
 	- Calendar Video / 20, 24, 28 / Filled & Regular
 	- Options / 16, 28, 32 / Filled & Regular
 	- Person Alert / 16, 20, 24 / Filled & Regular
-	- Tab Desktop Multiple Bottom / 24 / Filled 
+	- Tab Desktop Multiple Bottom / 24 / Filled
 
 ## V4.5.0
 From now on we will just list the PRs that have been merged. The related issues can be found by looking at the PR details on GitHub.
@@ -690,11 +690,11 @@ New: SortableList component
 New: (experimental) MultiSplitter component
 New: KeyCode component
 Updated: DataGrid - Loading and LoadingContent parameters
-- Issue [#1421](https://github.com/microsoft/fluentui-blazor/issues/1421): @code-block inside FluentDataGrid gets called three times instead of once 
+- Issue [#1421](https://github.com/microsoft/fluentui-blazor/issues/1421): @code-block inside FluentDataGrid gets called three times instead of once
 - Issue [#1391](https://github.com/microsoft/fluentui-blazor/issues/1391): fix: External Authentication in Middleware
 - Issue [#1358](https://github.com/microsoft/fluentui-blazor/issues/1358): fix: value not set in FluentSelect while using keyboard
 - Issue [#1350](https://github.com/microsoft/fluentui-blazor/issues/1350): fix: "i.addEventListener is not a function" in "Microsoft.FluentUI.AspNetCore.Components.lib.module.js"
-- Issue [#1344](https://github.com/microsoft/fluentui-blazor/issues/1344): fix: Keyboard navigation does not trigger value nor option change in Listbox 
+- Issue [#1344](https://github.com/microsoft/fluentui-blazor/issues/1344): fix: Keyboard navigation does not trigger value nor option change in Listbox
 - Issue [#1335](https://github.com/microsoft/fluentui-blazor/issues/1335): Consider removing the PageScript component from the public API (renamed to FluentPageScript)
 - Issue [#1333](https://github.com/microsoft/fluentui-blazor/issues/1333): FluentSwitch inside FluentTab does not work anymore (since 4.3.0)
 - Issue [#1328](https://github.com/microsoft/fluentui-blazor/issues/1328): feat: Allow SVG Icon viewBox to be set via configuration instead of reusing icon size feature
@@ -706,9 +706,9 @@ Updated: DataGrid - Loading and LoadingContent parameters
 - Issue [#1182](https://github.com/microsoft/fluentui-blazor/issues/1182): FluentDesignTheme - Assertion failed - heap is currently locked when changing theme
 - PR [#1426](https://github.com/microsoft/fluentui-blazor/pull/1426): Remove value and current-value for fluent-switch
 - PR [#1424](https://github.com/microsoft/fluentui-blazor/pull/1424): Not setting current-value for fluent-number-field
-- PR [#1404](https://github.com/microsoft/fluentui-blazor/pull/1404): [FluentFileInput\] adds a "disabled" property to the FluentFileInput component 
+- PR [#1404](https://github.com/microsoft/fluentui-blazor/pull/1404): [FluentFileInput\] adds a "disabled" property to the FluentFileInput component
 - PR [#1380](https://github.com/microsoft/fluentui-blazor/pull/1380): [Grid\] Fix breakpoints not working with fractional pixels
-- PR [#1372](https://github.com/microsoft/fluentui-blazor/pull/1372): Lists related refactoring and maintenance 
+- PR [#1372](https://github.com/microsoft/fluentui-blazor/pull/1372): Lists related refactoring and maintenance
 - Demo: Tweak version in footer so it shows Git commit hash in truncated form
 - Demo Fix positioning of hamburger menu in mobile view
 
@@ -749,7 +749,7 @@ Updated: DataGrid - Loading and LoadingContent parameters
 	- Text Edit Style Character Ga / 32 / Filled & Regular
 	- Window Ad / 24 / Filled & Regular
 	- Wrench Settings / 20, 24 / Filled & Regular
-	
+
 	**What's updated (Name / Size(s) / Variant(s))**
 	- Add Circle / 32 / Filled & Regular
 	- Arrow Clockwise Dashes / 16, 20, 24, 32 / Filled & Regular
@@ -840,7 +840,7 @@ Updated: DataGrid - Loading and LoadingContent parameters
 - Issue [#1140](https://github.com/microsoft/fluentui-blazor/issues/1140): FluentIcon - Add Unit Tests
 - Issue [#1141](https://github.com/microsoft/fluentui-blazor/issues/1141): Update initializersLoader.webview.js
 - Issue [#1144](https://github.com/microsoft/fluentui-blazor/issues/1144): List components - Each item must be instantiated (cannot be null)
-- Issue [#1146](https://github.com/microsoft/fluentui-blazor/issues/1146): FluentButton Loading - Fix button when style is applied
+- Issue [#1146](https://github.com/microsoft/fluentui-blazor/issues/1146): GButtonLoading - Fix button when style is applied
 - Issue [#1149](https://github.com/microsoft/fluentui-blazor/issues/1149): ListComponentBase - maintain consistency between SelectedOption and Value
 - Issue [#1155](https://github.com/microsoft/fluentui-blazor/issues/1155): Use GlobalState, use LocalizationDirection, less var’s
 - Issue [#1156](https://github.com/microsoft/fluentui-blazor/issues/1156): FluentDesignTheme - Add OnLoaded event
@@ -878,23 +878,23 @@ Updated: DataGrid - Loading and LoadingContent parameters
 - Issue [#1268](https://github.com/microsoft/fluentui-blazor/issues/1268): Feat: add "invalid" css-class to/in Default Date Picker field if invalid
 - Issue [#1274](https://github.com/microsoft/fluentui-blazor/issues/1274): Fix: [Width less than 250px does not take effect\] in [FluentCombobox and FluentSelect]
 - Issue [#1276](https://github.com/microsoft/fluentui-blazor/issues/1276): FluentTabs shows badge although all tabs are visible
-- \[DialogService\] Fix trimming on production error 
+- \[DialogService\] Fix trimming on production error
 - Demo site: menu structure overhaul
 - Add solution with Template generated projects
 
 ### Known issues
 - FluentDesignTheme: `Assertion failed` error in console. See [#1182](https://github.com/microsoft/fluentui-blazor/issues/1182) for more information. We are still working on a fix.
-- Confirmation message box (and possibly other dialogs) are not working correctly in WebAssembly trimmed projects. See [#1255](https://github.com/microsoft/fluentui-blazor/issues/1255) for more information. 
+- Confirmation message box (and possibly other dialogs) are not working correctly in WebAssembly trimmed projects. See [#1255](https://github.com/microsoft/fluentui-blazor/issues/1255) for more information.
 
 ## V4.2.1
 - NavMenu and NevMenuGroups can now expand/collpase in SSR mode
 - Added PageScript component (See [Static Server Rendeing on MS Learn](https://learn.microsoft.com/en-us/aspnet/core/blazor/javascript-interoperability/static-server-rendering?view=aspnetcore-8.0))
 - Move `initializersLoader.webview.js` back into `wwwroot/js` so it gets published in the package again.
-- Updates and fixes for FluentDesignTheme: add `OnLoaded`, check if LocalStorage is available 
+- Updates and fixes for FluentDesignTheme: add `OnLoaded`, check if LocalStorage is available
 - `FluentProgress`: Add `Width`, `Stroke`, `Color` and `BackgroundColor` attributes
-- `FluentTab`: Add `Visible` parameter 
+- `FluentTab`: Add `Visible` parameter
 - Fix [#1160](https://github.com/microsoft/fluentui-blazor/issues/1160): FluentDesignTheme custom color not honored and assertion failure.
-- Fix [#1116](https://github.com/microsoft/fluentui-blazor/issues/1116): Create FieldIdentifier when no ValueExpression set 
+- Fix [#1116](https://github.com/microsoft/fluentui-blazor/issues/1116): Create FieldIdentifier when no ValueExpression set
 - Fix [#1138](https://github.com/microsoft/fluentui-blazor/issues/1138): Do not render percent sign for indeterminate ProgressToast
 - Fix [#1144](https://github.com/microsoft/fluentui-blazor/issues/1144): [List components\] Each item must be instantiated (cannot be null).
 - Fix [#1146](https://github.com/microsoft/fluentui-blazor/issues/1146): Loading button with styles issue
@@ -904,7 +904,7 @@ Updated: DataGrid - Loading and LoadingContent parameters
 ## V4.2.0
 - New: FluentDesignTheme - An easy-to-use component to set a theme and accent color.
 - New: FluentValidationMessage and Required indicator for input components
-- JavaScript tools project system integration 
+- JavaScript tools project system integration
 - Enhanced: NavMenu
 - Enhanced: InputFile
 - Enhanced: List components
@@ -913,7 +913,7 @@ Updated: DataGrid - Loading and LoadingContent parameters
 - Enhanced: Splitter
 - Updated Templates: responsive NavMenu and other improvements
 - Fix [#1057](https://github.com/microsoft/fluentui-blazor/issues/1057): Can't show Fluent UI Blazor dialog on published Blazor webasm app
-- Fix [#1070](https://github.com/microsoft/fluentui-blazor/issues/1070): Style not applied for FluentPaginator + added `PaginationTextTemplate` parameter 
+- Fix [#1070](https://github.com/microsoft/fluentui-blazor/issues/1070): Style not applied for FluentPaginator + added `PaginationTextTemplate` parameter
 - Update Fluent UI System Icons to 1.1.224:
 
 - **What's new (Name / Size(s) / Variant(s))**
@@ -983,7 +983,7 @@ Updated: DataGrid - Loading and LoadingContent parameters
 - Text Effects Sparkle / 20, 24 / Filled & Regular
 - Whiteboard Off / 16, 20, 24 / Filled & Regular
 - Whiteboard / 16 / Filled & Regular
- 
+
 **What's updated (Name / Size(s) / Variant(s))**
 - Contract Down Left / 28 / Filled & Regular
 - Resize / 20, 24 / Filled & Regular
@@ -992,14 +992,14 @@ Updated: DataGrid - Loading and LoadingContent parameters
 
 
 ## V4.1.1
-- Fix [#939](https://github.com/microsoft/fluentui-blazor/issues/939): Add `OptionTemplate` for `FluentCombobox`, `FluentListBox` and `FluentSelect` 
+- Fix [#939](https://github.com/microsoft/fluentui-blazor/issues/939): Add `OptionTemplate` for `FluentCombobox`, `FluentListBox` and `FluentSelect`
 - Fix [#1040](https://github.com/microsoft/fluentui-blazor/issues/1040): `FluentNumberField` can be changed when `ReadOnly`
 - FluentNavMenu: Add `Tooltip` parameter to `FluentNavMenuGroup` (fallback to `Title`) and `FluentNavLink`
-- FluentNavMenu: Expand the menu when collapsed and a navitem is clicked 
+- FluentNavMenu: Expand the menu when collapsed and a navitem is clicked
 - FluentInputFile: Add ProgressTemplate and a bindable ProgressPercent attribute
 
 ## V4.1.0
-- FluentCalendar: Add new views to select month/year 
+- FluentCalendar: Add new views to select month/year
 - FluentCheckbox: Add tri-state support
 - FluentAccordionItem: Add HeaderTemplate parameter
 - FluentSplitter: Add Panel1MinSize, Panel2MinSize and BarSize parameter
@@ -1038,11 +1038,11 @@ Updated: DataGrid - Loading and LoadingContent parameters
 - This version is for .NET 8 **only**. (use `Microsoft.Fast.Components.FluentUI` when using .NET 6 or 7)
 - Update all input component to use `ReadOnly` instead of a mix of possible spellings
 - Update demo site styling (nav menu and body now scroll independently)
-- Support DisabledDateFunc in FluentDatePicker 
+- Support DisabledDateFunc in FluentDatePicker
 - Removed the FluentCodeEditor component because it lacked features and has no Fluent design aspects. You can use the [BlazorMonaco](https://github.com/serdarciplak/BlazorMonaco) component as a replacement
 - Fix [#911](https://github.com/microsoft/fluentui-blazor/issues/911): Column resizing in DataGrid breaks when column to narrow
 - Fix [#891](https://github.com/microsoft/fluentui-blazor/issues/891): JSDisconnectedException in FluentOverflow
-- Fix [#861](https://github.com/microsoft/fluentui-blazor/issues/861): Needed extra `empty-content-cell` class 
+- Fix [#861](https://github.com/microsoft/fluentui-blazor/issues/861): Needed extra `empty-content-cell` class
 - FluentCard: Add Width and Height + docs/examples
 - FluentToast: Timeout is now in milliseconds
 - FluentToastContainer renamed to FluentToastProvider
@@ -1051,7 +1051,7 @@ Updated: DataGrid - Loading and LoadingContent parameters
 ## V4.0.0-preview.2
 - Functionally equivalent to v3.2.2
 - Replace `AfterBindValue` with native `@bind-Value:after`
-- Fix missed or incorrectly replaced namespace errors 
+- Fix missed or incorrectly replaced namespace errors
 - Update Fluent UI System icons to 1.1.221
 
 ### Update Fluent UI System icons to 1.1.221

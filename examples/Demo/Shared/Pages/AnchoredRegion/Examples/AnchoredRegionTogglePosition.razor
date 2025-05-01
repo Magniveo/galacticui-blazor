@@ -1,5 +1,5 @@
 <div id="viewport-toggle-positions" style="position:relative;height:400px;width:400px;background: var(--neutral-layer-4);overflow:auto;resize:both;">
-    <FluentButton Appearance=Appearance.Neutral id="anchor-toggle-positions" style="margin-left:150px;margin-top:100px">anchor</FluentButton>
+    <GButton Appearance=Appearance.Neutral id="anchor-toggle-positions" style="margin-left:150px;margin-top:100px">anchor</GButton>
     <FluentAnchoredRegion id="toggle-positions-region" Anchor="anchor-toggle-positions" Viewport="viewport-toggle-positions"
                           VerticalPositioningMode="AxisPositioningMode.Locktodefault"
                           VerticalDefaultPosition="@verticalPosition"
@@ -12,10 +12,10 @@
         <div style="height:@(size)px;width:@(size)px;background:var(--highlight-bg);" />
     </FluentAnchoredRegion>
     <div style="margin-top:20px;display:flex;flex-direction:row">
-        <FluentButton Appearance=Appearance.Neutral style="margin-left:10px;margin-top:120px" @onclick=ToggleHorizontal> toggle horizontal</FluentButton>
-        <FluentButton Appearance=Appearance.Neutral style="margin-top:120px" @onclick=ToggleVertical>toggle vertical</FluentButton>
-        <FluentButton Appearance=Appearance.Neutral style="margin-top:120px" @onclick=SetSmall>small</FluentButton>
-        <FluentButton Appearance=Appearance.Neutral style="margin-top:120px" @onclick=SetLarge>large</FluentButton>
+        <GButton Appearance=Appearance.Neutral style="margin-left:10px;margin-top:120px" @onclick=ToggleHorizontal> toggle horizontal</GButton>
+        <GButton Appearance=Appearance.Neutral style="margin-top:120px" @onclick=ToggleVertical>toggle vertical</GButton>
+        <GButton Appearance=Appearance.Neutral style="margin-top:120px" @onclick=SetSmall>small</GButton>
+        <GButton Appearance=Appearance.Neutral style="margin-top:120px" @onclick=SetLarge>large</GButton>
     </div>
 </div>
 

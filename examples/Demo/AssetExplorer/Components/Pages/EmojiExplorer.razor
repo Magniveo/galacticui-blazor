@@ -38,10 +38,10 @@
     {
         @if (EmojisFound.Any())
         {
-            <FluentLabel Class="header">
+            <GLabel Class="header">
                 Click on upper right clipboard emoji in a card to copy a ready to paste <code>FluentEmoji</code>
                 component declaration to the clipboard.
-            </FluentLabel>
+            </GLabel>
 
             <div class="result-list">
                 @foreach (var item in EmojisForCurrentPage)
@@ -50,16 +50,16 @@
                 }
             </div>
 
-            <FluentLabel Class="footer">
+            <GLabel Class="footer">
                 <FluentPaginator State="@PaginationState"
                                  CurrentPageIndexChanged="@HandleCurrentPageIndexChanged" />
-            </FluentLabel>
+            </GLabel>
         }
         else
         {
-            <FluentLabel Class="not-found">
+            <GLabel Class="not-found">
 				@_searchResultMessage
-            </FluentLabel>
+            </GLabel>
         }
     }
 </div>

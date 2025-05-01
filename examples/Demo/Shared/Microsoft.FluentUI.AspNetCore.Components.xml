@@ -5769,55 +5769,55 @@
         <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentInputLabel.ShouldRenderAriaLabel">
             <summary />
         </member>
-        <member name="T:Microsoft.FluentUI.AspNetCore.Components.FluentLabel">
+        <member name="T:Microsoft.FluentUI.AspNetCore.Components.GLabel">
             <summary />
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentLabel.Typo">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GLabel.Typo">
             <summary>
             Applies the theme typography styles.
             </summary>
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentLabel.Disabled">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GLabel.Disabled">
             <summary>
             Activates or deactivates the component (changes the color).
             </summary>
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentLabel.Alignment">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GLabel.Alignment">
             <summary>
             Gets or sets the text-align on the component.
             </summary>
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentLabel.Color">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GLabel.Color">
             <summary>
             Gets or sets the color of the component. It supports the theme colors.
             </summary>
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentLabel.CustomColor">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GLabel.CustomColor">
             <summary>
             Gets or sets the color of the label to a custom value.
             Needs to be formatted as a valid CSS color value (HTML hex color string (#rrggbb or #rgb), CSS variable or named color).
             ⚠️ Only available when Color is set to Color.Custom.
             </summary>
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentLabel.Weight">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GLabel.Weight">
             <summary>
             Gets or sets the font weight of the component:
             Normal (400), Bold (600) or Bolder (800).
             </summary>
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentLabel.MarginBlock">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GLabel.MarginBlock">
             <summary>
             Gets or sets the margin block of the component.
             "default" to use the margin-block prefefined by browser.
             If not set, the MarginBlock will be 0px.
             </summary>
         </member>
-        <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentLabel.ChildContent">
+        <member name="P:Microsoft.FluentUI.AspNetCore.Components.GLabel.ChildContent">
             <summary>
             Gets or sets the child content of component.
             </summary>
         </member>
-        <member name="M:Microsoft.FluentUI.AspNetCore.Components.FluentLabel.OnParametersSet">
+        <member name="M:Microsoft.FluentUI.AspNetCore.Components.GLabel.OnParametersSet">
             <summary />
         </member>
         <member name="P:Microsoft.FluentUI.AspNetCore.Components.FluentLayout.Orientation">

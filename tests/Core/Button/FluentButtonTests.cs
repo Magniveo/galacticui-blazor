@@ -1,27 +1,27 @@
 using Bunit;
-using FluentAssertions;
+
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.FluentUI.AspNetCore.Components.Tests.Extensions;
 using Xunit;
 
 namespace Microsoft.FluentUI.AspNetCore.Components.Tests.Button;
 
-public partial class FluentButtonTests : TestContext
+public partial class GButtonTests : TestContext
 {
-    public FluentButtonTests()
+    public GButtonTests()
     {
         JSInterop.Mode = JSRuntimeMode.Loose;
         Services.AddSingleton(LibraryConfiguration.ForUnitTests);
     }
 
     [Fact]
-    public void FluentButton_Default()
+    public void GButton_Default()
     {
         // Arrange
         using var id = Identifier.SequentialContext();
 
         // Act
-        var cut = RenderComponent<FluentButton>(parameters =>
+        var cut = RenderComponent<GButton>(parameters =>
         {
             parameters.AddChildContent("fluent-button");
         });
@@ -31,7 +31,7 @@ public partial class FluentButtonTests : TestContext
     }
 
     [Fact]
-    public void FluentButton_AutofocusAttribute()
+    public void GButton_AutofocusAttribute()
     {
         // Arrange && Act
         var cut = RenderComponent<GButton>(parameters =>
@@ -49,7 +49,7 @@ public partial class FluentButtonTests : TestContext
     [InlineData(null)]
     [InlineData("")]
     [InlineData(" ")]
-    public void FluentButton_FormIdAttribute(string? formId)
+    public void GButton_FormIdAttribute(string? formId)
     {
         // Arrange && Act
         var cut = RenderComponent<GButton>(parameters =>
@@ -67,7 +67,7 @@ public partial class FluentButtonTests : TestContext
     [InlineData(null)]
     [InlineData("")]
     [InlineData(" ")]
-    public void FluentButton_FormActionAttribute(string? formAction)
+    public void GButton_FormActionAttribute(string? formAction)
     {
         // Arrange && Act
         var cut = RenderComponent<GButton>(parameters =>
@@ -85,7 +85,7 @@ public partial class FluentButtonTests : TestContext
     [InlineData(null)]
     [InlineData("")]
     [InlineData(" ")]
-    public void FluentButton_FormEnctypeAttribute(string? formEnctype)
+    public void GButton_FormEnctypeAttribute(string? formEnctype)
     {
         // Arrange && Act
         var cut = RenderComponent<GButton>(parameters =>
@@ -103,7 +103,7 @@ public partial class FluentButtonTests : TestContext
     [InlineData(null)]
     [InlineData("")]
     [InlineData(" ")]
-    public void FluentButton_FormMethodAttribute(string? formMethod)
+    public void GButton_FormMethodAttribute(string? formMethod)
     {
         // Arrange && Act
         var cut = RenderComponent<GButton>(parameters =>
@@ -117,7 +117,7 @@ public partial class FluentButtonTests : TestContext
     }
 
     [Fact]
-    public void FluentButton_FormNovalidateAttribute()
+    public void GButton_FormNovalidateAttribute()
     {
         // Arrange && Act
         var cut = RenderComponent<GButton>(parameters =>
@@ -136,7 +136,7 @@ public partial class FluentButtonTests : TestContext
     [InlineData("_parent")]
     [InlineData("_top")]
     [InlineData("")]
-    public void FluentButton_FormTargetAttribute(string? formTarget)
+    public void GButton_FormTargetAttribute(string? formTarget)
     {
         // Arrange && Act
         var cut = RenderComponent<GButton>(parameters =>
@@ -165,14 +165,14 @@ public partial class FluentButtonTests : TestContext
         };
 
         // Assert
-        action.Should().Throw<ArgumentException>();
+        Assert.Throws<ArgumentException>(action);
     }
 
     [Theory]
     [InlineData(ButtonType.Button)]
     [InlineData(ButtonType.Reset)]
     [InlineData(ButtonType.Submit)]
-    public void FluentButton_TypeAttribute(ButtonType buttonType)
+    public void GButton_TypeAttribute(ButtonType buttonType)
     {
         // Arrange && Act
         var cut = RenderComponent<GButton>(parameters =>
@@ -190,7 +190,7 @@ public partial class FluentButtonTests : TestContext
     [InlineData(null)]
     [InlineData("")]
     [InlineData(" ")]
-    public void FluentButton_IdAttribute(string? id)
+    public void GButton_IdAttribute(string? id)
     {
         // Arrange && Act
         var cut = RenderComponent<GButton>(parameters =>
@@ -208,7 +208,7 @@ public partial class FluentButtonTests : TestContext
     [InlineData(null)]
     [InlineData("")]
     [InlineData(" ")]
-    public void FluentButton_ValueAttribute(string? value)
+    public void GButton_ValueAttribute(string? value)
     {
         // Arrange && Act
         var cut = RenderComponent<GButton>(parameters =>
@@ -226,7 +226,7 @@ public partial class FluentButtonTests : TestContext
     [InlineData(null)]
     [InlineData("")]
     [InlineData(" ")]
-    public void FluentButton_CurrentValueAttribute(string? currentValue)
+    public void GButton_CurrentValueAttribute(string? currentValue)
     {
         // Arrange && Act
         var cut = RenderComponent<GButton>(parameters =>
@@ -240,7 +240,7 @@ public partial class FluentButtonTests : TestContext
     }
 
     [Fact]
-    public void FluentButton_DisabledAttribute()
+    public void GButton_DisabledAttribute()
     {
         // Arrange && Act
         var cut = RenderComponent<GButton>(parameters =>
@@ -254,7 +254,7 @@ public partial class FluentButtonTests : TestContext
     }
 
     [Fact]
-    public void FluentButton_NameAttribute()
+    public void GButton_NameAttribute()
     {
         // Arrange && Act
         var cut = RenderComponent<GButton>(parameters =>
@@ -268,7 +268,7 @@ public partial class FluentButtonTests : TestContext
     }
 
     [Fact]
-    public void FluentButton_RequiredAttribute()
+    public void GButton_RequiredAttribute()
     {
         // Arrange && Act
         var cut = RenderComponent<GButton>(parameters =>
@@ -287,7 +287,7 @@ public partial class FluentButtonTests : TestContext
     [InlineData(Appearance.Neutral)]
     [InlineData(Appearance.Outline)]
     [InlineData(Appearance.Stealth)]
-    public void FluentButton_AppearanceAttribute(Appearance appearance)
+    public void GButton_AppearanceAttribute(Appearance appearance)
     {
         // Arrange && Act
         var cut = RenderComponent<GButton>(parameters =>
@@ -301,7 +301,7 @@ public partial class FluentButtonTests : TestContext
     }
 
     [Fact]
-    public void FluentButton_ClassAttribute()
+    public void GButton_ClassAttribute()
     {
         // Arrange && Act
         var cut = RenderComponent<GButton>(parameters =>
@@ -315,7 +315,7 @@ public partial class FluentButtonTests : TestContext
     }
 
     [Fact]
-    public void FluentButton_StyleAttribute()
+    public void GButton_StyleAttribute()
     {
         // Arrange && Act
         var cut = RenderComponent<GButton>(parameters =>
@@ -329,7 +329,7 @@ public partial class FluentButtonTests : TestContext
     }
 
     [Fact]
-    public void FluentButton_AdditionalAttribute()
+    public void GButton_AdditionalAttribute()
     {
         // Arrange && Act
         var cut = RenderComponent<GButton>(parameters =>
@@ -343,7 +343,7 @@ public partial class FluentButtonTests : TestContext
     }
 
     [Fact]
-    public void FluentButton_AdditionalAttributes()
+    public void GButton_AdditionalAttributes()
     {
         // Arrange && Act
         var cut = RenderComponent<GButton>(parameters =>
@@ -358,11 +358,11 @@ public partial class FluentButtonTests : TestContext
     }
 
     [Fact]
-    public void FluentButton_IconStart()
+    public void GButton_IconStart()
     {
         // Arrange && Act
         var icon = new SampleIcons.Samples.Info();
-        var cut = RenderComponent<FluentButton>(parameters =>
+        var cut = RenderComponent<GButton>(parameters =>
         {
             parameters.Add(p => p.IconStart, icon);
             parameters.AddChildContent("My button");
@@ -373,9 +373,10 @@ public partial class FluentButtonTests : TestContext
     }
 
     [Fact]
-    public void FluentButton_IconEnd()
+    public void GButton_IconEnd()
     {
         // Arrange && Act
+        var icon = new SampleIcons.Samples.Info();
         var cut = RenderComponent<GButton>(parameters =>
         {
             parameters.Add(p => p.IconEnd, icon);
@@ -387,9 +388,10 @@ public partial class FluentButtonTests : TestContext
     }
 
     [Fact]
-    public void FluentButton_IconNoContent()
+    public void GButton_IconNoContent()
     {
         // Arrange && Act
+        var icon = new SampleIcons.Samples.Info();
         var cut = RenderComponent<GButton>(parameters =>
         {
             parameters.Add(p => p.IconEnd, icon);
@@ -400,7 +402,7 @@ public partial class FluentButtonTests : TestContext
     }
 
     [Fact]
-    public void FluentButton_OnClick_Disabled()
+    public void GButton_OnClick_Disabled()
     {
         var clicked = false;
 

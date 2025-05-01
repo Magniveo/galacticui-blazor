@@ -14,13 +14,13 @@
                  OnCompleted="@OnCompleted" />
 
 <FluentProgress Min="0" Max="100" Visible="@(progressPercent > 0)" Value="@progressPercent" />
-<FluentLabel Alignment="HorizontalAlignment.Center">
+<GLabel Alignment="HorizontalAlignment.Center">
     @progressTitle
-</FluentLabel>
+</GLabel>
 
-<FluentButton Id="MyUploadLoadingButton" Loading="_formUploading" Appearance="Appearance.Accent">
+<GButton Id="MyUploadLoadingButton" Loading="_formUploading" Appearance="Appearance.Accent">
     Upload files
-</FluentButton>
+</GButton>
 
 @if (Files.Any())
 {

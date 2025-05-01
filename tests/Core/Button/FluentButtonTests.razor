@@ -68,9 +68,9 @@
         // Arrange
         // Not adding StopPropagation here explicitly because it is false by default
         var cut = Render(@<div @onclick="@(e => {clickedondiv = true; })">
-                            <FluentButton OnClick="@(e => { clicked = true; } )">
+                            <GButton OnClick="@(e => { clicked = true; } )">
                                 My button
-                            </FluentButton>
+                            </GButton>
                           </div>);
 
         // Act
@@ -89,9 +89,9 @@
 
         // Arrange
         var cut = Render(@<div @onclick="@(e => {clickedondiv = true; })">
-                            <FluentButton StopPropagation="true" OnClick="@(e => { clicked = true; } )">
+                            <GButton StopPropagation="true" OnClick="@(e => { clicked = true; } )">
                                 My button
-                            </FluentButton>
+                            </GButton>
                           </div>);
 
         // Act

@@ -4,12 +4,12 @@
 <FluentStack Class="resize-options" VerticalAlignment="VerticalAlignment.Center" HorizontalGap="4">
     @if (ResizeType == DataGridResizeType.Discrete)
     {
-        <FluentLabel>@Grid.ColumnResizeLabels.DiscreteLabel</FluentLabel>
+        <GLabel>@Grid.ColumnResizeLabels.DiscreteLabel</GLabel>
 
         <FluentSpacer />
-        <FluentButton OnClick="@HandleShrinkAsync" IconStart="@(new CoreIcons.Regular.Size20.Subtract())" aria-label="@(Grid.ColumnResizeLabels.ShrinkAriaLabel)" />
-        <FluentButton OnClick="@HandleGrowAsync" IconStart="@(new CoreIcons.Regular.Size20.Add())" aria-label="@(Grid.ColumnResizeLabels.GrowAriaLabel)" />
-        <FluentButton OnClick="@HandleResetAsync" IconStart="@(new CoreIcons.Regular.Size20.ArrowReset())" aria-label="@(Grid.ColumnResizeLabels.ResetAriaLabel)" />
+        <GButton OnClick="@HandleShrinkAsync" IconStart="@(new CoreIcons.Regular.Size20.Subtract())" aria-label="@(Grid.ColumnResizeLabels.ShrinkAriaLabel)" />
+        <GButton OnClick="@HandleGrowAsync" IconStart="@(new CoreIcons.Regular.Size20.Add())" aria-label="@(Grid.ColumnResizeLabels.GrowAriaLabel)" />
+        <GButton OnClick="@HandleResetAsync" IconStart="@(new CoreIcons.Regular.Size20.ArrowReset())" aria-label="@(Grid.ColumnResizeLabels.ResetAriaLabel)" />
     }
     else
     {
@@ -27,10 +27,10 @@
                                  Autofocus="true"
                                  @onkeydown="@HandleColumnWidthKeyDownAsync" />
             </div>
-            <FluentButton Style="height: 30px;" OnClick="@HandleColumnWidthAsync" Appearance="@Appearance.Accent" aria-label="@(Grid.ColumnResizeLabels.SubmitAriaLabel)">
+            <GButton Style="height: 30px;" OnClick="@HandleColumnWidthAsync" Appearance="@Appearance.Accent" aria-label="@(Grid.ColumnResizeLabels.SubmitAriaLabel)">
                 <FluentIcon Value="@(new CoreIcons.Regular.Size20.Checkmark())" Color="@Color.Fill" />
-            </FluentButton>
-            <FluentButton Style="height: 30px;" OnClick="@HandleResetAsync" IconStart="@(new CoreIcons.Regular.Size20.ArrowReset())" aria-label="@(Grid.ColumnResizeLabels.ResetAriaLabel)" />
+            </GButton>
+            <GButton Style="height: 30px;" OnClick="@HandleResetAsync" IconStart="@(new CoreIcons.Regular.Size20.ArrowReset())" aria-label="@(Grid.ColumnResizeLabels.ResetAriaLabel)" />
         </FluentStack>
     }
 </FluentStack>

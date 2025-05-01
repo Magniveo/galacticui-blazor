@@ -9,9 +9,9 @@
                  OnCompleted="@OnCompleted" />
 
 <FluentProgress Visible="@(progressPercent > 0)" Min="0" Max="100" Value="@progressPercent" />
-<FluentLabel Alignment="HorizontalAlignment.Center">
+<GLabel Alignment="HorizontalAlignment.Center">
     @progressTitle
-</FluentLabel>
+</GLabel>
 
 <GButton Appearance="Appearance.Accent" Id="MyUploadBuffer">
     Upload files

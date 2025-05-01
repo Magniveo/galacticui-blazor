@@ -5,15 +5,15 @@
     <FluentSwitch @bind-Value="@fullScreen" Label="Full screen" />
 </FluentStack>
 
-<FluentButton Appearance="Appearance.Accent"
+<GButton Appearance="Appearance.Accent"
               Style="margin: 24px 0px;"
               @onclick="() => visible = !visible">
     Show Overlay
-</FluentButton>
+</GButton>
 
 <FluentStack VerticalAlignment="VerticalAlignment.Center">
-    <FluentButton OnClick="@(e => counter++)">Increment</FluentButton>
-    <FluentLabel>Counter: @counter</FluentLabel>
+    <GButton OnClick="@(e => counter++)">Increment</GButton>
+    <GLabel>Counter: @counter</GLabel>
 </FluentStack>
 
 <FluentOverlay @bind-Visible=@visible

@@ -141,7 +141,7 @@ This is literally all you need in your views to use Fluent UI Blazor components.
 ```xml
 <GCard>
   <h2>Hello World!</h2>
-  <FluentButton Appearance="@Appearance.Accent">Click Me</FluentButton>
+  <GButtonAppearance="@Appearance.Accent">Click Me</FluentButton>
 </GCard>
 ```
 

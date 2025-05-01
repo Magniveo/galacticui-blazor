@@ -116,7 +116,7 @@ internal static class IdentityComponentsEndpointRouteBuilderExtensions
 
     private static string TemporaryFluentButtonFix(string provider)
     {
-        // Temporary workaround for FluentButton returning a provider value twice
+        // Temporary workaround for GButtonreturning a provider value twice
         // Split the comma-separated list of strings
         var providers = provider.Split(',');
 

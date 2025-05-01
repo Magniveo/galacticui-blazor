@@ -24,7 +24,7 @@
                         <FluentIcon Value="@(new Icons.Filled.Size20.RectangleLandscape())"
                                     Color="Color.Custom"
                                     CustomColor="@(@context.ToAttributeValue() != "default" ? context.ToAttributeValue() : "#036ac4" )" />
-                        <FluentLabel>@context</FluentLabel>
+                        <GLabel>@context</GLabel>
                     </FluentStack>
                 </OptionTemplate>
             </FluentSelect>
@@ -34,7 +34,7 @@
 
     <FluentStack Style="margin: 30px 0px; padding: 30px; border: 1px solid var(--accent-fill-rest);">
         <FluentIcon Value="@(new Icons.Regular.Size24.Airplane())" />
-        <FluentLabel>Example of content</FluentLabel>
+        <GLabel>Example of content</GLabel>
         <GButton Appearance="Appearance.Outline">Outline button</GButton>
         <GButton Appearance="Appearance.Accent">Accent button</GButton>
     </FluentStack>

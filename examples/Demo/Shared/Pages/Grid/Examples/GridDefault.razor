@@ -1,12 +1,12 @@
 ﻿<FluentStack Style="margin-bottom: 24px;" VerticalAlignment="VerticalAlignment.Center">
-    <FluentLabel>Justify</FluentLabel>
+    <GLabel>Justify</GLabel>
     <FluentSelect Items=@(Enum.GetValues<JustifyContent>())
                   OptionValue="@(c => c.ToAttributeValue())"
                   TOption="JustifyContent"
                   Position="SelectPosition.Below"
                   @bind-SelectedOption="@Justification" />
 
-    <FluentLabel>Spacing</FluentLabel>
+    <GLabel>Spacing</GLabel>
     <FluentSlider @bind-Value="@Spacing" Min="0" Max="10" Step="1" Style="max-width: 300px; margin-top: 18px;" />
 </FluentStack>
 

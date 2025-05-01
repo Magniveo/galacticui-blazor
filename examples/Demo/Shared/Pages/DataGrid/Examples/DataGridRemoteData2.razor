@@ -12,17 +12,17 @@
             </FluentGridItem>
         </FluentGrid>
         <FluentStack Orientation="Orientation.Horizontal" HorizontalAlignment="HorizontalAlignment.End">
-            <FluentButton IconStart="@(new Icons.Regular.Size16.Broom())"
+            <GButton IconStart="@(new Icons.Regular.Size16.Broom())"
                           Disabled="loading"
                           OnClick="ClearFilters">
                 Clear
-            </FluentButton>
-            <FluentButton IconStart="@(new Icons.Regular.Size16.ArrowClockwise())"
+            </GButton>
+            <GButton IconStart="@(new Icons.Regular.Size16.ArrowClockwise())"
                           Appearance="Appearance.Accent"
                           Loading="loading"
                           OnClick="DataGridRefreshDataAsync">
                 Search
-            </FluentButton>
+            </GButton>
         </FluentStack>
     </FluentAccordionItem>
 </FluentAccordion>
@@ -44,8 +44,8 @@
         <PropertyColumn Property="@(c => c!.Status)" />
         <PropertyColumn Title="Termination Date" Property="@(c => c!.Termination_Date)" SortBy="@(new ColumnKeyGridSort<FoodRecall>("termination_date"))" Sortable="true" />
         <TemplateColumn Title="Actions" Align="@Align.End">
-            <FluentButton aria-label="Edit item" IconEnd="@(new Icons.Regular.Size16.Edit())" OnClick="@(() => DemoLogger.WriteLine("Edit clicked"))" />
-            <FluentButton aria-label="Delete item" IconEnd="@(new Icons.Regular.Size16.Delete())" OnClick="@(() => DemoLogger.WriteLine("Delete clicked"))" />
+            <GButton aria-label="Edit item" IconEnd="@(new Icons.Regular.Size16.Edit())" OnClick="@(() => DemoLogger.WriteLine("Edit clicked"))" />
+            <GButton aria-label="Delete item" IconEnd="@(new Icons.Regular.Size16.Delete())" OnClick="@(() => DemoLogger.WriteLine("Delete clicked"))" />
         </TemplateColumn>
     </FluentDataGrid>
 </div>

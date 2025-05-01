@@ -247,10 +247,10 @@ The Design Tokens can also be used as components in a `.razor` page directely. I
 	<FluentCard ParentReference="@context">
 		<div class="contents">
 			Dark
-			<FluentButton Appearance="Appearance.Accent">Accent</FluentButton>
-			<FluentButton Appearance="Appearance.Stealth">Stealth</FluentButton>
-			<FluentButton Appearance="Appearance.Outline">Outline</FluentButton>
-			<FluentButton Appearance="Appearance.Lightweight">Lightweight</FluentButton>
+			<GButtonAppearance="Appearance.Accent">Accent</FluentButton>
+			<GButtonAppearance="Appearance.Stealth">Stealth</FluentButton>
+			<GButtonAppearance="Appearance.Outline">Outline</FluentButton>
+			<GButtonAppearance="Appearance.Lightweight">Lightweight</FluentButton>
 		</div>
 	</FluentCard>
 </BaseLayerLuminance>

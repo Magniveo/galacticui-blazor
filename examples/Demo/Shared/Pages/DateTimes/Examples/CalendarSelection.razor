@@ -3,7 +3,7 @@
 <FluentGrid>
     @* SelectMode: Single *@
     <FluentGridItem>
-        <FluentLabel>Single</FluentLabel>
+        <GLabel>Single</GLabel>
         <FluentCalendar DisabledDateFunc="@DisabledDay"
                         @bind-Value="@SelectedDay"
                         SelectMode="CalendarSelectMode.Single" />
@@ -12,7 +12,7 @@
 
     @* SelectMode: Range *@
     <FluentGridItem>
-        <FluentLabel>Range</FluentLabel>
+        <GLabel>Range</GLabel>
         <FluentCalendar DisabledDateFunc="@DisabledDay"
                         @bind-SelectedDates="@SelectedRange"
                         SelectMode="CalendarSelectMode.Range" />
@@ -21,7 +21,7 @@
 
     @* SelectMode: Range + SelectDatesHover *@
     <FluentGridItem>
-        <FluentLabel>Range with "SelectOneWeek"</FluentLabel>
+        <GLabel>Range with "SelectOneWeek"</GLabel>
         <FluentCalendar DisabledDateFunc="@DisabledDay"
                         @bind-SelectedDates="@SelectedRangeCustomized"
                         SelectDatesHover="@SelectOneWeek"
@@ -31,7 +31,7 @@
 
     @* SelectMode: Multiple + Validation *@
     <FluentGridItem>
-        <FluentLabel>Multiple (max 5 days)</FluentLabel>
+        <GLabel>Multiple (max 5 days)</GLabel>
         <FluentCalendar DisabledDateFunc="@DisabledDay"
                         @bind-SelectedDates="@SelectedDays"
                         @bind-SelectedDates:after="@ValidateSelectedDays"
@@ -44,7 +44,7 @@
 
     @* SelectMode: Multiple + SelectDatesHover *@
     <FluentGridItem>
-        <FluentLabel>Multiple with "Select3Days"</FluentLabel>
+        <GLabel>Multiple with "Select3Days"</GLabel>
         <FluentCalendar DisabledDateFunc="@DisabledDay"
                         @bind-SelectedDates="@SelectedDaysCustomized"
                         SelectDatesHover="@Select3Days"

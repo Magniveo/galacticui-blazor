@@ -27,7 +27,7 @@
             <FluentStack VerticalAlignment="@VerticalAlignment.Center">
                 @if (!string.IsNullOrEmpty(HeaderLabel))
                 {
-                    <FluentLabel part="header-label">@HeaderLabel</FluentLabel>
+                    <GLabel part="header-label">@HeaderLabel</GLabel>
                 }
                 @if (!string.IsNullOrEmpty(HeaderButton))
                 {
@@ -50,8 +50,8 @@
                                ImageSize="@ImageSize"
                                Initials="@(Initials ?? FluentPersona.GetDefaultInitials(FullName))"
                                Style="align-items: normal; font-size: x-large;">
-                    <FluentLabel part="fullname" Typo="@Typography.Header" Style="font-weight: bold;">@FullName</FluentLabel>
-                    <FluentLabel part="email">@EMail</FluentLabel>
+                    <GLabel part="fullname" Typo="@Typography.Header" Style="font-weight: bold;">@FullName</GLabel>
+                    <GLabel part="email">@EMail</GLabel>
                 </FluentPersona>
 
             </FluentStack>
@@ -68,7 +68,7 @@
             <FluentStack VerticalAlignment="@VerticalAlignment.Center">
                 @if (!string.IsNullOrEmpty(FooterLabel))
                 {
-                    <FluentLabel part="footer-label">@FooterLabel</FluentLabel>
+                    <GLabel part="footer-label">@FooterLabel</GLabel>
                 }
                 @if (!string.IsNullOrEmpty(FooterLink))
                 {

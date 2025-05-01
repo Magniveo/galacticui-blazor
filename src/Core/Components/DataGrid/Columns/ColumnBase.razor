@@ -21,7 +21,7 @@
 
                 @if (AnyColumnActionEnabled)
                 {
-                    <FluentButton Disabled="@(!AnyColumnActionEnabled)" Id="@_columnId" Appearance="Appearance.Stealth" Class="col-sort-button" Style="width: calc(100% - 20px);" @onclick="@HandleColumnHeaderClickedAsync" aria-label="@tooltip" title="@tooltip">
+                    <GButton Disabled="@(!AnyColumnActionEnabled)" Id="@_columnId" Appearance="Appearance.Stealth" Class="col-sort-button" Style="width: calc(100% - 20px);" @onclick="@HandleColumnHeaderClickedAsync" aria-label="@tooltip" title="@tooltip">
                         <div class="col-title-text" title="@tooltip">@Title</div>
 
                         @if (Grid.SortByAscending.HasValue && IsActiveSortColumn)
@@ -39,7 +39,7 @@
                         {
                             <FluentIcon Value="@(new CoreIcons.Regular.Size20.Filter())" Slot="@(Align == Align.End ? "start" : "end")" Style="opacity: 0.5;" />
                         }
-                    </FluentButton>
+                    </GButton>
                 }
                 else
                 {

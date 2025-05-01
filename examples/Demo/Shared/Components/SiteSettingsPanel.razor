@@ -28,11 +28,11 @@
                     <FluentIcon Value="@(new Icons.Filled.Size20.RectangleLandscape())"
                                 Color="Color.Custom"
                                 CustomColor="@GetCustomColor(@context)" />
-                    <FluentLabel>@context</FluentLabel>
+                    <GLabel>@context</GLabel>
                 </FluentStack>
             </OptionTemplate>
         </FluentSelect>
-        <FluentLabel>Neutral base color</FluentLabel>
+        <GLabel>Neutral base color</GLabel>
         <FluentStack VerticalAlignment="VerticalAlignment.Center">
             <FluentTextField TextFieldType="TextFieldType.Color" @bind-Value="@NeutralColor" Style="width:150px; margin-bottom: 10px;" />
             <FluentIcon Id="neutralinfo" Value="@(new Icons.Regular.Size24.Info())" OnClick="@(() => _popNIVisible = !_popNIVisible)" />
@@ -53,11 +53,11 @@
                       UncheckedMessage="Right to Left"
                       Value="@_ltr"
                       ValueChanged="HandleDirectionChanged" />
-        <FluentLabel>
+        <GLabel>
             These values (except for Direction) are persisted in the LocalStorage.
             and will be recovered during your next visits.<br /><br />
             Use the 'Reset settings button' below to go back to the system theme and a random color.
-        </FluentLabel>
+        </GLabel>
         <FluentDivider Style="width: 100%; margin: 1rem 0" />
         <FluentPopover Style="width: 350px;" AnchorId="info" FixedPlacement="true" @bind-Open="@_popVisible">
             <Header>Reset site settings</Header>

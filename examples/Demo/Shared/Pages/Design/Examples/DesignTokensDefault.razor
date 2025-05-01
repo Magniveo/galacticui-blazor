@@ -1,9 +1,9 @@
 ﻿@using Microsoft.FluentUI.AspNetCore.Components.DesignTokens
 
-<FluentButton @ref="ref1" @onclick="OnClickFirst">Dark/Light</FluentButton>
-<FluentButton @ref="ref2" @onclick="OnClickSecond" Appearance ="Appearance.Accent">Accent button</FluentButton>
-<FluentButton @ref="ref3">And one more</FluentButton>
-<FluentButton @ref="ref4" @onclick=OnClickLast>Last button</FluentButton>
+<GButton @ref="ref1" @onclick="OnClickFirst">Dark/Light</GButton>
+<GButton @ref="ref2" @onclick="OnClickSecond" Appearance ="Appearance.Accent">Accent button</GButton>
+<GButton @ref="ref3">And one more</GButton>
+<GButton @ref="ref4" @onclick=OnClickLast>Last button</GButton>
 
 
 @code {
@@ -25,10 +25,10 @@
     [Inject]
     private ControlCornerRadius ControlCornerRadius { get; set; } = default!;
 
-    private FluentButton? ref1;
-    private FluentButton? ref2;
-    private FluentButton? ref3;
-    private FluentButton? ref4;
+    private GButton? ref1;
+    private GButton? ref2;
+    private GButton? ref3;
+    private GButton? ref4;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {

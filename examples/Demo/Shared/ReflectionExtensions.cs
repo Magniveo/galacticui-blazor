@@ -182,7 +182,7 @@ public static class ReflectionExtensions
         bool invokeTypeNameConverterForGenericType = false)
     {
         bool isNullableType = !methodInfo.ReturnType.IsValueType
-                && (new NullabilityInfoContext().Create(methodInfo.ReturnParameter).ReadState is NullabilityState.Nullable);
+                && new NullabilityInfoContext().Create(methodInfo.ReturnParameter).ReadState is NullabilityState.Nullable;
 
         return methodInfo.ReturnType.ToNameStringWithValueTupleNames(
             methodInfo.ReturnParameter?.GetCustomAttribute<TupleElementNamesAttribute>()?.TransformNames, typeNameConverter,
@@ -210,7 +210,7 @@ public static class ReflectionExtensions
         bool invokeTypeNameConverterForGenericType = false)
     {
         bool isNullableType = !propertyInfo.PropertyType.IsValueType
-                && (new NullabilityInfoContext().Create(propertyInfo).WriteState is NullabilityState.Nullable);
+                && new NullabilityInfoContext().Create(propertyInfo).WriteState is NullabilityState.Nullable;
 
         return propertyInfo.PropertyType.ToNameStringWithValueTupleNames(
             propertyInfo.GetCustomAttribute<TupleElementNamesAttribute>()?.TransformNames, typeNameConverter,

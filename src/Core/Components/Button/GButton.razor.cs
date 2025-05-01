@@ -160,6 +160,8 @@ public partial class GButton : FluentComponentBase, IAsyncDisposable
     [Parameter]
     public Icon? IconEnd { get; set; }
 
+    [Parameter]
+    public bool StopPropagation { get; set; } = false;
     /// <summary>
     /// Gets or sets the title of the button.
     /// The text usually displayed in a 'tooltip' popup when the mouse is over the button.
@@ -212,6 +214,7 @@ public partial class GButton : FluentComponentBase, IAsyncDisposable
             setClassViaPin(_pin);
         }
     }
+
     protected override void OnParametersSet()
     {
         string[] values = ["_self", "_blank", "_parent", "_top"];
@@ -221,11 +224,11 @@ public partial class GButton : FluentComponentBase, IAsyncDisposable
         }
         if (Appearance == AspNetCore.Components.Appearance.Filled)
         {
-            throw new ArgumentException("Appearance.Filled is not supported for GButton");
+            throw new ArgumentException("Appearance.Filled is not supported for FluentButton");
         }
         if (Appearance == AspNetCore.Components.Appearance.Hypertext)
         {
-            throw new ArgumentException("Appearance.Hypertext is not supported for GButton");
+            throw new ArgumentException("Appearance.Hypertext is not supported for FluentButton");
         }
     }
 
@@ -240,15 +243,20 @@ public partial class GButton : FluentComponentBase, IAsyncDisposable
     }
 
     /// <summary />
-    protected virtual MarkupString CustomStyle => new InlineStyleBuilder()
+    //protected virtual MarkupString CustomStyle => new InlineStyleBuilder()
         //.AddStyle($"#{Id}::part(g-button)","background","")
         //.AddStyle($"#{Id}::part(g-button)","color","")
         //.AddStyle($"#{Id}::part(g-button:hover)","","")
         //.AddStyle($"#{Id}::part(g-button)", "background", $"padding-box linear-gradient({BackgroundColor}, {BackgroundColor}), border-box {BackgroundColor}", when: !string.IsNullOrEmpty(BackgroundColor))
         //.AddStyle($"#{Id}::part(g-button)", "color", $"{Color}", when: !string.IsNullOrEmpty(Color))
         //.AddStyle($"#{Id}::part(g-button:hover)", "opacity", "0.8", when: !string.IsNullOrEmpty(Color) || !string.IsNullOrEmpty(BackgroundColor))
-        .BuildMarkupString();
-
+        //.BuildMarkupString();
+        /// <summary />
+        protected virtual MarkupString CustomStyle => new InlineStyleBuilder()
+            .AddStyle($"#{Id}::part(control)", "background", $"padding-box linear-gradient({BackgroundColor}, {BackgroundColor}), border-box {BackgroundColor}", when: !string.IsNullOrEmpty(BackgroundColor))
+            .AddStyle($"#{Id}::part(control)", "color", $"{Color}", when: !string.IsNullOrEmpty(Color))
+            .AddStyle($"#{Id}::part(control):not(:disabled):hover", "opacity", "0.8", when: !string.IsNullOrEmpty(Color) || !string.IsNullOrEmpty(BackgroundColor))
+            .BuildMarkupString();
     /// <summary>
     /// Constructs an instance of <see cref="GButton"/>.
     /// </summary>

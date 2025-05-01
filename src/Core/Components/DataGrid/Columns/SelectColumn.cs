@@ -191,7 +191,7 @@ public class SelectColumn<TGridItem> : ColumnBase<TGridItem>
     /// Gets or sets the function to executed to determine checked/unchecked status.
     /// </summary>
     [Parameter]
-    public Func<TGridItem, bool> Property { get; set; } = (item) => false;
+    public Func<TGridItem, bool> Property { get; set; } = item => false;
 
     /// <inheritdoc />
     [Parameter]
@@ -222,7 +222,7 @@ public class SelectColumn<TGridItem> : ColumnBase<TGridItem>
     /// <returns></returns>
     protected internal override Task OnRowClickAsync(FluentDataGridRow<TGridItem> row)
     {
-        if (SelectFromEntireRow == true && row.RowType == DataGridRowType.Default)
+        if (SelectFromEntireRow && row.RowType == DataGridRowType.Default)
         {
             return AddOrRemoveSelectedItemAsync(row.Item);
         }
@@ -238,7 +238,7 @@ public class SelectColumn<TGridItem> : ColumnBase<TGridItem>
     /// <returns></returns>
     protected internal override Task OnRowKeyDownAsync(FluentDataGridRow<TGridItem> row, KeyboardEventArgs args)
     {
-        if (SelectFromEntireRow == true && row.RowType == DataGridRowType.Default)
+        if (SelectFromEntireRow && row.RowType == DataGridRowType.Default)
         {
             return AddOrRemoveSelectedItemAsync(row.Item);
         }
@@ -337,15 +337,13 @@ public class SelectColumn<TGridItem> : ColumnBase<TGridItem>
                 _ => IconSelectedMultiple
             };
         }
-        else
+
+        return IconUnchecked ?? SelectMode switch
         {
-            return IconUnchecked ?? SelectMode switch
-            {
-                DataGridSelectMode.Single => IconUnselectedSingle,
-                DataGridSelectMode.SingleSticky => IconUnselectedSingle,
-                _ => IconUnselectedMultiple
-            };
-        }
+            DataGridSelectMode.Single => IconUnselectedSingle,
+            DataGridSelectMode.SingleSticky => IconUnselectedSingle,
+            _ => IconUnselectedMultiple
+        };
     }
 
     private async Task KeepOnlyFirstSelectedItemAsync()
@@ -380,7 +378,7 @@ public class SelectColumn<TGridItem> : ColumnBase<TGridItem>
     /// <summary />
     private RenderFragment<TGridItem> GetDefaultChildContent()
     {
-        return (item) => new RenderFragment((builder) =>
+        return item => builder =>
         {
             if (Selectable != null && Selectable.Invoke(item) == false)
             {
@@ -410,7 +408,7 @@ public class SelectColumn<TGridItem> : ColumnBase<TGridItem>
                 builder.AddAttribute(4, "style", "cursor: pointer;");
             }
             builder.CloseComponent();
-        });
+        };
     }
 
     /// <summary />
@@ -419,18 +417,18 @@ public class SelectColumn<TGridItem> : ColumnBase<TGridItem>
         switch (SelectMode)
         {
             case DataGridSelectMode.Single:
-                return new RenderFragment((builder) => { });
+                return _ => { };
 
             case DataGridSelectMode.SingleSticky:
-                return new RenderFragment((builder) => { });
+                return _ => { };
 
             case DataGridSelectMode.Multiple:
                 var selectedAll = GetSelectAll();
-                var iconAllChecked = (selectedAll == null && IconIndeterminate != null)
+                var iconAllChecked = selectedAll == null && IconIndeterminate != null
                                     ? IconIndeterminate
                                     : GetIcon(selectedAll);
 
-                return new RenderFragment((builder) =>
+                return builder =>
                 {
                     builder.OpenComponent<FluentIcon<Icon>>(0);
                     builder.AddAttribute(1, "Value", iconAllChecked);
@@ -441,13 +439,13 @@ public class SelectColumn<TGridItem> : ColumnBase<TGridItem>
                         builder.AddAttribute(4, "onkeydown", EventCallback.Factory.Create<KeyboardEventArgs>(this, OnKeyAllAsync));
                     }
                     builder.AddAttribute(5, "Title", iconAllChecked == IconIndeterminate
-                                                        ? TitleAllIndeterminate
-                                                        : (iconAllChecked == GetIcon(true) ? TitleAllChecked : TitleAllUnchecked));
+                        ? TitleAllIndeterminate
+                        : iconAllChecked == GetIcon(true) ? TitleAllChecked : TitleAllUnchecked);
                     builder.CloseComponent();
-                });
+                };
 
             default:
-                return new RenderFragment((builder) => { });
+                return builder => { };
         }
     }
 
@@ -460,7 +458,7 @@ public class SelectColumn<TGridItem> : ColumnBase<TGridItem>
         }
         else
         {
-            HeaderContent = new RenderFragment((builder) =>
+            HeaderContent = builder =>
             {
                 builder.OpenElement(0, "div");
                 if (!SelectAllDisabled)
@@ -471,7 +469,7 @@ public class SelectColumn<TGridItem> : ColumnBase<TGridItem>
                 }
                 builder.AddContent(4, SelectAllTemplate.Invoke(new SelectAllTemplateArgs(GetSelectAll())));
                 builder.CloseElement();
-            });
+            };
         }
     }
 
@@ -485,19 +483,16 @@ public class SelectColumn<TGridItem> : ColumnBase<TGridItem>
             {
                 return false;
             }
-            else if (SelectedItems.Count() == InternalGridContext.TotalItemCount || SelectAll == true)
+
+            if (SelectedItems.Count() == InternalGridContext.TotalItemCount || SelectAll == true)
             {
                 return true;
             }
-            else
-            {
-                return null;
-            }
-        }
-        else
-        {
+
             return null;
         }
+
+        return null;
     }
 
     /// <inheritdoc />

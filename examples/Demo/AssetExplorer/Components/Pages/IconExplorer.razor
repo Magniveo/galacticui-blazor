@@ -41,7 +41,7 @@
 			OptionValue="@(i => i.ToAttributeValue())" />
 		</FluentGridItem>
 		<FluentGridItem>
-			<FluentButton IconStart="@(new Icons.Regular.Size24.ArrowCircleRight())"
+			<GButton IconStart="@(new Icons.Regular.Size24.ArrowCircleRight())"
 			OnClick="@(() => StartNewSearchAsync(string.Empty))" />
 		</FluentGridItem>
 	</FluentGrid>
@@ -55,10 +55,10 @@
 	{
 		@if (IconsFound.Any())
         {
-            <FluentLabel Class="header">
+            <GLabel Class="header">
                 Click on upper right clipboard icon in a card to copy a ready to paste <code>FluentIcon</code>
                 component declaration to the clipboard.
-            </FluentLabel>
+            </GLabel>
 
             <div class="result-list">
                 @foreach (var item in IconsForCurrentPage)
@@ -67,16 +67,16 @@
                 }
             </div>
 
-            <FluentLabel Class="footer">
+            <GLabel Class="footer">
                 <FluentPaginator State="@PaginationState"
                                  CurrentPageIndexChanged="@HandleCurrentPageIndexChanged" />
-            </FluentLabel>
+            </GLabel>
         }
         else
         {
-            <FluentLabel Class="not-found">
+            <GLabel Class="not-found">
 				@_searchResultMessage
-            </FluentLabel>
+            </GLabel>
         }
     }
 </div>

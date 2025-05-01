@@ -6,7 +6,7 @@
 <FluentSlider Min="0" Max="100" Step="5" @bind-Value="@Percentage" Style="max-width: 200px; margin: 20px 0px;" Disabled="@Indeterminate" />
 
 <FluentStack Style="margin: 30px;">
-    <FluentLabel Style="width: 20px;">@Percentage</FluentLabel>
+    <GLabel Style="width: 20px;">@Percentage</GLabel>
 
     <FluentProgressRing Value="@(Indeterminate ? null : Percentage)"
                         Width="32px"

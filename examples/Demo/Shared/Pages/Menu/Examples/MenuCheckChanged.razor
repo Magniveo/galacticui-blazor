@@ -3,7 +3,7 @@
 
     <FluentStack Orientation="Orientation.Vertical" VerticalGap="10">
 
-        <FluentLabel Typo="Typography.H5">Role=MenuItemCheckbox</FluentLabel>
+        <GLabel Typo="Typography.H5">Role=MenuItemCheckbox</GLabel>
         <FluentMenu Open="true" OnCheckedChanged="HandleCheckedChanged">
 
             <FluentMenuItem Id="ck1" Role="MenuItemRole.MenuItemCheckbox" @bind-Checked=checkbox1>
@@ -16,13 +16,13 @@
 
         </FluentMenu>
 
-        <FluentButton Appearance="Appearance.Accent" OnClick="ToggleCheckboxItem2">Toggle checkbox item 2</FluentButton>
+        <GButton Appearance="Appearance.Accent" OnClick="ToggleCheckboxItem2">Toggle checkbox item 2</GButton>
 
     </FluentStack>
 
     <FluentStack Orientation="Orientation.Vertical" VerticalGap="10">
 
-        <FluentLabel Typo="Typography.H5">Role=MenuItemRadio</FluentLabel>
+        <GLabel Typo="Typography.H5">Role=MenuItemRadio</GLabel>
         <FluentMenu Open="true" OnCheckedChanged="HandleCheckedChanged">
 
             <FluentMenuItem id="radio1" Role="MenuItemRole.MenuItemRadio" @bind-Checked=radio1>
@@ -61,7 +61,7 @@
 
         </FluentMenu>
 
-        <FluentButton Appearance="Appearance.Accent" OnClick="ToggleRadioItem6">Toggle radio item 6</FluentButton>
+        <GButton Appearance="Appearance.Accent" OnClick="ToggleRadioItem6">Toggle radio item 6</GButton>
 
     </FluentStack>
 
@@ -72,7 +72,7 @@
     private bool checkbox1 = false;
     private bool checkbox2 = false;
 
-    private bool radio1 = false; 
+    private bool radio1 = false;
     private bool radio2 = false;
     private bool radio3 = false;
     private bool radio4 = false;

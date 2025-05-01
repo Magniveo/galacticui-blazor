@@ -5,7 +5,7 @@ using Microsoft.FluentUI.AspNetCore.Components.Utilities;
 namespace Microsoft.FluentUI.AspNetCore.Components;
 
 /// <summary />
-public partial class FluentLabel : FluentComponentBase
+public partial class GLabel : FluentComponentBase
 {
     protected string? ClassValue => new CssBuilder(Class)
         .AddClass($"fluent-typography")
