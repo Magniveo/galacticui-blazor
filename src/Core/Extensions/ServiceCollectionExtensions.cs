@@ -55,8 +55,7 @@ public static class ServiceCollectionExtensions
             }
         }
         services.AddSingleton(options);
-
-        services.AddDesignTokens();
+        services.AddDesignTokens(options);
 
         return services;
     }

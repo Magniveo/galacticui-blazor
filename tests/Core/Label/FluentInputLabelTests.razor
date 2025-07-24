@@ -15,7 +15,7 @@
     public void FluentInputLabel_Default()
     {
         // Arrange && Act
-        var cut = Render(@<FluentInputLabel ForId="abc" Label="My label" />);
+        var cut = Render(@<GInputLabel ForId="abc" Label="My label" />);
 
         // Assert
         cut.Verify();
@@ -25,7 +25,7 @@
     public void FluentInputLabel_Required()
     {
         // Arrange && Act
-        var cut = Render(@<FluentInputLabel ForId="abc" Label="My label" Required="true" />);
+        var cut = Render(@<GInputLabel ForId="abc" Label="My label" Required="true" />);
 
         // Assert
         cut.Verify();
@@ -35,7 +35,7 @@
     public void FluentInputLabel_AriaLabel()
     {
         // Arrange && Act
-        var cut = Render(@<FluentInputLabel ForId="abc" Label="My label" AriaLabel="My ARIA label" />);
+        var cut = Render(@<GInputLabel ForId="abc" Label="My label" AriaLabel="My ARIA label" />);
 
         // Assert
         cut.Verify();
@@ -49,7 +49,7 @@
         {
             { "data-label", "datavalue" }
         };
-        var cut = Render(@<FluentInputLabel ForId="abc" Label="My label" AdditionalAttributes="@additionalAttributes" />);
+        var cut = Render(@<GInputLabel ForId="abc" Label="My label" AdditionalAttributes="@additionalAttributes" />);
 
         // Assert
         cut.Verify();
@@ -59,7 +59,7 @@
     public void FluentInputLabel_Orientation()
     {
         // Arrange && Act
-        var cut = Render(@<FluentInputLabel ForId="abc" Label="My label" Orientation="@Orientation.Horizontal" />);
+        var cut = Render(@<GInputLabel ForId="abc" Label="My label" Orientation="@Orientation.Horizontal" />);
 
         // Assert
         cut.Verify();

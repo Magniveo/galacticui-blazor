@@ -93,7 +93,7 @@
             @if (Sortable.HasValue ? Sortable.Value : IsSortableByDefault())
             {
                 <FluentKeyCode Only="new [] { KeyCode.Ctrl, KeyCode.Enter}" OnKeyDown="HandleKeyDown" class="keycapture" StopPropagation="true" @oncontextmenu="@(() => Grid.RemoveSortByColumnAsync(this))">
-                    <FluentButton Appearance="Appearance.Stealth" Class="col-sort-button" Style="@($"width: calc(100% - {wdelta});")" @onclick="@(() => Grid.SortByColumnAsync(this))" aria-label="@tooltip" title="@tooltip">
+                    <GButton Appearance="Appearance.Stealth" Class="col-sort-button" Style="@($"width: calc(100% - {wdelta});")" @onclick="@(() => Grid.SortByColumnAsync(this))" aria-label="@tooltip" title="@tooltip">
                             <div class="col-title-text" title="@tooltip">@Title</div>
 
                         @if (Grid.SortByAscending.HasValue && IsActiveSortColumn)
@@ -111,7 +111,7 @@
                         {
                             <FluentIcon Value="@(new CoreIcons.Regular.Size20.Filter())" Slot="end" Style="opacity: 0.5;" />
                         }
-                        </FluentButton>
+                        </GButton>
                 </FluentKeyCode>
             }
             else
@@ -158,15 +158,15 @@
     private RenderFragment OptionsButton()
     {
         return
-            @<FluentButton Appearance="Appearance.Stealth" class="col-options-button" @onclick="@(() => Grid.ShowColumnOptionsAsync(this))" aria-label="Filter this column">
+            @<GButton Appearance="Appearance.Stealth" class="col-options-button" @onclick="@(() => Grid.ShowColumnOptionsAsync(this))" aria-label="Filter this column">
                 <FluentIcon Value="@(new CoreIcons.Regular.Size20.ChevronDown())" Color="Color.Neutral" Width="20px" Style="opacity: 0.5;" />
-            </FluentButton>;
+            </GButton>;
     }
 
     private RenderFragment FilterButton()
     {
         return
-            @<FluentButton Appearance="Appearance.Stealth" class="col-options-button" @onclick="@(() => Grid.ShowColumnOptionsAsync(this))" aria-label="Filter this column">
+            @<GButton Appearance="Appearance.Stealth" class="col-options-button" @onclick="@(() => Grid.ShowColumnOptionsAsync(this))" aria-label="Filter this column">
                 @if (Filtered.GetValueOrDefault())
             {
                 <FluentIcon Value="@(new CoreIcons.Regular.Size20.FilterDismiss())" />
@@ -176,6 +176,6 @@
                 <FluentIcon Value="@(new CoreIcons.Regular.Size20.Filter())" />
             }
 
-            </FluentButton>;
+            </GButton>;
     }
 }

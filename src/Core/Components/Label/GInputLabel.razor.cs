@@ -1,16 +1,15 @@
 // ------------------------------------------------------------------------
 // MIT License - Copyright (c) Microsoft Corporation. All rights reserved.
 // ------------------------------------------------------------------------
-
 using Microsoft.AspNetCore.Components;
 using Microsoft.FluentUI.AspNetCore.Components.Extensions;
 using Microsoft.JSInterop;
 
 namespace Microsoft.FluentUI.AspNetCore.Components;
 
-public partial class FluentInputLabel
+public partial class GInputLabel
 {
-    public const string JAVASCRIPT_FILE = "./_content/Microsoft.FluentUI.AspNetCore.Components/Components/Label/FluentInputLabel.razor.js";
+    public const string JAVASCRIPT_FILE = "./_content/Microsoft.FluentUI.AspNetCore.Components/Components/Label/GInputLabel.razor.js";
 
     /// <summary />
     [Inject]
@@ -86,4 +85,7 @@ public partial class FluentInputLabel
     private bool ShouldRenderAriaLabel => !string.IsNullOrWhiteSpace(ForId)
                                        && (!string.IsNullOrWhiteSpace(Label) ||
                                            !string.IsNullOrWhiteSpace(AriaLabel));
+
+    [Parameter] public string Size { get; set; } = "";
+    [Parameter] public string Type { get; set; } = "";
 }

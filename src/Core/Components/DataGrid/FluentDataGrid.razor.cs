@@ -439,7 +439,7 @@ public partial class FluentDataGrid<TGridItem> : FluentComponentBase, IHandleEve
         // We don't want to trigger the first data load until we've collected the initial set of columns,
         // because they might perform some action like setting the default sort order, so it would be wasteful
         // to have to re-query immediately
-        return (_columns.Count > 0 && mustRefreshData) ? RefreshDataCoreAsync() : Task.CompletedTask;
+        return _columns.Count > 0 && mustRefreshData ? RefreshDataCoreAsync() : Task.CompletedTask;
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -603,7 +603,7 @@ public partial class FluentDataGrid<TGridItem> : FluentComponentBase, IHandleEve
     /// Removes the grid's sort on double click for the currently sorted column if it's not a default sort column.
     /// </summary>
     /// <returns>A <see cref="Task"/> representing the completion of the operation.</returns>
-    public Task RemoveSortByColumnAsync() => (_sortByColumn != null) ? RemoveSortByColumnAsync(_sortByColumn) : Task.CompletedTask;
+    public Task RemoveSortByColumnAsync() => _sortByColumn != null ? RemoveSortByColumnAsync(_sortByColumn) : Task.CompletedTask;
 
     /// <summary>
     /// Displays the <see cref="ColumnBase{TGridItem}.ColumnOptions"/> UI for the specified column, closing any other column
@@ -628,7 +628,7 @@ public partial class FluentDataGrid<TGridItem> : FluentComponentBase, IHandleEve
     public Task ShowColumnOptionsAsync(string title)
     {
         var column = _columns.FirstOrDefault(c => c.Title?.Equals(title, StringComparison.InvariantCultureIgnoreCase) ?? false);
-        return (column is not null) ? ShowColumnOptionsAsync(column) : Task.CompletedTask;
+        return column is not null ? ShowColumnOptionsAsync(column) : Task.CompletedTask;
     }
 
     /// <summary>
@@ -639,7 +639,7 @@ public partial class FluentDataGrid<TGridItem> : FluentComponentBase, IHandleEve
     /// <returns>A <see cref="Task"/> representing the completion of the operation.</returns>
     public Task ShowColumnOptionsAsync(int index)
     {
-        return (index >= 0 && index < _columns.Count) ? ShowColumnOptionsAsync(_columns[index]) : Task.CompletedTask;
+        return index >= 0 && index < _columns.Count ? ShowColumnOptionsAsync(_columns[index]) : Task.CompletedTask;
     }
 
     /// <summary>
@@ -675,7 +675,7 @@ public partial class FluentDataGrid<TGridItem> : FluentComponentBase, IHandleEve
     public Task ShowColumnResizeAsync(string title)
     {
         var column = _columns.FirstOrDefault(c => c.Title?.Equals(title, StringComparison.InvariantCultureIgnoreCase) ?? false);
-        return (column is not null) ? ShowColumnResizeAsync(column) : Task.CompletedTask;
+        return column is not null ? ShowColumnResizeAsync(column) : Task.CompletedTask;
     }
 
     /// <summary>
@@ -686,7 +686,7 @@ public partial class FluentDataGrid<TGridItem> : FluentComponentBase, IHandleEve
     /// <returns>A <see cref="Task"/> representing the completion of the operation.</returns>
     public Task ShowColumnResizeAsync(int index)
     {
-        return (index >= 0 && index < _columns.Count) ? ShowColumnResizeAsync(_columns[index]) : Task.CompletedTask;
+        return index >= 0 && index < _columns.Count ? ShowColumnResizeAsync(_columns[index]) : Task.CompletedTask;
     }
 
     public void SetLoadingState(bool? loading)
@@ -726,7 +726,7 @@ public partial class FluentDataGrid<TGridItem> : FluentComponentBase, IHandleEve
         }
 
         // If we're not using Virtualize, we build and execute a request against the items provider directly
-        var startIndex = Pagination is null ? 0 : (Pagination.CurrentPageIndex * Pagination.ItemsPerPage);
+        var startIndex = Pagination is null ? 0 : Pagination.CurrentPageIndex * Pagination.ItemsPerPage;
         GridItemsProviderRequest<TGridItem> request = new(
             startIndex, Pagination?.ItemsPerPage, _sortByColumn, _sortByAscending, thisLoadCts.Token);
         _lastRefreshedPaginationState = Pagination;
@@ -860,7 +860,7 @@ public partial class FluentDataGrid<TGridItem> : FluentComponentBase, IHandleEve
 
     private string AriaSortValue(ColumnBase<TGridItem> column)
          => _sortByColumn == column
-             ? (_sortByAscending ? "ascending" : "descending")
+             ? _sortByAscending ? "ascending" : "descending"
              : "none";
 
     private string? StyleValue => new StyleBuilder(Style)
