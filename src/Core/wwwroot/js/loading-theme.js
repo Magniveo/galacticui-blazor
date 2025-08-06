@@ -24,7 +24,7 @@ class LoadingTheme extends HTMLElement {
         }
 
         // Attributes
-        const storageName = this.getAttribute("storage-name"); 
+        const storageName = this.getAttribute("storage-name");
         const mode = this.getAttribute("mode");
         const primaryColor = this.getAttribute("primary-color");
         const neutralColor = this.getAttribute("neutral-color");
@@ -62,7 +62,13 @@ class LoadingTheme extends HTMLElement {
 
         document.body.classList.add(this.className);
 
+        if (isDark(modeSaved, isSystemDark)) {
+            document.body.classList.add("g-root_theme_dark");
+        } else {
+            document.body.classList.add("g-root_theme_light");
+        }
 
+        //document.body.classList.remove("g-root_theme_dark", "g-root_theme_light");
         // Add a <fluent-design-theme mode="dark|light" /> sub-element
         // Do not add the "storage-name"" to avoid unwanted local storage.
         const designTheme = document.createElement("fluent-design-theme");

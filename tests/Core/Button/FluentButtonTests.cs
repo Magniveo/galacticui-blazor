@@ -23,7 +23,7 @@ public partial class GButtonTests : TestContext
         // Act
         var cut = RenderComponent<GButton>(parameters =>
         {
-            parameters.AddChildContent("fluent-button");
+            parameters.AddChildContent("g-button");
         });
 
         // Assert
@@ -36,7 +36,7 @@ public partial class GButtonTests : TestContext
         // Arrange && Act
         var cut = RenderComponent<GButton>(parameters =>
         {
-            parameters.AddChildContent("fluent-button");
+            parameters.AddChildContent("g-button");
             parameters.Add(p => p.Autofocus, true);
         });
 
@@ -55,7 +55,7 @@ public partial class GButtonTests : TestContext
         var cut = RenderComponent<GButton>(parameters =>
         {
             parameters.Add(p => p.FormId, formId);
-            parameters.AddChildContent("fluent-button");
+            parameters.AddChildContent("g-button");
         });
 
         // Assert
@@ -73,7 +73,7 @@ public partial class GButtonTests : TestContext
         var cut = RenderComponent<GButton>(parameters =>
         {
             parameters.Add(p => p.Action, formAction);
-            parameters.AddChildContent("fluent-button");
+            parameters.AddChildContent("g-button");
         });
 
         // Assert
@@ -91,7 +91,7 @@ public partial class GButtonTests : TestContext
         var cut = RenderComponent<GButton>(parameters =>
         {
             parameters.Add(p => p.Enctype, formEnctype);
-            parameters.AddChildContent("fluent-button");
+            parameters.AddChildContent("g-button");
         });
 
         // Assert
@@ -109,7 +109,7 @@ public partial class GButtonTests : TestContext
         var cut = RenderComponent<GButton>(parameters =>
         {
             parameters.Add(p => p.Method, formMethod);
-            parameters.AddChildContent("fluent-button");
+            parameters.AddChildContent("g-button");
         });
 
         // Assert
@@ -123,7 +123,7 @@ public partial class GButtonTests : TestContext
         var cut = RenderComponent<GButton>(parameters =>
         {
             parameters.Add(p => p.NoValidate, true);
-            parameters.AddChildContent("fluent-button");
+            parameters.AddChildContent("g-button");
         });
 
         // Assert
@@ -142,7 +142,7 @@ public partial class GButtonTests : TestContext
         var cut = RenderComponent<GButton>(parameters =>
         {
             parameters.Add(p => p.Target, formTarget);
-            parameters.AddChildContent("fluent-button");
+            parameters.AddChildContent("g-button");
         });
 
         // Assert
@@ -160,7 +160,7 @@ public partial class GButtonTests : TestContext
             var cut = RenderComponent<GButton>(parameters =>
             {
                 parameters.Add(p => p.Target, formTarget);
-                parameters.AddChildContent("fluent-button");
+                parameters.AddChildContent("g-button");
             });
         };
 
@@ -178,7 +178,7 @@ public partial class GButtonTests : TestContext
         var cut = RenderComponent<GButton>(parameters =>
         {
             parameters.Add(p => p.Type, buttonType);
-            parameters.AddChildContent("fluent-button");
+            parameters.AddChildContent("g-button");
         });
 
         // Assert
@@ -196,7 +196,7 @@ public partial class GButtonTests : TestContext
         var cut = RenderComponent<GButton>(parameters =>
         {
             parameters.Add(p => p.Id, id);
-            parameters.AddChildContent("fluent-button");
+            parameters.AddChildContent("g-button");
         });
 
         // Assert
@@ -214,7 +214,7 @@ public partial class GButtonTests : TestContext
         var cut = RenderComponent<GButton>(parameters =>
         {
             parameters.Add(p => p.Value, value);
-            parameters.AddChildContent("fluent-button");
+            parameters.AddChildContent("g-button");
         });
 
         // Assert
@@ -232,7 +232,7 @@ public partial class GButtonTests : TestContext
         var cut = RenderComponent<GButton>(parameters =>
         {
             parameters.Add(p => p.CurrentValue, currentValue);
-            parameters.AddChildContent("fluent-button");
+            parameters.AddChildContent("g-button");
         });
 
         // Assert
@@ -246,7 +246,7 @@ public partial class GButtonTests : TestContext
         var cut = RenderComponent<GButton>(parameters =>
         {
             parameters.Add(p => p.Disabled, true);
-            parameters.AddChildContent("fluent-button");
+            parameters.AddChildContent("g-button");
         });
 
         // Assert
@@ -260,7 +260,7 @@ public partial class GButtonTests : TestContext
         var cut = RenderComponent<GButton>(parameters =>
         {
             parameters.Add(p => p.Name, "name-value");
-            parameters.AddChildContent("fluent-button");
+            parameters.AddChildContent("g-button");
         });
 
         // Assert
@@ -274,7 +274,7 @@ public partial class GButtonTests : TestContext
         var cut = RenderComponent<GButton>(parameters =>
         {
             parameters.Add(p => p.Required, true);
-            parameters.AddChildContent("fluent-button");
+            parameters.AddChildContent("g-button");
         });
 
         // Assert
@@ -293,7 +293,7 @@ public partial class GButtonTests : TestContext
         var cut = RenderComponent<GButton>(parameters =>
         {
             parameters.Add(p => p.Appearance, appearance);
-            parameters.AddChildContent("fluent-button");
+            parameters.AddChildContent("g-button");
         });
 
         // Assert
@@ -307,7 +307,7 @@ public partial class GButtonTests : TestContext
         var cut = RenderComponent<GButton>(parameters =>
         {
             parameters.Add(p => p.Class, "additional-class");
-            parameters.AddChildContent("fluent-button");
+            parameters.AddChildContent("g-button");
         });
 
         // Assert
@@ -321,7 +321,7 @@ public partial class GButtonTests : TestContext
         var cut = RenderComponent<GButton>(parameters =>
         {
             parameters.Add(p => p.Style, "background-color: green;");
-            parameters.AddChildContent("fluent-button");
+            parameters.AddChildContent("g-button");
         });
 
         // Assert
@@ -335,7 +335,7 @@ public partial class GButtonTests : TestContext
         var cut = RenderComponent<GButton>(parameters =>
         {
             parameters.AddUnmatched("additional-attribute-name", "additional-attribute-value");
-            parameters.AddChildContent("fluent-button");
+            parameters.AddChildContent("g-button");
         });
 
         // Assert
@@ -350,7 +350,7 @@ public partial class GButtonTests : TestContext
         {
             parameters.AddUnmatched("additional-attribute1-name", "additional-attribute1-value");
             parameters.AddUnmatched("additional-attribute2-name", "additional-attribute2-value");
-            parameters.AddChildContent("fluent-button");
+            parameters.AddChildContent("g-button");
         });
 
         // Assert
@@ -415,7 +415,7 @@ public partial class GButtonTests : TestContext
 
         // Act - `InvokeAsync` to avoid "The current thread is not associated with the Dispatcher" error.
         cut.InvokeAsync(() => cut.Instance.SetDisabled(true));
-        cut.Find("fluent-button").Click();
+        cut.Find("g-button").Click();
 
         // Assert
         Assert.False(clicked);

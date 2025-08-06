@@ -36,7 +36,7 @@ li {
     }
 
 
-::deep fluent-button {
+::deep g-button {
     display: none;
     position: fixed;
     bottom: 45px;
@@ -46,7 +46,7 @@ li {
     cursor: pointer;
 }
 
-[dir="rtl"] * ::deep fluent-button {
+[dir="rtl"] * ::deep g-button {
     display: none;
     position: fixed;
     bottom: 45px;

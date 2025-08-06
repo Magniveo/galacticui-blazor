@@ -44,7 +44,7 @@ public class FluentCounterBadgeTests : TestBase
         {
             parameters.Add(p => p.Appearance, appearance);
             parameters.Add(p => p.Count, 1);
-            parameters.AddChildContent("fluent-button");
+            parameters.AddChildContent("g-button");
         });
 
         // Assert
@@ -60,7 +60,7 @@ public class FluentCounterBadgeTests : TestBase
         {
             parameters.Add(p => p.Appearance, appearance);
             parameters.Add(p => p.Count, 1);
-            parameters.AddChildContent("fluent-button");
+            parameters.AddChildContent("g-button");
         }));
 
         // Assert
